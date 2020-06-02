@@ -1,7 +1,7 @@
 <?php 
 
 // config
-$config['base_url'] = 'http://localhost:8080/smkmerahputih/peoples/index';
+$config['base_url'] = 'http://localhost:8080/merahputih/index';
 $config['num_links'] = 5;
 
 // styling
