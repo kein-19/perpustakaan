@@ -25,7 +25,7 @@ class Siswa_baru extends CI_Controller
 
         //chekAksesModule();
         $this->load->library('form_validation');
-        $this->load->library('ssp');
+        // $this->load->library('ssp');
         $this->load->model('Model_siswa_baru');
     }
 

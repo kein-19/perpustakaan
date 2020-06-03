@@ -11,7 +11,7 @@ class Admin extends CI_Controller
         is_logged_in();
 
         $this->load->library('form_validation');
-        $this->load->library('ssp');
+        // $this->load->library('ssp');
         $this->load->model('Model_user');
         $this->load->model('Model_siswa_baru');
     }
