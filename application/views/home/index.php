@@ -94,8 +94,25 @@
     <div class="row col-lg-10 mx-auto">
       <p style="text-indent: 60px;" class="mb-sm-5 text-justify">Calon siswa yang telah terdaftar bisa mencetak Formulir dan menyerahkan ke SMK MERAH PUTIH untuk divalidasi agar menjadi Siswa Baru SMK MERAH PUTIH.</p>
 
+    <div class="row">
+        <div class="col-lg">
+            <form action="<?= base_url('home'); ?>" method="post">
+
+            <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search keyword.." name="keyword" autocomplete="off" autofocus>
+                    <div class="input-group-append">
+                        <input class="btn btn-primary fas fa-search" type="submit" name="submit">
+                        <!-- <button class="btn btn-primary" type="submit" name="submit"><i class="fas fa-search"></i></button> -->
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
       <div class="wrap-table100">
         <div class="table100">
+          <h5>Results : <?= $total_rows; ?></h5>
           <table class="table table-sm">
             <thead>
               <tr class="table100-head">
@@ -109,25 +126,37 @@
             </thead>
             <tbody>
 
-              <?php
-              $i = 0;
-              foreach ($tbl_siswa_baru as $sb) : ?>
+            <?php if (empty($tbl_siswa_baru)) : ?>
                 <tr>
-                  <th class="align-middle" scope="row"><?= ++$i; ?></th>
+                    <td colspan="6">
+                        <div class="alert alert-danger" role="alert">
+                        data not found.
+                        </div>
+                    </td>
+                </tr>
+            <?php endif; ?>
+
+              <?php foreach ($tbl_siswa_baru as $sb) : ?>
+                <tr>
+                  <th class="align-middle" scope="row"><?= ++$start; ?></th>
                   <td class="align-middle"><?= $sb['kode_pendaftaran']; ?></td>
                   <td class="align-middle"><?= $sb['nama']; ?></td>
                   <td class="align-middle"><?= $sb['asal_sekolah']; ?></td>
                   <td class="align-middle"><?= $sb['alamat']; ?></td>
-                  <td class="align-middle"><?php if ($sb['is_active'] == 1) {
+                  <td class="align-middle"><?= $sb['is_active']; ?></td>
+                  <!-- <td class="align-middle"><?php if ($sb['is_active'] == 1) {
                                               echo "Sudah";
                                             } elseif ($sb['is_active'] == 0) {
                                               echo "Belum";
-                                            }; ?></td>
+                                            }; ?></td> -->
                 </tr>
               <?php endforeach; ?>
 
             </tbody>
           </table>
+
+          <?= $this->pagination->create_links(); ?>
+
         </div>
 
       </div>

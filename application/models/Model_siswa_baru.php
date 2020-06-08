@@ -14,16 +14,24 @@ class Model_siswa_baru extends CI_Model
         return $this->db->get_where('tbl_siswa_baru', ['kode_pendaftaran' => $this->session->userdata('kode_pendaftaran')])->row_array();
     }
 
-    // fitur untuk pencarian
-    // public function getPeoples($limit, $start, $keyword = null)
-    // {
-    //     if( $keyword ) {
-    //         $this->db->like('name', $keyword);
-    //         $this->db->or_like('email', $keyword);
-    //     }
+    // fitur untuk pagination
+    public function getSiswaBaruLimit($limit, $start, $keyword = null)
+    // public function getSiswaBaruLimit($limit, $start)
+    {
+        // untuk pencarian
+        if( $keyword ) {
+            $this->db->like('kode_pendaftaran', $keyword);
+            $this->db->or_like('nama', $keyword);
+            $this->db->or_like('asal_sekolah', $keyword);
+            $this->db->or_like('alamat', $keyword);
+            $this->db->or_like('is_active', $keyword);
+        }
+        // elseif ( $keyword == '1' ) {
+        //     $this->db->like('is_active', $keyword);
+        // }
 
-    //     return $this->db->get('peoples', $limit, $start)->result_array();
-    // }
+        return $this->db->get('tbl_siswa_baru', $limit, $start)->result_array();
+    }
 
     public function countAllSiswaBaru()
     {

@@ -13,29 +13,32 @@ class Home extends CI_Controller
     {
         $data['title'] = 'SMK MERAH PUTIH';
         $data['sekolah'] = 'SMK MERAH PUTIH';
-        $data['tbl_siswa_baru'] = $this->Model_siswa_baru->getAllSiswaBaru();
-
-        // $this->load->model('Model_siswa_baru', 'peoples');
-
-        // $data['peoples'] = $this->peoples->getAllPeoples();
 
         // load library
         $this->load->library('pagination');
 
         // ambil data keyword
-        // if( $this->input->post('submit') ) {
-        //     $data['keyword'] = $this->input->post('keyword');
-        //     $this->session->set_userdata('keyword', $data['keyword']);
-        // } else {
-        //     $data['keyword'] = $this->session->userdata('keyword');
-        //     ;
+        if( $this->input->post('submit') ) {
+            $data['keyword'] = $this->input->post('keyword');
+            $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+            // $data['keyword'] = null;
+            $data['keyword'] = $this->session->userdata('keyword');
+        }
+
+        // if ( $data['keyword'] == "sudah" ) {
+        //     $this->db->where('is_active', '1');
         // }
 
         // config
-        // $this->db->like('name', $data['keyword']);
-        // $this->db->or_like('email', $data['keyword']);
-        // $this->db->from('peoples');
+        $this->db->like('kode_pendaftaran', $data['keyword']);
+        $this->db->or_like('nama', $data['keyword']);
+        $this->db->or_like('asal_sekolah', $data['keyword']);
+        $this->db->or_like('alamat', $data['keyword']);
+        // $this->db->or_like('is_active', $data['keyword']);
+        $this->db->from('tbl_siswa_baru');
         $config['total_rows'] = $this->db->count_all_results();
+        // $config['total_rows'] = $this->Model_siswa_baru->countAllSiswaBaru();
         $data['total_rows'] = $config['total_rows'];
         $config['per_page'] = 5;
 
@@ -43,11 +46,8 @@ class Home extends CI_Controller
         $this->pagination->initialize($config);
 
         $data['start'] = $this->uri->segment(3);
-        // $data['tbl_siswa_baru'] = $this->tbl_siswa_baru->getPeoples($config['per_page'], $data['start'], $data['keyword']);
-        // $this->load->view('templates/header', $data);
-        // $this->load->view('peoples/index', $data);
-        // $this->load->view('templates/footer');
 
+        $data['tbl_siswa_baru'] = $this->Model_siswa_baru->getSiswaBaruLimit($config['per_page'], $data['start'], $data['keyword']);
 
         $this->load->view('templates/header', $data);
         $this->load->view('home/index', $data);

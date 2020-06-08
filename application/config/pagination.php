@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 // config
-$config['base_url'] = 'http://localhost:8080/merahputih/index';
-$config['num_links'] = 5;
+$config['base_url'] = 'http://localhost/merahputih/home/index';
+$config['num_links'] = 3;
 
 // styling
 $config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
@@ -14,7 +14,7 @@ $config['first_tag_close'] = '</li>';
 
 $config['last_link'] = 'Last';
 $config['last_tag_open'] = '<li class="page-item">';
-$config['last_tag_close'] = '</li>';        
+$config['last_tag_close'] = '</li>';
 
 $config['next_link'] = '&raquo';
 $config['next_tag_open'] = '<li class="page-item">';
