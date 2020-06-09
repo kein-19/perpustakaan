@@ -94,21 +94,21 @@
     <div class="row col-lg-10 mx-auto">
       <p style="text-indent: 60px;" class="mb-sm-5 text-justify">Calon siswa yang telah terdaftar bisa mencetak Formulir dan menyerahkan ke SMK MERAH PUTIH untuk divalidasi agar menjadi Siswa Baru SMK MERAH PUTIH.</p>
 
-    <div class="row">
+      <div class="row">
         <div class="col-lg">
-            <form action="<?= base_url('home'); ?>" method="post">
+          <form action="<?= base_url('home'); ?>" method="post">
 
             <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search keyword.." name="keyword" autocomplete="off" autofocus>
-                    <div class="input-group-append">
-                        <input class="btn btn-primary fas fa-search" type="submit" name="submit">
-                        <!-- <button class="btn btn-primary" type="submit" name="submit"><i class="fas fa-search"></i></button> -->
-                    </div>
-                </div>
+              <input type="text" class="form-control" placeholder="Search keyword.." name="keyword" autocomplete="off" autofocus>
+              <div class="input-group-append">
+                <input class="btn btn-primary fas fa-search" type="submit" name="submit">
+                <!-- <button class="btn btn-primary" type="submit" name="submit"><i class="fas fa-search"></i></button> -->
+              </div>
+            </div>
 
-            </form>
+          </form>
         </div>
-    </div>
+      </div>
 
       <div class="wrap-table100">
         <div class="table100">
@@ -126,15 +126,15 @@
             </thead>
             <tbody>
 
-            <?php if (empty($tbl_siswa_baru)) : ?>
+              <?php if (empty($tbl_siswa_baru)) : ?>
                 <tr>
-                    <td colspan="6">
-                        <div class="alert alert-danger" role="alert">
-                        data not found.
-                        </div>
-                    </td>
+                  <td colspan="6">
+                    <div class="alert alert-danger" role="alert">
+                      data not found.
+                    </div>
+                  </td>
                 </tr>
-            <?php endif; ?>
+              <?php endif; ?>
 
               <?php foreach ($tbl_siswa_baru as $sb) : ?>
                 <tr>
@@ -145,10 +145,10 @@
                   <td class="align-middle"><?= $sb['alamat']; ?></td>
                   <td class="align-middle"><?= $sb['is_active']; ?></td>
                   <!-- <td class="align-middle"><?php if ($sb['is_active'] == 1) {
-                                              echo "Sudah";
-                                            } elseif ($sb['is_active'] == 0) {
-                                              echo "Belum";
-                                            }; ?></td> -->
+                                                  echo "Sudah";
+                                                } elseif ($sb['is_active'] == 0) {
+                                                  echo "Belum";
+                                                }; ?></td> -->
                 </tr>
               <?php endforeach; ?>
 
