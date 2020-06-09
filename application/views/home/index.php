@@ -143,12 +143,12 @@
                   <td class="align-middle"><?= $sb['nama']; ?></td>
                   <td class="align-middle"><?= $sb['asal_sekolah']; ?></td>
                   <td class="align-middle"><?= $sb['alamat']; ?></td>
-                  <td class="align-middle"><?= $sb['is_active']; ?></td>
-                  <!-- <td class="align-middle"><?php if ($sb['is_active'] == 1) {
+                  <!-- <td class="align-middle"><?= $sb['is_active']; ?></td> -->
+                  <td class="align-middle"><?php if ($sb['is_active'] == 1) {
                                                   echo "Sudah";
                                                 } elseif ($sb['is_active'] == 0) {
                                                   echo "Belum";
-                                                }; ?></td> -->
+                                                }; ?></td>
                 </tr>
               <?php endforeach; ?>
 
