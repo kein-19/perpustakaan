@@ -151,6 +151,7 @@ class Model_user extends CI_Model
             'password'              => password_hash($this->input->post('tanggal_lahir'), PASSWORD_DEFAULT),
             'role_id'               => 2,
             'is_active'             => 0,
+            'validasi' => 'Belum',
             'date_created'          => time()
         ];
         $this->db->insert('tbl_siswa_baru', $data);
@@ -162,6 +163,13 @@ class Model_user extends CI_Model
         $nama = $this->input->post('nama', TRUE);
         $email = $this->input->post('email', true);
         // $fixkode = $this->input->post('kode_pendaftaran');
+
+        $is_active = $this->input->post('is_active', TRUE);
+        if ($is_active == 1) {
+            $validasi = 'Sudah';
+        } elseif ($is_active == 0) {
+            $validasi = 'Belum';
+        }
 
         $data = [
             // 'kode_pendaftaran'      => ($fixkode),
@@ -204,7 +212,9 @@ class Model_user extends CI_Model
             'email'                 => htmlspecialchars($email),
             'password'              => password_hash($this->input->post('tanggal_lahir'), PASSWORD_DEFAULT),
             'role_id'               => 2,
-            'is_active'             => $this->input->post('is_active', TRUE)
+            'is_active'             => $is_active,
+            'validasi'              => $validasi
+            // 'validasi'              => $this->input->post('validasi', TRUE),
         ];
 
         // cek jika ada gambar yang akan diupload

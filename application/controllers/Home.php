@@ -11,14 +11,14 @@ class Home extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'SMK MERAH PUTIH';
-        $data['sekolah'] = 'SMK MERAH PUTIH';
+        $data['title'] = 'PERPUSTAKAAN DESA CIWARU';
+        $data['navbar'] = 'PERPUSTAKAAN DESA CIWARU';
 
         // load library
         $this->load->library('pagination');
 
         // ambil data keyword
-        if( $this->input->post('submit') ) {
+        if ($this->input->post('submit')) {
             $data['keyword'] = $this->input->post('keyword');
             $this->session->set_userdata('keyword', $data['keyword']);
         } else {

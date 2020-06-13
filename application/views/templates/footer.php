@@ -3,7 +3,7 @@
       <div class="container">
         <div class="row">
           <div class="col text-center">
-            <p>Copyright &copy; <?= date('Y') . " " . $sekolah; ?>. All Rights Reserved</p>
+            <p>Copyright &copy; <?= date('Y') . " " . $navbar; ?>. All Rights Reserved</p>
           </div>
         </div>
       </div>

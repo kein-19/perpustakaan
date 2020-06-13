@@ -18,10 +18,13 @@
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?= base_url('assets/'); ?>css/print.css" rel="stylesheet">
+    <!-- <link href="<?= base_url('assets/'); ?>css/print.css" rel="stylesheet" media="screen, print" /> -->
 
 </head>
 
-<body id="page-top" onload="print()">
+<!-- <body id="page-top" onload="print()"> -->
+
+<body onload="window.print()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -296,6 +299,12 @@
                 });
 
             });
+        </script>
+
+        <script type="text/javascript">
+            window.onload = function() {
+                window.print();
+            }
         </script>
 
 </body>

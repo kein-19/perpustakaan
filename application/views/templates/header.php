@@ -13,8 +13,8 @@
   <link href="<?= base_url(); ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="<?= base_url('assets/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <!-- <link href="<?= base_url(); ?>assets/css/scrolling-nav.css" rel="stylesheet"> -->
@@ -52,7 +52,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: #337ab7;
     border-color: #337ab7;">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="<?= base_url(); ?>#home"><?= $sekolah; ?></a>
+      <a class="navbar-brand js-scroll-trigger" href="<?= base_url(); ?>#home"><?= $navbar; ?></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -62,33 +62,13 @@
             <a class="nav-link js-scroll-trigger" href="<?= base_url(); ?>#home">HOME</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="<?= base_url(); ?>#info">INFO</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="<?= base_url(); ?>#galeri">GALERI</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="<?= base_url('psb'); ?>">PSB ONLINE</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="<?= base_url(); ?>#about">ABOUT</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="<?= base_url(); ?>#kontak">KONTAK</a>
           </li>
-
-          <li class="nav-item dropdown dmenu">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              LAINNYA
-            </a>
-            <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
-            <div class="dropdown-menu dropdown-menu-right sm-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="<?= base_url(); ?>psb/login">LOGIN SISWA</a>
-              <a class="dropdown-item" href="<?= base_url(); ?>auth">LOGIN GURU</a>
-              <a class="dropdown-item" href="<?= base_url(); ?>auth">LOGIN TAMU</a>
-              <!-- <div class="dropdown-divider"></div> -->
-              <!-- <a class="dropdown-item" href="<?= base_url(); ?>#contact">PSB ONLINE</a> -->
-            </div>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="<?= base_url(); ?>member/login">LOGIN</a>
           </li>
         </ul>
       </div>

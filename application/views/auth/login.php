@@ -13,7 +13,7 @@
                             <div class="p-5">
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900">SELAMAT DATANG ADMIN</h1>
-                                    <h3 class="h6 text-gray-900 mb-4">DI SISTEM INFORMASI AKADEMIK</h3>
+                                    <h3 class="h6 text-gray-900 mb-4">DI SISTEM INFORMASI PERPUSTAKAAN</h3>
                                 </div>
 
                                 <?= $this->session->flashdata('message'); ?>

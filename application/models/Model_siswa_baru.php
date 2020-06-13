@@ -19,12 +19,12 @@ class Model_siswa_baru extends CI_Model
     // public function getSiswaBaruLimit($limit, $start)
     {
         // untuk pencarian
-        if( $keyword ) {
+        if ($keyword) {
             $this->db->like('kode_pendaftaran', $keyword);
             $this->db->or_like('nama', $keyword);
             $this->db->or_like('asal_sekolah', $keyword);
             $this->db->or_like('alamat', $keyword);
-            $this->db->or_like('is_active', $keyword);
+            $this->db->or_like('validasi', $keyword);
         }
         // elseif ( $keyword == '1' ) {
         //     $this->db->like('is_active', $keyword);
@@ -129,6 +129,7 @@ class Model_siswa_baru extends CI_Model
             'password' => password_hash($this->input->post('tanggal_lahir'), PASSWORD_DEFAULT),
             'role_id' => 2,
             'is_active' => 0,
+            'validasi' => 'Belum',
             'date_created' => time()
         ];
         $this->db->insert('tbl_siswa_baru', $data);
@@ -181,8 +182,7 @@ class Model_siswa_baru extends CI_Model
             // 'name' => htmlspecialchars($this->input->post('name', true)),
             'email' => htmlspecialchars($email),
             'password' => password_hash($this->input->post('tanggal_lahir'), PASSWORD_DEFAULT),
-            'role_id' => 2,
-            'is_active' => 0,
+            'role_id' => 2
         ];
 
         // cek jika ada gambar yang akan diupload
@@ -215,5 +215,4 @@ class Model_siswa_baru extends CI_Model
         $this->db->where('kode_pendaftaran', $fixkode);
         $this->db->update('tbl_siswa_baru', $data,);
     }
-
 }
