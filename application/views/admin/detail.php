@@ -14,12 +14,12 @@
                                 <h4 class="col-sm-7 font-weight-bold text-dark"><?= $tbl_member['id_member']; ?></h4>
                             </div>
                             <div class="row">
-                                <h4 class="col-sm-5 font-weight-bold text-info">Status Validasi</h4>
+                                <h4 class="col-sm-5 font-weight-bold text-info">Status Member</h4>
 
                                 <?php if ($tbl_member['is_active'] == 1) : ?>
-                                    <h4 class="col-sm-7 font-weight-bold text-success">Sudah <i class="fas fa-check"></i></h4>
+                                    <h4 class="col-sm-7 font-weight-bold text-success">Aktif <i class="fas fa-check"></i></h4>
                                 <?php elseif ($tbl_member['is_active'] == 0) : ?>
-                                    <h4 class="col-sm-7 font-weight-bold text-danger">Belum <i class="fas fa-exclamation"></i></h4>
+                                    <h4 class="col-sm-7 font-weight-bold text-danger">Tidak Aktif <i class="fas fa-exclamation"></i></h4>
                                 <?php endif; ?>
                             </div>
                         </div>

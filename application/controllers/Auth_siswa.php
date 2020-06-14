@@ -9,7 +9,7 @@ class Auth_siswa extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('Model_member');
 
-        // $this->load->model('Model_user');
+        // $this->load->model('Model_admin');
         // $this->load->model('Model_guru');
     }
 
@@ -77,7 +77,7 @@ class Auth_siswa extends CI_Controller
 
     //         $membername = $this->input->post('username');
     //         $password = $this->input->post('password');
-    //         $loginUser = $this->Model_user->chekLogin($membername, $password);
+    //         $loginUser = $this->Model_admin->chekLogin($membername, $password);
     //         $loginGuru = $this->Model_guru->chekLogin($membername, $password);
     //         if (!empty($loginUser)) {
     //             // sukses login user

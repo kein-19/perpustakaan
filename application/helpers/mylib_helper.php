@@ -72,7 +72,7 @@ function chekAksesModule()
     if (!empty($level_user)) {
 
         // chek apakah level ini diberikan hak akses atau tidak
-        $chek = $ci->db->get_where('tbl_user_rule', array('id_level_user' => $level_user, 'id_menu' => $menu['id']));
+        $chek = $ci->db->get_where('tbl_admin_rule', array('id_level_user' => $level_user, 'id_menu' => $menu['id']));
         if ($chek->num_rows() < 1 and $method != 'data' and $method != 'add' and $method != 'edit' and $method != 'delete') {
             echo "ANDA TIDAK BOLEH MENGAKSES MODUL INI";
             die;

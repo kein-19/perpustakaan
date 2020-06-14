@@ -11,7 +11,7 @@ class Model_member extends CI_Model
 
     public function getMember()
     {
-        return $this->db->get_where('tbl_member', ['id_member' => $this->session->userdata('email')])->row_array();
+        return $this->db->get_where('tbl_member', ['email' => $this->session->userdata('email')])->row_array();
     }
 
     // fitur untuk pagination
@@ -99,8 +99,8 @@ class Model_member extends CI_Model
             'kelurahan'             => htmlspecialchars($this->input->post('kelurahan', TRUE)),
             'kecamatan'             => htmlspecialchars($this->input->post('kecamatan', TRUE)),
             'no_hp'                 => htmlspecialchars($this->input->post('no_hp', TRUE)),
-            'pendidikan'         => htmlspecialchars($this->input->post('pendidikan', TRUE)),
-            'pekerjaan'          => htmlspecialchars($this->input->post('pekerjaan', TRUE)),
+            'pendidikan'            => htmlspecialchars($this->input->post('pendidikan', TRUE)),
+            'pekerjaan'             => htmlspecialchars($this->input->post('pekerjaan', TRUE)),
 
             // 'name' => htmlspecialchars($this->input->post('name', true)),
             'email' => htmlspecialchars($email),
@@ -121,46 +121,26 @@ class Model_member extends CI_Model
         $idmember = $this->input->post('id_member', true);
 
         $data = [
-            'id_member'      => ($idmember),
+            'id_member'             => ($idmember),
             'nama'                  => htmlspecialchars($nama),
             'tempat_lahir'          => htmlspecialchars($this->input->post('tempat_lahir', TRUE)),
             'tanggal_lahir'         => htmlspecialchars($this->input->post('tanggal_lahir', TRUE)),
             'jenis_kelamin'         => $this->input->post('jenis_kelamin', TRUE),
             'kd_agama'              => $this->input->post('agama', TRUE),
-            'warganegara'           => $this->input->post('warganegara', TRUE),
-            'statussiswa'           => $this->input->post('statussiswa', TRUE),
-            'anak_ke'               => htmlspecialchars($this->input->post('anak_ke', TRUE)),
-            'dari__bersaudara'      => htmlspecialchars($this->input->post('dari__bersaudara', TRUE)),
-            'jumlah_saudara'        => htmlspecialchars($this->input->post('jumlah_saudara', TRUE)),
             'alamat'                => htmlspecialchars($this->input->post('alamat', TRUE)),
             'rt'                    => htmlspecialchars($this->input->post('rt', TRUE)),
             'rw'                    => htmlspecialchars($this->input->post('rw', TRUE)),
             'kelurahan'             => htmlspecialchars($this->input->post('kelurahan', TRUE)),
             'kecamatan'             => htmlspecialchars($this->input->post('kecamatan', TRUE)),
             'no_hp'                 => htmlspecialchars($this->input->post('no_hp', TRUE)),
-            'tinggalbersama'        => $this->input->post('tinggalbersama', TRUE),
-            'jarak'                 => htmlspecialchars($this->input->post('jarak', TRUE)),
-            'transport'             => $this->input->post('transport', TRUE),
-            'jurusan'               => $this->input->post('jurusan', TRUE),
-            'asal_sekolah'          => htmlspecialchars($this->input->post('asal_sekolah', TRUE)),
-            'nisn'                  => htmlspecialchars($this->input->post('nisn', TRUE)),
-            'no_sttb'               => htmlspecialchars($this->input->post('no_sttb', TRUE)),
-            'pindahan'              => htmlspecialchars($this->input->post('pindahan', TRUE)),
-            'suratpindah'           => $this->input->post('suratpindah', TRUE),
-            'alasan'                => htmlspecialchars($this->input->post('alasan', TRUE)),
-
-            // data orang tua siswa
-            'nama'               => htmlspecialchars($this->input->post('nama', TRUE)),
-            'alamat'             => htmlspecialchars($this->input->post('alamat', TRUE)),
-            'no_hp'              => htmlspecialchars($this->input->post('no_hp', TRUE)),
-            'pendidikan'         => htmlspecialchars($this->input->post('pendidikan', TRUE)),
-            'pekerjaan'          => htmlspecialchars($this->input->post('pekerjaan', TRUE)),
-            'penghasilan'        => htmlspecialchars($this->input->post('penghasilan', TRUE)),
+            'pendidikan'            => htmlspecialchars($this->input->post('pendidikan', TRUE)),
+            'pekerjaan'             => htmlspecialchars($this->input->post('pekerjaan', TRUE)),
 
             // 'name' => htmlspecialchars($this->input->post('name', true)),
             'email' => htmlspecialchars($email),
-            'password' => password_hash($this->input->post('tanggal_lahir'), PASSWORD_DEFAULT),
-            'role_id' => 2
+            // 'password' => password_hash($this->input->post('id_member', true), PASSWORD_DEFAULT),
+            'password' => password_hash($idmember, PASSWORD_DEFAULT),
+            'role_id' => 2,
         ];
 
         // cek jika ada gambar yang akan diupload
@@ -186,11 +166,11 @@ class Model_member extends CI_Model
             }
         }
 
-
         // $this->db->set('name', $data);
 
         // $this->db->set('image', $new_image);
+        // $this->db->where('email', $email);
         $this->db->where('id_member', $idmember);
-        $this->db->update('tbl_member', $data,);
+        $this->db->update('tbl_member', $data);
     }
 }

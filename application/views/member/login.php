@@ -5,7 +5,7 @@
         </div>
         <div class="header">
             <h3 style="color:white">
-                <center>Masuk Member</center>
+                <center>Login Member</center>
             </h3>
         </div>
         <?= $this->session->flashdata('message'); ?>

@@ -122,7 +122,7 @@
 
                     <?php
                     $id_level_user = $this->session->userdata('id_level_user');
-                    $sql_menu = "SELECT * FROM tabel_menu WHERE id in(select id_menu from tbl_user_rule where id_level_user=$id_level_user) and is_main_menu=0";
+                    $sql_menu = "SELECT * FROM tabel_menu WHERE id in(select id_menu from tbl_admin_rule where id_level_user=$id_level_user) and is_main_menu=0";
                     $main_menu = $this->db->query($sql_menu)->result();
                     foreach ($main_menu as $main) {
                         // chek apakah ada submenu ?

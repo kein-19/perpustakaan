@@ -199,7 +199,7 @@
                         </form>
                         <hr>
                         <div class="text-center">
-                            <a class="text-primary" href="<?= base_url('member/login'); ?>">Sudah Daftar? Silahkan Login!</a>
+                            <a class="text-primary" href="<?= base_url('member/login'); ?>">Aktif Daftar? Silahkan Login!</a>
                         </div>
                     </div>
                 </div>

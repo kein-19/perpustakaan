@@ -363,61 +363,61 @@
                 <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Data Orang Tua Member</h3>
 
                 <div class="form-group row">
-                    <label class="col-sm-5 col-form-label col-form-label-sm" for="nama_ot">
+                    <label class="col-sm-5 col-form-label col-form-label-sm" for="nama">
                         Nama Orang Tua/Wali
                     </label>
                     <div class="col-sm-7">
-                        <input type="text" name="nama_ot" placeholder="Masukkan Nama Orang Tua/Wali" id="nama_ot" class="form-control form-control-sm" value="<?= set_value('nama'); ?>">
+                        <input type="text" name="nama" placeholder="Masukkan Nama Orang Tua/Wali" id="nama" class="form-control form-control-sm" value="<?= set_value('nama'); ?>">
                     </div>
                     <?= form_error('nama', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-5 col-form-label col-form-label-sm" for="alamat_ot">
+                    <label class="col-sm-5 col-form-label col-form-label-sm" for="alamat">
                         Alamat Orang Tua/Wali
                     </label>
                     <div class="col-sm-7">
-                        <textarea name="alamat_ot" id="alamat_ot" class="form-control form-control-sm" value="<?= set_value('alamat'); ?>"></textarea>
+                        <textarea name="alamat" id="alamat" class="form-control form-control-sm" value="<?= set_value('alamat'); ?>"></textarea>
                     </div>
                     <?= form_error('alamat', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-5 col-form-label col-form-label-sm" for="no_hp_ot">
+                    <label class="col-sm-5 col-form-label col-form-label-sm" for="no_hp">
                         No. HP
                     </label>
                     <div class="col-sm-7">
-                        <input type="text" name="no_hp_ot" placeholder="Nomor HP" id="no_hp_ot" class="form-control form-control-sm" value="<?= set_value('no_hp'); ?>">
+                        <input type="text" name="no_hp" placeholder="Nomor HP" id="no_hp" class="form-control form-control-sm" value="<?= set_value('no_hp'); ?>">
                     </div>
                     <?= form_error('no_hp', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-5 col-form-label col-form-label-sm" for="pendidikan_ot">
+                    <label class="col-sm-5 col-form-label col-form-label-sm" for="pendidikan">
                         Pendidikan Terakhir
                     </label>
                     <div class="col-sm-7">
-                        <input type="text" name="pendidikan_ot" placeholder="Pendidikan Terakhir" id="pendidikan_ot" class="form-control form-control-sm" value="<?= set_value('pendidikan'); ?>">
+                        <input type="text" name="pendidikan" placeholder="Pendidikan Terakhir" id="pendidikan" class="form-control form-control-sm" value="<?= set_value('pendidikan'); ?>">
                     </div>
                     <?= form_error('pendidikan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-5 col-form-label col-form-label-sm" for="pekerjaan_ot">
+                    <label class="col-sm-5 col-form-label col-form-label-sm" for="pekerjaan">
                         Pekerjaan
                     </label>
                     <div class="col-sm-7">
-                        <input type="text" name="pekerjaan_ot" placeholder="Pekerjaan" id="pekerjaan_ot" class="form-control form-control-sm" value="<?= set_value('pekerjaan'); ?>">
+                        <input type="text" name="pekerjaan" placeholder="Pekerjaan" id="pekerjaan" class="form-control form-control-sm" value="<?= set_value('pekerjaan'); ?>">
                     </div>
                     <?= form_error('pekerjaan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-5 col-form-label col-form-label-sm" for="penghasilan_ot">
+                    <label class="col-sm-5 col-form-label col-form-label-sm" for="penghasilan">
                         Penghasilan
                     </label>
                     <div class="col-sm-7">
-                        <input type="text" name="penghasilan_ot" placeholder="Penghasilan" id="penghasilan_ot" class="form-control form-control-sm" value="<?= set_value('penghasilan'); ?>">
+                        <input type="text" name="penghasilan" placeholder="Penghasilan" id="penghasilan" class="form-control form-control-sm" value="<?= set_value('penghasilan'); ?>">
                     </div>
                     <?= form_error('penghasilan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                 </div>

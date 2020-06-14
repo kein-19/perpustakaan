@@ -7,7 +7,7 @@ class Menu extends CI_Controller
     {
         parent::__construct();
         is_logged_in();
-        $this->load->model('Model_user');
+        $this->load->model('Model_admin');
         $this->load->model('Menu_model');
     }
 
@@ -22,7 +22,7 @@ class Menu extends CI_Controller
         $this->form_validation->set_rules('menu', 'Menu', 'required');
 
         if ($this->form_validation->run() == false) {
-            $data['tbl_user'] = $this->Model_user->getAdmin();
+            $data['tbl_admin'] = $this->Model_admin->getAdmin();
 
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
@@ -52,7 +52,7 @@ class Menu extends CI_Controller
         $this->form_validation->set_rules('menu', 'Menu', 'required');
 
         if ($this->form_validation->run() == false) {
-            $data['tbl_user'] = $this->Model_user->getAdmin();
+            $data['tbl_admin'] = $this->Model_admin->getAdmin();
 
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
@@ -96,7 +96,7 @@ class Menu extends CI_Controller
         $this->form_validation->set_rules('icon', 'Icon', 'required');
 
         if ($this->form_validation->run() ==  false) {
-            $data['tbl_user'] = $this->Model_user->getAdmin();
+            $data['tbl_admin'] = $this->Model_admin->getAdmin();
 
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
@@ -144,7 +144,7 @@ class Menu extends CI_Controller
         $this->form_validation->set_rules('icon', 'Icon', 'required');
 
         if ($this->form_validation->run() ==  false) {
-            $data['tbl_user'] = $this->Model_user->getAdmin();
+            $data['tbl_admin'] = $this->Model_admin->getAdmin();
 
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);

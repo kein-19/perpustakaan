@@ -19,7 +19,7 @@ class PrintDoc extends CI_Controller
         $this->load->library('form_validation');
         $this->load->library('ssp');
         $this->load->model('Model_member');
-        $this->load->model('Model_user');
+        $this->load->model('Model_admin');
     }
 
     public function index()
@@ -40,7 +40,7 @@ class PrintDoc extends CI_Controller
         // is_logged_in();
 
         $data['title'] = 'Detail Data Member Baru';
-        $data['tbl_member'] = $this->Model_user->getMemberId($id_member);
+        $data['tbl_member'] = $this->Model_admin->getMemberId($id_member);
         // $data['tbl_member'] = $this->Model_member->getMember();
         $this->load->view('admin/print', $data);
     }

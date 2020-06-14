@@ -12,7 +12,8 @@
                     </h1>
 
                     <p class="mb-0">Selamat datang di Perpustakaan Desa Ciwaru.</p>
-                    <!-- <p>Silahkan untuk mencari buku yang anda inginkan di perpustakaan ini</p> <a href="<?= base_url('member/profile'); ?>" class="text-decoration-none">My Profile</a>, atau klik <a href="<?= base_url('member/editprofile'); ?>" class="text-decoration-none">Edit Profile</a> apabila ingin mengubah data diri.
+                    <p>Silahkan untuk mencari buku yang anda inginkan di perpustakaan ini</p>
+                    <!-- <a href="<?= base_url('member/profile'); ?>" class="text-decoration-none">My Profile</a>, atau klik <a href="<?= base_url('member/editprofile'); ?>" class="text-decoration-none">Edit Profile</a> apabila ingin mengubah data diri.
                     <small>
                         <p class="mt-5">Pertanyaan dan Informasi, silahkan kontak Admin<br><i class="h5 fab fa-whatsapp-square align-middle"></i> +62853 1152 9378</p>
                     </small> -->

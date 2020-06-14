@@ -98,88 +98,6 @@
                                 </div>
                                 <?= form_error('agama', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
                             </div>
-
-                            <!-- tambahan dari yang ada -->
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="warganegara">
-                                    Kewarganegaraan
-                                </label>
-                                <div class="col-sm-4">
-                                    <?php
-                                    $warganegara = array(
-                                        null => '- Silahkan Pilih -',
-                                        'WNI' => 'Warga Negara Indonesia',
-                                        'WNA' => 'Warga Negara Asing'
-                                    );
-                                    $pilih = $tbl_member['warganegara'];;
-                                    echo form_dropdown(
-                                        'warganegara',
-                                        $warganegara,
-                                        $pilih,
-                                        "class='form-control form-control-sm'"
-                                    );
-                                    ?>
-                                </div>
-                                <?= form_error('warganegara', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="statussiswa">
-                                    Status Member
-                                </label>
-                                <div class="col-sm-4">
-                                    <?php
-                                    $statussiswa = array(
-                                        null => '- Silahkan Pilih -',
-                                        'Kandung' => 'Kandung',
-                                        'Yatim' => 'Yatim',
-                                        'Piatu' => 'Piatu',
-                                        'Yatim Piatu' => 'Yatim Piatu',
-                                        'Tiri' => 'Tiri',
-                                        'Angkat' => 'Angkat'
-                                    );
-                                    $pilih = $tbl_member['statussiswa'];
-                                    echo form_dropdown(
-                                        'statussiswa',
-                                        $statussiswa,
-                                        $pilih,
-                                        "class='form-control form-control-sm'"
-                                    );
-                                    ?>
-                                </div>
-                                <?= form_error('statussiswa', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="anak_ke">
-                                    Anak ke
-                                </label>
-                                <div class="col-sm-1">
-                                    <input type="text" name="anak_ke" id="anak_ke" class="form-control form-control-sm" value="<?= $tbl_member['anak_ke']; ?>">
-                                </div>
-                                <label class="col-sm-2 col-form-label col-form-label-sm" for="anak_ke">
-                                    dari
-                                </label>
-                                <div class="col-sm-1">
-                                    <input type="text" name="dari__bersaudara" id="dari__bersaudara" class="form-control form-control-sm" value="<?= $tbl_member['dari__bersaudara']; ?>">
-                                </div>
-                                <label class="col-sm-3 col-form-label col-form-label-sm" for="dari__bersaudara">
-                                    saudara
-                                </label>
-                                <?= form_error('anak_ke', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-3">', '</small>'); ?>
-                                <?= form_error('dari__bersaudara', '<small class="text-danger pl-3 col-sm-4 align-items-sm-end">', '</small>'); ?>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="jumlah_saudara">
-                                    Jumlah Saudara
-                                </label>
-                                <div class="col-sm-1">
-                                    <input type="text" name="jumlah_saudara" id="jumlah_saudara" class="form-control form-control-sm" value="<?= $tbl_member['jumlah_saudara']; ?>">
-                                </div>
-                                <label class="col-sm-6 col-form-label col-form-label-sm" for="jumlah_saudara">
-                                    orang
-                                </label>
-                                <?= form_error('jumlah_saudara', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                            </div>
                             <div class="form-group row mb-lg-5">
                                 <label class="col-sm-5 col-form-label col-form-label-sm" for="email">
                                     E-mail
@@ -257,243 +175,27 @@
                         </div>
                         <?= form_error('no_hp', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="tinggalbersama">
-                            Tinggal Bersama dengan
-                        </label>
-                        <div class="col-sm-5">
-                            <?php
-                            $tinggalbersama = array(
-                                null => '- Silahkan Pilih -',
-                                'Orang tua' => 'Orang tua',
-                                'Saudara' => 'Saudara',
-                                'Orang lain' => 'Orang lain',
-                                'Asrama' => 'Asrama'
-                            );
-                            $pilih = $tbl_member['tinggalbersama'];;
-                            echo form_dropdown(
-                                'tinggalbersama',
-                                $tinggalbersama,
-                                $pilih,
-                                "class='form-control form-control-sm'"
-                            );
-                            ?>
-                        </div>
-                        <?= form_error('tinggalbersama', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
-
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="jarak">
-                            Jarak Rumah ke Sekolah
-                        </label>
-                        <div class="col-sm-1">
-                            <input type="text" name="jarak" id="jarak" class="form-control form-control-sm" value="<?= $tbl_member['jarak']; ?>">
-                        </div>
-                        <label class="col-sm-2 col-form-label col-form-label-sm" for="jarak">
-                            km
-                        </label>
-                        <?= form_error('jarak', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
-                    </div>
-                    <div class="form-group row mb-lg-5">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="transport">
-                            Ke Sekolah dengan
-                        </label>
-                        <div class="col-sm-5">
-                            <?php
-                            $transport = array(
-                                null => '- Silahkan Pilih -',
-                                'Kendaraan Umum' => 'Kendaraan Umum',
-                                'Kendaraan Pribadi' => 'Kendaraan Pribadi',
-                                'Jalan Kaki' => 'Jalan Kaki'
-                            );
-                            $pilih = $tbl_member['transport'];;
-                            echo form_dropdown(
-                                'transport',
-                                $transport,
-                                $pilih,
-                                "class='form-control form-control-sm'"
-                            );
-                            ?>
-                        </div>
-                        <?= form_error('transport', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
-                    </div>
-                    <hr>
-
-                    <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Pilihan Kompetensi Keahlian</h3>
-                    <div class="form-group row mb-lg-5">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="jurusan">
-                            Kompetensi Keahlian
-                        </label>
-                        <div class="col-sm-5">
-                            <?php
-                            $jurusan = array(
-                                null => '- Silahkan Pilih -',
-                                'AP' => 'Administrasi Perkantoran',
-                                'TKJ' => 'Teknik Komputer dan Jaringan'
-                            );
-                            $pilih = $tbl_member['jurusan'];
-                            echo form_dropdown(
-                                'jurusan',
-                                $jurusan,
-                                $pilih,
-                                "class='form-control form-control-sm'"
-                            );
-                            ?> </div>
-                        <?= form_error('jurusan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
-                    </div>
-                    <hr>
-
-                    <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Pendidikan Member Sebelumnya</h3>
-                    <h4 class="h6 text-gray-900 mt-sm-4 mb-sm-3">Asal Sekolah <span class="text-danger">(Wajib diisi)</span></h4>
-                    <div class="form-group row">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="asal_sekolah">
-                            SMP/MTs
-                        </label>
-                        <div class="col-sm-7">
-                            <input type="text" name="asal_sekolah" placeholder="SMP/MTs" id="asal_sekolah" class="form-control form-control-sm" value="<?= $tbl_member['asal_sekolah']; ?>">
-                        </div>
-                        <?= form_error('asal_sekolah', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="nisn">
-                            Nomor Induk Member Nasional (NISN)
-                        </label>
-                        <div class="col-sm-7">
-                            <input type="text" name="nisn" placeholder="Nomor Induk Member Nasional (NISN)" id="nisn" class="form-control form-control-sm" value="<?= $tbl_member['nisn']; ?>">
-                        </div>
-                        <?= form_error('nisn', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="no_sttb">
-                            Tanggal/Tahun/No.STTB
-                        </label>
-                        <div class="col-sm-5">
-                            <input type="text" name="no_sttb" placeholder="Tanggal/Tahun/No.STTB" id="no_sttb" class="form-control form-control-sm" value="<?= $tbl_member['no_sttb']; ?>">
-                        </div>
-                        <label class="col-sm-2 col-form-label col-form-label-sm" for="no_sttb">
-                            tahun
-                        </label>
-                        <?= form_error('no_sttb', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
-                    </div>
-                    <h4 class="h6 text-gray-900 mt-sm-4 mb-sm-3">Pindahan <span class="text-danger font-italic">(Hanya diisi oleh siswa pindahan)</span></h4>
-                    <div class="form-group row">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="pindahan">
-                            Dari Sekolah
-                        </label>
-                        <div class="col-sm-7">
-                            <input type="text" name="pindahan" placeholder="Asal Sekolah" id="pindahan" class="form-control form-control-sm" value="<?= $tbl_member['pindahan']; ?>">
-                        </div>
-                        <?= form_error('pindahan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="suratpindah">
-                            Surat Pindah + Raport
-                        </label>
-                        <div class="col-sm-5">
-                            <?php
-                            $suratpindah = array(
-                                null => '- Silahkan Pilih -',
-                                'Ada' => 'Ada',
-                                'Tidak' => 'Tidak'
-                            );
-                            $pilih = $tbl_member['suratpindah'];
-                            echo form_dropdown(
-                                'suratpindah',
-                                $suratpindah,
-                                $pilih,
-                                "class='form-control form-control-sm'"
-                            );
-                            ?>
-                        </div>
-                    </div>
-                    <div class="form-group row mb-lg-5">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="alasan">
-                            Alasan Pindah
-                        </label>
-                        <div class="col-sm-5">
-                            <input type="text" name="alasan" placeholder="Alasan Pindah" id="alasan" class="form-control form-control-sm" value="<?= $tbl_member['alasan']; ?>">
-                            <?= form_error('alasan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Data Orang Tua Member</h3>
 
                     <div class="form-group row">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="nama_ot">
-                            Nama Orang Tua/Wali
-                        </label>
-                        <div class="col-sm-7">
-                            <input type="text" name="nama_ot" placeholder="Masukkan Nama Orang Tua/Wali" id="nama_ot" class="form-control form-control-sm" value="<?= $tbl_member['nama']; ?>">
-                        </div>
-                        <?= form_error('nama', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="alamat_ot">
-                            Alamat Orang Tua/Wali
-                        </label>
-                        <div class="col-sm-7">
-                            <input name="alamat_ot" id="alamat_ot" class="form-control form-control-sm" value="<?= $tbl_member['alamat']; ?>"></input>
-                        </div>
-                        <?= form_error('alamat', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="no_hp_ot">
-                            No. HP
-                        </label>
-                        <div class="col-sm-7">
-                            <input type="text" name="no_hp_ot" placeholder="Nomor HP" id="no_hp_ot" class="form-control form-control-sm" value="<?= $tbl_member['no_hp']; ?>">
-                        </div>
-                        <?= form_error('no_hp', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="pendidikan_ot">
+                        <label class="col-sm-5 col-form-label col-form-label-sm" for="pendidikan">
                             Pendidikan Terakhir
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" name="pendidikan_ot" placeholder="Pendidikan Terakhir" id="pendidikan_ot" class="form-control form-control-sm" value="<?= $tbl_member['pendidikan']; ?>">
+                            <input type="text" name="pendidikan" placeholder="Pendidikan Terakhir" id="pendidikan" class="form-control form-control-sm" value="<?= $tbl_member['pendidikan']; ?>">
                         </div>
                         <?= form_error('pendidikan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="pekerjaan_ot">
+                        <label class="col-sm-5 col-form-label col-form-label-sm" for="pekerjaan">
                             Pekerjaan
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" name="pekerjaan_ot" placeholder="Pekerjaan" id="pekerjaan_ot" class="form-control form-control-sm" value="<?= $tbl_member['pekerjaan']; ?>">
+                            <input type="text" name="pekerjaan" placeholder="Pekerjaan" id="pekerjaan" class="form-control form-control-sm" value="<?= $tbl_member['pekerjaan']; ?>">
                         </div>
                         <?= form_error('pekerjaan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                     </div>
 
-                    <div class="form-group row">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="penghasilan_ot">
-                            Penghasilan
-                        </label>
-                        <div class="col-sm-7">
-                            <input type="text" name="penghasilan_ot" placeholder="Penghasilan" id="penghasilan_ot" class="form-control form-control-sm" value="<?= $tbl_member['penghasilan']; ?>">
-                        </div>
-                        <?= form_error('penghasilan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                    </div>
-
-
-
-                    <!-- <div class="form-group row">
-                        <label for="email" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="email" name="email" value="<?= $user['email']; ?>" readonly>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label">Full name</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name" name="name" value="<?= $user['name']; ?>">
-                            <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
-                        </div>
-                    </div> -->
                     <div class="form-group row justify-content-end">
                         <div class="col-sm-3">
                             <button type="submit" class="btn btn-primary btn-block">Simpan</button>

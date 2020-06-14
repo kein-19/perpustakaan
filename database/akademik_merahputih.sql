@@ -127,10 +127,10 @@ INSERT INTO `tbl_member` (`id`, `id_member`, `nisn`, `nama`, `tempat_lahir`, `ta
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_user`
+-- Table structure for table `tbl_admin`
 --
 
-CREATE TABLE `tbl_user` (
+CREATE TABLE `tbl_admin` (
   `id_user` int(11) NOT NULL,
   `nama_lengkap` varchar(50) NOT NULL,
   `email` varchar(128) NOT NULL,
@@ -142,10 +142,10 @@ CREATE TABLE `tbl_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_user`
+-- Dumping data for table `tbl_admin`
 --
 
-INSERT INTO `tbl_user` (`id_user`, `nama_lengkap`, `email`, `password`, `role_id`, `is_active`, `date_created`, `foto`) VALUES
+INSERT INTO `tbl_admin` (`id_user`, `nama_lengkap`, `email`, `password`, `role_id`, `is_active`, `date_created`, `foto`) VALUES
 (8, 'yusron', 'yusron@gmail.com', '$2y$10$li3aMn9/9DcKPK.sJgzHmulDzjOS14Q29KkTuZQ45mKI3qO/AkSMO', 1, 1, 1589403197, 'default.png'),
 (9, 'naruto', 'naruto@gmail.com', '$2y$10$yqXXIYDJdhX4RuJGGNuSKOrQ3oj9kQX4kpqcduychBOPW6ApS6EhG', 1, 1, 1589462771, 'default.png'),
 (10, 'admin', 'admin@gmail.com', '$2y$10$6hxXElzZcuzO3v2Ghud/X.WjL3DsosMI8TKiauJvRT5aqemeTFPFm', 1, 1, 1589771627, 'default.png');
@@ -264,9 +264,9 @@ ALTER TABLE `tbl_member`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_user`
+-- Indexes for table `tbl_admin`
 --
-ALTER TABLE `tbl_user`
+ALTER TABLE `tbl_admin`
   ADD PRIMARY KEY (`id_user`);
 
 --
@@ -304,9 +304,9 @@ ALTER TABLE `tbl_member`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `tbl_user`
+-- AUTO_INCREMENT for table `tbl_admin`
 --
-ALTER TABLE `tbl_user`
+ALTER TABLE `tbl_admin`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --

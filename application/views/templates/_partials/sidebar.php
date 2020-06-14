@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon">
             <i class="fas fa-user-alt"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SISWA</div>
+        <div class="sidebar-brand-text mx-3">MEMBER</div>
     </a>
 
     <!-- Divider -->
