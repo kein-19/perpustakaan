@@ -11,7 +11,7 @@
         <div class="card-body ml-md-4">
 
             <form class="user" method="post" action="">
-                <h3 class="h5 text-gray-900 mt-sm-4 mb-sm-3">Keterangan Pribadi Siswa</h3>
+                <h3 class="h5 text-gray-900 mt-sm-4 mb-sm-3">Keterangan Pribadi Member</h3>
 
                 <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="nama">
@@ -96,7 +96,7 @@
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="statussiswa">
-                        Status Siswa
+                        Status Member
                     </label>
                     <div class="col-sm-5">
                         <?php
@@ -162,7 +162,7 @@
                 </div>
                 <hr>
 
-                <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Tempat Tinggal Siswa</h3>
+                <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Tempat Tinggal Member</h3>
                 <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="alamat">
                         Alamat
@@ -286,7 +286,7 @@
                 </div>
                 <hr>
 
-                <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Pendidikan Siswa Sebelumnya</h3>
+                <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Pendidikan Member Sebelumnya</h3>
                 <h4 class="h6 text-gray-900 mt-sm-4 mb-sm-3">Asal Sekolah <span class="text-danger">(Wajib diisi)</span></h4>
                 <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="asal_sekolah">
@@ -299,10 +299,10 @@
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="nisn">
-                        Nomor Induk Siswa Nasional (NISN)
+                        Nomor Induk Member Nasional (NISN)
                     </label>
                     <div class="col-sm-7">
-                        <input type="text" name="nisn" placeholder="Nomor Induk Siswa Nasional (NISN)" id="nisn" class="form-control form-control-sm" value="<?= set_value('nisn'); ?>">
+                        <input type="text" name="nisn" placeholder="Nomor Induk Member Nasional (NISN)" id="nisn" class="form-control form-control-sm" value="<?= set_value('nisn'); ?>">
                     </div>
                     <?= form_error('nisn', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
                 </div>
@@ -360,16 +360,16 @@
                 </div>
                 <hr>
 
-                <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Data Orang Tua Siswa</h3>
+                <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Data Orang Tua Member</h3>
 
                 <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="nama_ot">
                         Nama Orang Tua/Wali
                     </label>
                     <div class="col-sm-7">
-                        <input type="text" name="nama_ot" placeholder="Masukkan Nama Orang Tua/Wali" id="nama_ot" class="form-control form-control-sm" value="<?= set_value('nama_ot'); ?>">
+                        <input type="text" name="nama_ot" placeholder="Masukkan Nama Orang Tua/Wali" id="nama_ot" class="form-control form-control-sm" value="<?= set_value('nama'); ?>">
                     </div>
-                    <?= form_error('nama_ot', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                    <?= form_error('nama', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group row">
@@ -377,9 +377,9 @@
                         Alamat Orang Tua/Wali
                     </label>
                     <div class="col-sm-7">
-                        <textarea name="alamat_ot" id="alamat_ot" class="form-control form-control-sm" value="<?= set_value('alamat_ot'); ?>"></textarea>
+                        <textarea name="alamat_ot" id="alamat_ot" class="form-control form-control-sm" value="<?= set_value('alamat'); ?>"></textarea>
                     </div>
-                    <?= form_error('alamat_ot', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                    <?= form_error('alamat', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group row">
@@ -387,9 +387,9 @@
                         No. HP
                     </label>
                     <div class="col-sm-7">
-                        <input type="text" name="no_hp_ot" placeholder="Nomor HP" id="no_hp_ot" class="form-control form-control-sm" value="<?= set_value('no_hp_ot'); ?>">
+                        <input type="text" name="no_hp_ot" placeholder="Nomor HP" id="no_hp_ot" class="form-control form-control-sm" value="<?= set_value('no_hp'); ?>">
                     </div>
-                    <?= form_error('no_hp_ot', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                    <?= form_error('no_hp', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group row">
@@ -397,9 +397,9 @@
                         Pendidikan Terakhir
                     </label>
                     <div class="col-sm-7">
-                        <input type="text" name="pendidikan_ot" placeholder="Pendidikan Terakhir" id="pendidikan_ot" class="form-control form-control-sm" value="<?= set_value('pendidikan_ot'); ?>">
+                        <input type="text" name="pendidikan_ot" placeholder="Pendidikan Terakhir" id="pendidikan_ot" class="form-control form-control-sm" value="<?= set_value('pendidikan'); ?>">
                     </div>
-                    <?= form_error('pendidikan_ot', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                    <?= form_error('pendidikan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group row">
@@ -407,9 +407,9 @@
                         Pekerjaan
                     </label>
                     <div class="col-sm-7">
-                        <input type="text" name="pekerjaan_ot" placeholder="Pekerjaan" id="pekerjaan_ot" class="form-control form-control-sm" value="<?= set_value('pekerjaan_ot'); ?>">
+                        <input type="text" name="pekerjaan_ot" placeholder="Pekerjaan" id="pekerjaan_ot" class="form-control form-control-sm" value="<?= set_value('pekerjaan'); ?>">
                     </div>
-                    <?= form_error('pekerjaan_ot', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                    <?= form_error('pekerjaan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group row">
@@ -417,9 +417,9 @@
                         Penghasilan
                     </label>
                     <div class="col-sm-7">
-                        <input type="text" name="penghasilan_ot" placeholder="Penghasilan" id="penghasilan_ot" class="form-control form-control-sm" value="<?= set_value('penghasilan_ot'); ?>">
+                        <input type="text" name="penghasilan_ot" placeholder="Penghasilan" id="penghasilan_ot" class="form-control form-control-sm" value="<?= set_value('penghasilan'); ?>">
                     </div>
-                    <?= form_error('penghasilan_ot', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                    <?= form_error('penghasilan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group row justify-content-end mt-sm-5">

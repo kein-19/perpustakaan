@@ -56,22 +56,33 @@
 </header>
 
 
-<section class="info" id="info" style="background: #2e6da4; min-height: 525px;">
+<section class="info bg-light" id="info">
   <div class="container">
     <div class="row">
-      <div class="col-lg-10 mx-auto text-light">
+      <div class="col-lg-10 mx-auto text-dark">
         <h1 class="mb-lg-5 font-weight-bold">Informasi Perpustakaan</h1>
         <h2 style="text-indent: 60px;" class="mb-lg-5 text-justify">Selamat datang di website perpustakaan desa Ciwaru, ini merupakan layanan yang diberikan kepada masyarakat untuk memperoleh pengetahuan dan upaya untuk meningkatkan minat baca masyarakat, tersedia berbagai macam media informasi seperti buku,majalah,jurnal,dll.</h2>
+
+        <center>
+          <h3 class="mt-sm-4 mb-sm-4">Apakah Anda sudah daftar? Ayo segera daftar!<br>Jika sudah daftar silahkan untuk login</h3>
+        </center>
+
+        <div class="row justify-content-center">
+          <div class="btn-group btn-block col-lg-5" role="group" aria-label="Basic example">
+            <a href=" <?= base_url('member/registration'); ?>" class="btn btn-success" role="button">Daftar</a>
+            <a href="<?= base_url('member/login'); ?>" class="btn btn-primary" role="button">Login</a>
+          </div>
+        </div>
 
       </div>
     </div>
   </div>
 </section>
 
-<section id="about" class="about">
+<section id="about" class="about" style="background: #2e6da4; min-height: 525px;">
   <div class="container">
     <div class="row">
-      <div class="col-lg-10 mx-auto text-dark">
+      <div class="col-lg-10 mx-auto text-light">
         <h2>About</h2>
         <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
       </div>

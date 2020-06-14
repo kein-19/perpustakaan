@@ -10,7 +10,7 @@ class PrintDoc extends CI_Controller
         // sementara memakai if dulu 
         // $this->session->userdata('email');
         // elseif (is_logged_in()) {
-        //     redirect('psb/login');
+        //     redirect('member/login');
         // }
 
         // is_logged_in();
@@ -18,30 +18,30 @@ class PrintDoc extends CI_Controller
         //chekAksesModule();
         $this->load->library('form_validation');
         $this->load->library('ssp');
-        $this->load->model('Model_siswa_baru');
+        $this->load->model('Model_member');
         $this->load->model('Model_user');
     }
 
     public function index()
     {
         // $data = $this->load->view('mpdf_v');
-        if (!$this->session->userdata('kode_pendaftaran')) {
-            redirect('psb/login');
+        if (!$this->session->userdata('email')) {
+            redirect('member/login');
         }
 
         $data['title'] = 'My Profile';
-        $data['tbl_siswa_baru'] = $this->Model_siswa_baru->getSiswaBaru();
-        $this->load->view('siswa_baru/print', $data);
+        $data['tbl_member'] = $this->Model_member->getMember();
+        $this->load->view('member/print', $data);
     }
 
-    public function data($kode_pendaftaran)
+    public function data($id_member)
     {
         // $data = $this->load->view('mpdf_v');
         // is_logged_in();
 
-        $data['title'] = 'Detail Data Siswa Baru';
-        $data['tbl_siswa_baru'] = $this->Model_user->getSiswaBaruId($kode_pendaftaran);
-        // $data['tbl_siswa_baru'] = $this->Model_siswa_baru->getSiswaBaru();
+        $data['title'] = 'Detail Data Member Baru';
+        $data['tbl_member'] = $this->Model_user->getMemberId($id_member);
+        // $data['tbl_member'] = $this->Model_member->getMember();
         $this->load->view('admin/print', $data);
     }
 
@@ -54,9 +54,9 @@ class PrintDoc extends CI_Controller
 
     //     $data = [
     //         'title' => 'My Profile',
-    //         'tbl_siswa_baru' => $this->Model_siswa_baru->getSiswaBaru()
+    //         'tbl_member' => $this->Model_member->getMember()
     //     ];
-    //     $html = $this->load->view('siswa_baru/print', $data, TRUE);
+    //     $html = $this->load->view('member/print', $data, TRUE);
 
     //     $mpdf = new \Mpdf\Mpdf();
     //     // $mpdf->WriteHTML($stylesheet, \Mpdf\HTMLParserMode::HEADER_CSS);
@@ -73,11 +73,11 @@ class PrintDoc extends CI_Controller
     //     $mpdf->Output();
 
     //     $data['title'] = 'My Profile';
-    //     $data['tbl_siswa_baru'] = $this->Model_siswa_baru->getSiswaBaru();
+    //     $data['tbl_member'] = $this->Model_member->getMember();
 
     //     $this->load->view('templates/_partials/header', $data);
     //     $this->load->view('templates/_partials/topbar', $data);
-    //     $this->load->view('siswa_baru/profile', $data);
+    //     $this->load->view('member/profile', $data);
     // }
 
 }

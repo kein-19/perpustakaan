@@ -13,18 +13,18 @@
             <div class="row">
                 <div class="col-lg-12">
 
-                    <?= form_open_multipart('siswa_baru/editprofile'); ?>
+                    <?= form_open_multipart('member/editprofile'); ?>
 
-                    <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Pribadi Siswa</h3>
+                    <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Pribadi Member</h3>
 
                     <div class="row">
                         <div class="col-sm-9">
                             <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="kode_pendaftaran">
-                                    Nomor Formulir
+                                <label class="col-sm-5 col-form-label col-form-label-sm" for="id_member">
+                                    Id Member
                                 </label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control form-control-sm form-control form-control-sm" id="kode_pendaftaran" name="kode_pendaftaran" value="<?= $tbl_siswa_baru['kode_pendaftaran']; ?>" readonly>
+                                    <input type="text" class="form-control form-control-sm form-control form-control-sm" id="id_member" name="id_member" value="<?= $tbl_member['id_member']; ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -32,7 +32,7 @@
                                     Nama Lengkap
                                 </label>
                                 <div class="col-sm-4">
-                                    <input type="text" name="nama" placeholder="Masukkan Nama Lengkap" id="nama" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['nama']; ?>">
+                                    <input type="text" name="nama" placeholder="Masukkan Nama Lengkap" id="nama" class="form-control form-control-sm" value="<?= $tbl_member['nama']; ?>">
                                 </div>
                                 <?= form_error('nama', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                             </div>
@@ -41,10 +41,10 @@
                                     Tempat Tanggal Lahir
                                 </label>
                                 <div class="col-sm-4">
-                                    <input type="text" name="tempat_lahir" placeholder="Tempat Lahir" id="tempat_lahir" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['tempat_lahir']; ?>">
+                                    <input type="text" name="tempat_lahir" placeholder="Tempat Lahir" id="tempat_lahir" class="form-control form-control-sm" value="<?= $tbl_member['tempat_lahir']; ?>">
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="date" name="tanggal_lahir" placeholder="Tanggal Lahir" id="tanggal_lahir" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['tanggal_lahir']; ?>">
+                                    <input type="date" name="tanggal_lahir" placeholder="Tanggal Lahir" id="tanggal_lahir" class="form-control form-control-sm" value="<?= $tbl_member['tanggal_lahir']; ?>">
                                 </div>
                                 <?= form_error('tempat_lahir', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-4">', '</small>'); ?>
                                 <?= form_error('tanggal_lahir', '<small class="text-danger pl-3 col-sm-3 align-items-sm-end">', '</small>'); ?>
@@ -60,7 +60,7 @@
                                         'L' => 'Laki-laki',
                                         'P' => 'Perempuan'
                                     );
-                                    $pilih = $tbl_siswa_baru['jenis_kelamin'];
+                                    $pilih = $tbl_member['jenis_kelamin'];
                                     echo form_dropdown(
                                         'jenis_kelamin',
                                         $jenis_kelamin,
@@ -87,7 +87,7 @@
                                         '06' => 'Konghucu',
                                         '99' => 'Lain-lain'
                                     );
-                                    $pilih = $tbl_siswa_baru['kd_agama'];
+                                    $pilih = $tbl_member['kd_agama'];
                                     echo form_dropdown(
                                         'agama',
                                         $agama,
@@ -111,7 +111,7 @@
                                         'WNI' => 'Warga Negara Indonesia',
                                         'WNA' => 'Warga Negara Asing'
                                     );
-                                    $pilih = $tbl_siswa_baru['warganegara'];;
+                                    $pilih = $tbl_member['warganegara'];;
                                     echo form_dropdown(
                                         'warganegara',
                                         $warganegara,
@@ -124,7 +124,7 @@
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-5 col-form-label col-form-label-sm" for="statussiswa">
-                                    Status Siswa
+                                    Status Member
                                 </label>
                                 <div class="col-sm-4">
                                     <?php
@@ -137,7 +137,7 @@
                                         'Tiri' => 'Tiri',
                                         'Angkat' => 'Angkat'
                                     );
-                                    $pilih = $tbl_siswa_baru['statussiswa'];
+                                    $pilih = $tbl_member['statussiswa'];
                                     echo form_dropdown(
                                         'statussiswa',
                                         $statussiswa,
@@ -154,13 +154,13 @@
                                     Anak ke
                                 </label>
                                 <div class="col-sm-1">
-                                    <input type="text" name="anak_ke" id="anak_ke" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['anak_ke']; ?>">
+                                    <input type="text" name="anak_ke" id="anak_ke" class="form-control form-control-sm" value="<?= $tbl_member['anak_ke']; ?>">
                                 </div>
                                 <label class="col-sm-2 col-form-label col-form-label-sm" for="anak_ke">
                                     dari
                                 </label>
                                 <div class="col-sm-1">
-                                    <input type="text" name="dari__bersaudara" id="dari__bersaudara" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['dari__bersaudara']; ?>">
+                                    <input type="text" name="dari__bersaudara" id="dari__bersaudara" class="form-control form-control-sm" value="<?= $tbl_member['dari__bersaudara']; ?>">
                                 </div>
                                 <label class="col-sm-3 col-form-label col-form-label-sm" for="dari__bersaudara">
                                     saudara
@@ -173,7 +173,7 @@
                                     Jumlah Saudara
                                 </label>
                                 <div class="col-sm-1">
-                                    <input type="text" name="jumlah_saudara" id="jumlah_saudara" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['jumlah_saudara']; ?>">
+                                    <input type="text" name="jumlah_saudara" id="jumlah_saudara" class="form-control form-control-sm" value="<?= $tbl_member['jumlah_saudara']; ?>">
                                 </div>
                                 <label class="col-sm-6 col-form-label col-form-label-sm" for="jumlah_saudara">
                                     orang
@@ -185,7 +185,7 @@
                                     E-mail
                                 </label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control form-control-sm form-control form-control-sm" id="email" name="email" placeholder="E-mail" value="<?= $tbl_siswa_baru['email']; ?>" readonly>
+                                    <input type="text" class="form-control form-control-sm form-control form-control-sm" id="email" name="email" placeholder="E-mail" value="<?= $tbl_member['email']; ?>" readonly>
                                 </div>
                             </div>
 
@@ -194,10 +194,10 @@
                         <!-- Image -->
                         <div class="col-sm-3">
                             <!-- <div class="card float-md-right p-md-2">
-                                <img src="<?= base_url('assets/img/profile/') . $tbl_siswa_baru['image']; ?>" class="card-img rounded mx-auto d-block" style="width: 100px">
+                                <img src="<?= base_url('assets/img/profile/') . $tbl_member['image']; ?>" class="card-img rounded mx-auto d-block" style="width: 100px">
                             </div> -->
                             <div class="row">
-                                <img src="<?= base_url('assets/img/profile/') . $tbl_siswa_baru['image']; ?>" class="img-thumbnail mb-sm-3 p-sm-2">
+                                <img src="<?= base_url('assets/img/profile/') . $tbl_member['image']; ?>" class="img-thumbnail mb-sm-3 p-sm-2">
                                 <div class="custom-file col-form-label col-form-label-sm">
                                     <input type="file" class="custom-file-input" id="image" name="image">
                                     <label class="custom-file-label" for="image">Choose file</label>
@@ -207,13 +207,13 @@
                     </div>
                     <hr>
 
-                    <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Tempat Tinggal Siswa</h3>
+                    <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Tempat Tinggal Member</h3>
                     <div class="form-group row">
                         <label class="col-sm-5 col-form-label col-form-label-sm" for="alamat">
                             Alamat
                         </label>
                         <div class="col-sm-7">
-                            <input name="alamat" id="alamat" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['alamat']; ?>"></input>
+                            <input name="alamat" id="alamat" class="form-control form-control-sm" value="<?= $tbl_member['alamat']; ?>"></input>
                         </div>
                         <?= form_error('alamat', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                     </div>
@@ -222,10 +222,10 @@
                             RT / RW
                         </label>
                         <div class="col-sm-3">
-                            <input type="text" name="rt" placeholder="RT" id="rt" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['rt']; ?>">
+                            <input type="text" name="rt" placeholder="RT" id="rt" class="form-control form-control-sm" value="<?= $tbl_member['rt']; ?>">
                         </div>
                         <div class="col-sm-3">
-                            <input type="text" name="rw" placeholder="RW" id="rw" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['rw']; ?>">
+                            <input type="text" name="rw" placeholder="RW" id="rw" class="form-control form-control-sm" value="<?= $tbl_member['rw']; ?>">
                         </div>
                         <?= form_error('rt', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-3">', '</small>'); ?>
                         <?= form_error('rw', '<small class="text-danger pl-3 col-sm-3 align-items-sm-end">', '</small>'); ?>
@@ -235,7 +235,7 @@
                             Kelurahan / Desa
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" name="kelurahan" placeholder="Kelurahan / Desa" id="kelurahan" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['kelurahan']; ?>">
+                            <input type="text" name="kelurahan" placeholder="Kelurahan / Desa" id="kelurahan" class="form-control form-control-sm" value="<?= $tbl_member['kelurahan']; ?>">
                         </div>
                         <?= form_error('kelurahan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                     </div>
@@ -244,7 +244,7 @@
                             Kecamatan
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" name="kecamatan" placeholder="Kecamatan" id="kecamatan" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['kecamatan']; ?>">
+                            <input type="text" name="kecamatan" placeholder="Kecamatan" id="kecamatan" class="form-control form-control-sm" value="<?= $tbl_member['kecamatan']; ?>">
                         </div>
                         <?= form_error('kecamatan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                     </div>
@@ -253,7 +253,7 @@
                             No. HP
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" name="no_hp" placeholder="Nomor HP" id="no_hp" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['no_hp']; ?>">
+                            <input type="text" name="no_hp" placeholder="Nomor HP" id="no_hp" class="form-control form-control-sm" value="<?= $tbl_member['no_hp']; ?>">
                         </div>
                         <?= form_error('no_hp', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                     </div>
@@ -270,7 +270,7 @@
                                 'Orang lain' => 'Orang lain',
                                 'Asrama' => 'Asrama'
                             );
-                            $pilih = $tbl_siswa_baru['tinggalbersama'];;
+                            $pilih = $tbl_member['tinggalbersama'];;
                             echo form_dropdown(
                                 'tinggalbersama',
                                 $tinggalbersama,
@@ -287,7 +287,7 @@
                             Jarak Rumah ke Sekolah
                         </label>
                         <div class="col-sm-1">
-                            <input type="text" name="jarak" id="jarak" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['jarak']; ?>">
+                            <input type="text" name="jarak" id="jarak" class="form-control form-control-sm" value="<?= $tbl_member['jarak']; ?>">
                         </div>
                         <label class="col-sm-2 col-form-label col-form-label-sm" for="jarak">
                             km
@@ -306,7 +306,7 @@
                                 'Kendaraan Pribadi' => 'Kendaraan Pribadi',
                                 'Jalan Kaki' => 'Jalan Kaki'
                             );
-                            $pilih = $tbl_siswa_baru['transport'];;
+                            $pilih = $tbl_member['transport'];;
                             echo form_dropdown(
                                 'transport',
                                 $transport,
@@ -331,7 +331,7 @@
                                 'AP' => 'Administrasi Perkantoran',
                                 'TKJ' => 'Teknik Komputer dan Jaringan'
                             );
-                            $pilih = $tbl_siswa_baru['jurusan'];
+                            $pilih = $tbl_member['jurusan'];
                             echo form_dropdown(
                                 'jurusan',
                                 $jurusan,
@@ -343,23 +343,23 @@
                     </div>
                     <hr>
 
-                    <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Pendidikan Siswa Sebelumnya</h3>
+                    <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Pendidikan Member Sebelumnya</h3>
                     <h4 class="h6 text-gray-900 mt-sm-4 mb-sm-3">Asal Sekolah <span class="text-danger">(Wajib diisi)</span></h4>
                     <div class="form-group row">
                         <label class="col-sm-5 col-form-label col-form-label-sm" for="asal_sekolah">
                             SMP/MTs
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" name="asal_sekolah" placeholder="SMP/MTs" id="asal_sekolah" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['asal_sekolah']; ?>">
+                            <input type="text" name="asal_sekolah" placeholder="SMP/MTs" id="asal_sekolah" class="form-control form-control-sm" value="<?= $tbl_member['asal_sekolah']; ?>">
                         </div>
                         <?= form_error('asal_sekolah', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-5 col-form-label col-form-label-sm" for="nisn">
-                            Nomor Induk Siswa Nasional (NISN)
+                            Nomor Induk Member Nasional (NISN)
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" name="nisn" placeholder="Nomor Induk Siswa Nasional (NISN)" id="nisn" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['nisn']; ?>">
+                            <input type="text" name="nisn" placeholder="Nomor Induk Member Nasional (NISN)" id="nisn" class="form-control form-control-sm" value="<?= $tbl_member['nisn']; ?>">
                         </div>
                         <?= form_error('nisn', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
                     </div>
@@ -368,7 +368,7 @@
                             Tanggal/Tahun/No.STTB
                         </label>
                         <div class="col-sm-5">
-                            <input type="text" name="no_sttb" placeholder="Tanggal/Tahun/No.STTB" id="no_sttb" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['no_sttb']; ?>">
+                            <input type="text" name="no_sttb" placeholder="Tanggal/Tahun/No.STTB" id="no_sttb" class="form-control form-control-sm" value="<?= $tbl_member['no_sttb']; ?>">
                         </div>
                         <label class="col-sm-2 col-form-label col-form-label-sm" for="no_sttb">
                             tahun
@@ -381,7 +381,7 @@
                             Dari Sekolah
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" name="pindahan" placeholder="Asal Sekolah" id="pindahan" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['pindahan']; ?>">
+                            <input type="text" name="pindahan" placeholder="Asal Sekolah" id="pindahan" class="form-control form-control-sm" value="<?= $tbl_member['pindahan']; ?>">
                         </div>
                         <?= form_error('pindahan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                     </div>
@@ -396,7 +396,7 @@
                                 'Ada' => 'Ada',
                                 'Tidak' => 'Tidak'
                             );
-                            $pilih = $tbl_siswa_baru['suratpindah'];
+                            $pilih = $tbl_member['suratpindah'];
                             echo form_dropdown(
                                 'suratpindah',
                                 $suratpindah,
@@ -411,22 +411,22 @@
                             Alasan Pindah
                         </label>
                         <div class="col-sm-5">
-                            <input type="text" name="alasan" placeholder="Alasan Pindah" id="alasan" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['alasan']; ?>">
+                            <input type="text" name="alasan" placeholder="Alasan Pindah" id="alasan" class="form-control form-control-sm" value="<?= $tbl_member['alasan']; ?>">
                             <?= form_error('alasan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                         </div>
                     </div>
                     <hr>
 
-                    <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Data Orang Tua Siswa</h3>
+                    <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Data Orang Tua Member</h3>
 
                     <div class="form-group row">
                         <label class="col-sm-5 col-form-label col-form-label-sm" for="nama_ot">
                             Nama Orang Tua/Wali
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" name="nama_ot" placeholder="Masukkan Nama Orang Tua/Wali" id="nama_ot" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['nama_ot']; ?>">
+                            <input type="text" name="nama_ot" placeholder="Masukkan Nama Orang Tua/Wali" id="nama_ot" class="form-control form-control-sm" value="<?= $tbl_member['nama']; ?>">
                         </div>
-                        <?= form_error('nama_ot', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                        <?= form_error('nama', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                     </div>
 
                     <div class="form-group row">
@@ -434,9 +434,9 @@
                             Alamat Orang Tua/Wali
                         </label>
                         <div class="col-sm-7">
-                            <input name="alamat_ot" id="alamat_ot" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['alamat_ot']; ?>"></input>
+                            <input name="alamat_ot" id="alamat_ot" class="form-control form-control-sm" value="<?= $tbl_member['alamat']; ?>"></input>
                         </div>
-                        <?= form_error('alamat_ot', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                        <?= form_error('alamat', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                     </div>
 
                     <div class="form-group row">
@@ -444,9 +444,9 @@
                             No. HP
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" name="no_hp_ot" placeholder="Nomor HP" id="no_hp_ot" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['no_hp_ot']; ?>">
+                            <input type="text" name="no_hp_ot" placeholder="Nomor HP" id="no_hp_ot" class="form-control form-control-sm" value="<?= $tbl_member['no_hp']; ?>">
                         </div>
-                        <?= form_error('no_hp_ot', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                        <?= form_error('no_hp', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                     </div>
 
                     <div class="form-group row">
@@ -454,9 +454,9 @@
                             Pendidikan Terakhir
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" name="pendidikan_ot" placeholder="Pendidikan Terakhir" id="pendidikan_ot" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['pendidikan_ot']; ?>">
+                            <input type="text" name="pendidikan_ot" placeholder="Pendidikan Terakhir" id="pendidikan_ot" class="form-control form-control-sm" value="<?= $tbl_member['pendidikan']; ?>">
                         </div>
-                        <?= form_error('pendidikan_ot', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                        <?= form_error('pendidikan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                     </div>
 
                     <div class="form-group row">
@@ -464,9 +464,9 @@
                             Pekerjaan
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" name="pekerjaan_ot" placeholder="Pekerjaan" id="pekerjaan_ot" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['pekerjaan_ot']; ?>">
+                            <input type="text" name="pekerjaan_ot" placeholder="Pekerjaan" id="pekerjaan_ot" class="form-control form-control-sm" value="<?= $tbl_member['pekerjaan']; ?>">
                         </div>
-                        <?= form_error('pekerjaan_ot', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                        <?= form_error('pekerjaan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                     </div>
 
                     <div class="form-group row">
@@ -474,9 +474,9 @@
                             Penghasilan
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" name="penghasilan_ot" placeholder="Penghasilan" id="penghasilan_ot" class="form-control form-control-sm" value="<?= $tbl_siswa_baru['penghasilan_ot']; ?>">
+                            <input type="text" name="penghasilan_ot" placeholder="Penghasilan" id="penghasilan_ot" class="form-control form-control-sm" value="<?= $tbl_member['penghasilan']; ?>">
                         </div>
-                        <?= form_error('penghasilan_ot', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                        <?= form_error('penghasilan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                     </div>
 
 

@@ -6,9 +6,17 @@
     </div>
     <div class="panel panel-default">
         <div class="panel-body">
-            <table  class="table table-striped table-bordered">
-                <tr><td>Jurusan</td><td><?php echo cmb_dinamis('jurusan', 'tbl_jurusan', 'nama_jurusan', 'kd_jurusan',null,"id='jurusan' onchange='loadData()'") ?></td></tr>
-                <tr><td>Rombel</td><td><div id="rombel"></div></td></tr>
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <td>Jurusan</td>
+                    <td><?php echo cmb_dinamis('jurusan', 'tbl_jurusan', 'nama_jurusan', 'kd_jurusan', null, "id='jurusan' onchange='loadData()'") ?></td>
+                </tr>
+                <tr>
+                    <td>Rombel</td>
+                    <td>
+                        <div id="rombel"></div>
+                    </td>
+                </tr>
             </table>
         </div>
     </div>
@@ -19,7 +27,7 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <i class="fa fa-external-link-square"></i> Data Siswa
+            <i class="fa fa-external-link-square"></i> Data Member
 
         </div>
         <div class="panel-body">
@@ -42,19 +50,19 @@
 
 
 <script type="text/javascript">
-    $(document ).ready(function() {
+    $(document).ready(function() {
         loadData();
     });
 </script>
 
 <script type="text/javascript">
-    function loadData(){
-        var jurusan=$("#jurusan").val();
+    function loadData() {
+        var jurusan = $("#jurusan").val();
         $.ajax({
-            type:'GET',
-            url :'<?php echo base_url() ?>index.php/rombel/show_combobox_rombel_by_jurusan',
-            data:'jurusan='+jurusan,
-            success:function(html){
+            type: 'GET',
+            url: '<?php echo base_url() ?>index.php/rombel/show_combobox_rombel_by_jurusan',
+            data: 'jurusan=' + jurusan,
+            success: function(html) {
                 $("#rombel").html(html);
             }
         })
@@ -63,11 +71,12 @@
 
 <script>
     $(document).ready(function() {
-        var t = $('#mytable').DataTable( {
+        var t = $('#mytable').DataTable({
             "ajax": '<?php echo site_url('siswa/data'); ?>',
-            "order": [[ 2, 'asc' ]],
-            "columns": [
-                {
+            "order": [
+                [2, 'asc']
+            ],
+            "columns": [{
                     "data": null,
                     "width": "50px",
                     "sClass": "text-center",
@@ -78,14 +87,19 @@
                     "width": "120px",
                     "sClass": "text-center"
                 },
-                { "data": "nama" },
+                {
+                    "data": "nama"
+                },
             ]
-        } );
-               
-        t.on( 'order.dt search.dt', function () {
-            t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-                cell.innerHTML = i+1;
-            } );
-        } ).draw();
-    } );
+        });
+
+        t.on('order.dt search.dt', function() {
+            t.column(0, {
+                search: 'applied',
+                order: 'applied'
+            }).nodes().each(function(cell, i) {
+                cell.innerHTML = i + 1;
+            });
+        }).draw();
+    });
 </script>

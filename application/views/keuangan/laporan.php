@@ -7,11 +7,25 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <?php echo form_open('siswa/data_by_rombel_excel'); ?>
-            <table  class="table table-striped table-bordered">
-                <tr><td>Jurusan</td><td><?php echo cmb_dinamis('jurusan', 'tbl_jurusan', 'nama_jurusan', 'kd_jurusan', null, "id='jurusan' onchange='loadData()'") ?></td></tr>
-                <tr><td>Rombel</td><td><div id="rombel"></div></td></tr>
-                <tr><td>Jenis Pembayaran</td><td><?php echo cmb_dinamis('jenis_pembayaran', 'tbl_jenis_pembayaran', 'nama_jenis_pembayaran', 'id_jenis_pembayaran',null,"id='jenis_bayar' onchange='loadSiswa()'")?></td></tr>
-                <tr><td></td><td><button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Export Data</button></td></tr>
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <td>Jurusan</td>
+                    <td><?php echo cmb_dinamis('jurusan', 'tbl_jurusan', 'nama_jurusan', 'kd_jurusan', null, "id='jurusan' onchange='loadData()'") ?></td>
+                </tr>
+                <tr>
+                    <td>Rombel</td>
+                    <td>
+                        <div id="rombel"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Jenis Pembayaran</td>
+                    <td><?php echo cmb_dinamis('jenis_pembayaran', 'tbl_jenis_pembayaran', 'nama_jenis_pembayaran', 'id_jenis_pembayaran', null, "id='jenis_bayar' onchange='loadMember()'") ?></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Export Data</button></td>
+                </tr>
             </table>
             </form>
         </div>
@@ -23,11 +37,11 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <i class="fa fa-external-link-square"></i> Data Siswa
+            <i class="fa fa-external-link-square"></i> Data Member
 
         </div>
         <div class="panel-body">
-            <div id="dataSiswa"></div>
+            <div id="dataMember"></div>
         </div>
     </div>
     <!-- end: DYNAMIC TABLE PANEL -->
@@ -38,39 +52,38 @@
 
 
 <script type="text/javascript">
-    $(document ).ready(function() {
+    $(document).ready(function() {
         loadRombel();
-        
+
     });
 </script>
 
 <script type="text/javascript">
-    function loadRombel(){
-        var jurusan=$("#jurusan").val();
+    function loadRombel() {
+        var jurusan = $("#jurusan").val();
         $.ajax({
-            type:'GET',
-            url :'<?php echo base_url() ?>index.php/rombel/show_combobox_rombel_by_jurusan',
-            data:'jurusan='+jurusan,
-            success:function(html){
+            type: 'GET',
+            url: '<?php echo base_url() ?>index.php/rombel/show_combobox_rombel_by_jurusan',
+            data: 'jurusan=' + jurusan,
+            success: function(html) {
                 $("#rombel").html(html);
                 var rombel = $("#rombel2").val();
-                loadSiswa(rombel);
+                loadMember(rombel);
             }
         })
     }
-    
-    function loadSiswa(rombel){
+
+    function loadMember(rombel) {
         var rombel = $("#rombel2").val();
         var jenis_bayar = $("#jenis_bayar").val();
         $.ajax({
-            type:'GET',
-            url :'<?php echo base_url() ?>index.php/keuangan/load_data_siswa_by_rombel',
-            data:'rombel='+rombel+'&jenis_pembayaran='+jenis_bayar,
-            success:function(html){
-                $("#dataSiswa").html(html);
+            type: 'GET',
+            url: '<?php echo base_url() ?>index.php/keuangan/load_data_siswa_by_rombel',
+            data: 'rombel=' + rombel + '&jenis_pembayaran=' + jenis_bayar,
+            success: function(html) {
+                $("#dataMember").html(html);
             }
         })
-    
+
     }
-    
 </script>

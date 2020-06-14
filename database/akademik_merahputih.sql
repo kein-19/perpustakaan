@@ -68,12 +68,12 @@ INSERT INTO `tbl_jurusan` (`kd_jurusan`, `nama_jurusan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_siswa_baru`
+-- Table structure for table `tbl_member`
 --
 
-CREATE TABLE `tbl_siswa_baru` (
+CREATE TABLE `tbl_member` (
   `id` int(11) NOT NULL,
-  `kode_pendaftaran` varchar(50) NOT NULL,
+  `id_member` varchar(50) NOT NULL,
   `nisn` int(20) NOT NULL,
   `nama` varchar(128) NOT NULL,
   `tempat_lahir` varchar(128) NOT NULL,
@@ -115,10 +115,10 @@ CREATE TABLE `tbl_siswa_baru` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_siswa_baru`
+-- Dumping data for table `tbl_member`
 --
 
-INSERT INTO `tbl_siswa_baru` (`id`, `kode_pendaftaran`, `nisn`, `nama`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `kd_agama`, `jurusan`, `warganegara`, `statussiswa`, `anak_ke`, `dari__bersaudara`, `jumlah_saudara`, `alamat`, `rt`, `rw`, `kelurahan`, `kecamatan`, `no_hp`, `tinggalbersama`, `jarak`, `transport`, `asal_sekolah`, `no_sttb`, `pindahan`, `suratpindah`, `alasan`, `image`, `email`, `password`, `nama_ot`, `alamat_ot`, `no_hp_ot`, `pendidikan_ot`, `pekerjaan_ot`, `penghasilan_ot`, `role_id`, `is_active`, `date_created`) VALUES
+INSERT INTO `tbl_member` (`id`, `id_member`, `nisn`, `nama`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `kd_agama`, `jurusan`, `warganegara`, `statussiswa`, `anak_ke`, `dari__bersaudara`, `jumlah_saudara`, `alamat`, `rt`, `rw`, `kelurahan`, `kecamatan`, `no_hp`, `tinggalbersama`, `jarak`, `transport`, `asal_sekolah`, `no_sttb`, `pindahan`, `suratpindah`, `alasan`, `image`, `email`, `password`, `nama_ot`, `alamat_ot`, `no_hp_ot`, `pendidikan_ot`, `pekerjaan_ot`, `penghasilan_ot`, `role_id`, `is_active`, `date_created`) VALUES
 (21, '20-21-PSB-05120003', 1234567811, 'Salma Nur Labibah', 'Cibinong', '2000-12-12', 'P', '01', 'AP', 'WNI', 'Kandung', 1, 2, 2, 'Bojong gede', 5, 5, 'Bojong gede', 'Bojong gede', '081234567891', 'Saudara', 3, 'Kendaraan Pribadi', 'SMPN 1 Cibinong', '2120071134567', '', '', '', 'profile211.png', 'salma@gmail.com', '$2y$10$Ji0QWzSSygYVjz1fROReje7WHWE03vMPervV401wDrTP86ZcQRwyG', 'Raswa Ewo', 'Bojong gede', '085723417999', 'S1', 'Guru', 5000000, 2, 0, 1589347959),
 (22, '20-21-PSB-05130004', 2147483647, 'Zaki Almatin', 'Bogor', '2005-12-12', 'L', '01', 'AP', 'WNI', 'Kandung', 1, 0, 0, 'Cibinong', 3, 2, 'Cibinong', 'Cibinong', '085712345798', 'Orang tua', 2, 'Kendaraan Umum', 'SMPN 1 Cibinong', '21342145645', '', '', '', 'default1.jpg', 'zaki@gmail.com', '$2y$10$0GSr86WEaVbCr0otrYrYk.9zAeSwG6Qxf8nNGqC3qQg2CypIv0UUe', 'Komarudin', 'Cibinong', '081243567847', 'SMA', 'Karyawan Swasta', 3000000, 2, 1, 1589402516),
 (25, '20-21-PSB-05150006', 1234567890, 'Mugny', 'Kuningan', '2000-11-11', 'L', '01', 'TKJ', 'WNI', 'Kandung', 2, 2, 1, 'Ciwaru', 2, 2, 'Ciwaru', 'Ciwaru', '081234567891', 'Orang tua', 2, 'Kendaraan Umum', 'SMPN 1 Ciwaru', '1231413423424524', '', '', '', 'default.png', 'mugny@gmail.com', '$2y$10$zQTfWJuAmLR/qR0KlefhrepCVBAdT87/OXjx7pM4t4vzXaCx8dKfa', 'Arif', 'Ciwaru', '085723417898', 'SMA', 'Wiraswasta', 500000, 2, 0, 1589507513),
@@ -233,12 +233,12 @@ CREATE TABLE `t_user_sub_menu` (
 
 INSERT INTO `t_user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
 (1, 1, 'Dashboard', 'admin', 'fas fa-fw fa-tachometer-alt', 1),
-(2, 2, 'Home', 'siswa_baru', 'fas fa-fw fa-home', 1),
-(3, 2, 'My Profile', 'siswa_baru/profile', 'fas fa-fw fa-user', 1),
+(2, 2, 'Home', 'member', 'fas fa-fw fa-home', 1),
+(3, 2, 'My Profile', 'member/profile', 'fas fa-fw fa-user', 1),
 (4, 3, 'Menu Management', 'menu', 'fas fa-fw fa-folder', 1),
 (5, 3, 'Submenu Management', 'menu/submenu', 'fas fa-fw fa-folder-open', 1),
 (6, 1, 'Role', 'admin/role', 'fas fa-fw fa-pencil-ruler', 1),
-(10, 2, 'Edit Profile', 'siswa_baru/editprofile', 'fas fa-fw fa-user-edit', 1),
+(10, 2, 'Edit Profile', 'member/editprofile', 'fas fa-fw fa-user-edit', 1),
 (11, 1, 'Change Password', 'admin/changepassword', 'fas fa-fw fa-key', 1);
 
 --
@@ -258,9 +258,9 @@ ALTER TABLE `tbl_jurusan`
   ADD PRIMARY KEY (`kd_jurusan`);
 
 --
--- Indexes for table `tbl_siswa_baru`
+-- Indexes for table `tbl_member`
 --
-ALTER TABLE `tbl_siswa_baru`
+ALTER TABLE `tbl_member`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -298,9 +298,9 @@ ALTER TABLE `t_user_sub_menu`
 --
 
 --
--- AUTO_INCREMENT for table `tbl_siswa_baru`
+-- AUTO_INCREMENT for table `tbl_member`
 --
-ALTER TABLE `tbl_siswa_baru`
+ALTER TABLE `tbl_member`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --

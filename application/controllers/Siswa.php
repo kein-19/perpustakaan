@@ -1,32 +1,36 @@
 <?php
 
-Class Siswa extends CI_Controller {
+class Member extends CI_Controller
+{
 
-    function __construct() {
+    function __construct()
+    {
         parent::__construct();
         //chekAksesModule();
         $this->load->library('ssp');
         $this->load->model('Model_siswa');
     }
 
-    
-    
-    function data() {
-   
+
+
+    function data()
+    {
+
         // nama tabel
         $table = 'tbl_siswa';
         // nama PK
         $primaryKey = 'nim';
         // list field
         $columns = array(
-            array('db' => 'foto',
+            array(
+                'db' => 'foto',
                 'dt' => 'foto',
-                'formatter' => function( $d) {
-                   if(empty($d)){
-                       return "<img width='30px' src='".  base_url()."/uploads/user-siluet.jpg'>";
-                   }else{
-                       return "<img width='20px' src='".  base_url()."/uploads/".$d."'>";
-                   }   
+                'formatter' => function ($d) {
+                    if (empty($d)) {
+                        return "<img width='30px' src='" .  base_url() . "/uploads/user-siluet.jpg'>";
+                    } else {
+                        return "<img width='20px' src='" .  base_url() . "/uploads/" . $d . "'>";
+                    }
                 }
             ),
             array('db' => 'nim', 'dt' => 'nim'),
@@ -36,10 +40,10 @@ Class Siswa extends CI_Controller {
             array(
                 'db' => 'nim',
                 'dt' => 'aksi',
-                'formatter' => function( $d) {
+                'formatter' => function ($d) {
                     //return "<a href='edit.php?id=$d'>EDIT</a>";
-                    return anchor('siswa/edit/'.$d,'<i class="fa fa-edit"></i>','class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"').' 
-                        '.anchor('siswa/delete/'.$d,'<i class="fa fa-trash"></i>','class="btn btn-xs btn-danger tooltips" data-placement="top" data-original-title="Delete"');
+                    return anchor('siswa/edit/' . $d, '<i class="fa fa-edit"></i>', 'class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"') . ' 
+                        ' . anchor('siswa/delete/' . $d, '<i class="fa fa-trash"></i>', 'class="btn btn-xs btn-danger tooltips" data-placement="top" data-original-title="Delete"');
                 }
             )
         );
@@ -52,15 +56,17 @@ Class Siswa extends CI_Controller {
         );
 
         echo json_encode(
-                SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)
+            SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)
         );
     }
 
-    function index() {
+    function index()
+    {
         $this->template->load('template', 'siswa/list');
     }
 
-    function add() {
+    function add()
+    {
         if (isset($_POST['submit'])) {
             $uploadFoto = $this->upload_foto_siswa();
             $this->Model_siswa->save($uploadFoto);
@@ -69,78 +75,83 @@ Class Siswa extends CI_Controller {
             $this->template->load('template', 'siswa/add');
         }
     }
-    
-    function edit(){
-        if(isset($_POST['submit'])){
+
+    function edit()
+    {
+        if (isset($_POST['submit'])) {
             $uploadFoto = $this->upload_foto_siswa();
             $this->Model_siswa->update($uploadFoto);
             redirect('siswa');
-        }else{
+        } else {
             $nim           = $this->uri->segment(3);
-            $data['siswa'] = $this->db->get_where('tbl_siswa',array('nim'=>$nim))->row_array();
-            $this->template->load('template', 'siswa/edit',$data);
+            $data['siswa'] = $this->db->get_where('tbl_siswa', array('nim' => $nim))->row_array();
+            $this->template->load('template', 'siswa/edit', $data);
         }
     }
-    
-    function delete(){
+
+    function delete()
+    {
         $nim = $this->uri->segment(3);
-        if(!empty($nim)){
+        if (!empty($nim)) {
             // proses delete data
-            $this->db->where('nim',$nim);
+            $this->db->where('nim', $nim);
             $this->db->delete('tbl_siswa');
         }
         redirect('siswa');
     }
-    
-    function upload_foto_siswa(){
+
+    function upload_foto_siswa()
+    {
         $config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'jpg|png';
         $config['max_size']             = 1024; // imb
         $this->load->library('upload', $config);
-            // proses upload
+        // proses upload
         $this->upload->do_upload('userfile');
         $upload = $this->upload->data();
         return $upload['file_name'];
     }
-    
-    
-    function siswa_aktif(){
+
+
+    function siswa_aktif()
+    {
         $this->template->load('template', 'siswa/siswa_aktif');
     }
-    
-    function load_data_siswa_by_rombel(){
+
+    function load_data_siswa_by_rombel()
+    {
         $rombel = $_GET['rombel'];
-        
+
         echo "<table class='table table-bordered'>
             <tr><th width='90'>NIM</th><th>NAMA</th></tr>";
-        $this->db->where('id_rombel',$rombel);
+        $this->db->where('id_rombel', $rombel);
         $siswa = $this->db->get('tbl_siswa');
-        foreach ($siswa->result() as $row){
+        foreach ($siswa->result() as $row) {
             echo "<tr><td>$row->nim</td><td>$row->nama</td></tr>";
         }
-        echo"</table>";
+        echo "</table>";
     }
-    
-    function data_by_rombel_excel(){
+
+    function data_by_rombel_excel()
+    {
         $this->load->library('CPHP_excel');
         $objPHPExcel = new PHPExcel();
         $objPHPExcel->getActiveSheet()->setCellValue('A1', 'NIM');
         $objPHPExcel->getActiveSheet()->setCellValue('B1', 'SISWA');
-        
+
         $rombel = $_POST['rombel'];
-        $this->db->where('id_rombel',$rombel);
+        $this->db->where('id_rombel', $rombel);
         $siswa = $this->db->get('tbl_siswa');
-        $no=2;
-        foreach ($siswa->result() as $row){
-            $objPHPExcel->getActiveSheet()->setCellValue('A'.$no, $row->nim);
-            $objPHPExcel->getActiveSheet()->setCellValue('B'.$no, $row->nama);
+        $no = 2;
+        foreach ($siswa->result() as $row) {
+            $objPHPExcel->getActiveSheet()->setCellValue('A' . $no, $row->nim);
+            $objPHPExcel->getActiveSheet()->setCellValue('B' . $no, $row->nama);
             $no++;
         }
-        
-        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007'); 
+
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
         $objWriter->save("data-siswa.xlsx");
         $this->load->helper('download');
         force_download('data-siswa.xlsx', NULL);
     }
-
 }

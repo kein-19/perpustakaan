@@ -6,7 +6,7 @@ class Model_user extends CI_Model
 
     public function getAdmin()
     {
-        // return $this->db->get_where('tbl_siswa_baru', ['kode_pendaftaran' => $this->session->userdata('kode_pendaftaran')])->row_array();
+        // return $this->db->get_where('tbl_member', ['id_member' => $this->session->userdata('email')])->row_array();
         return $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
     }
 
@@ -34,11 +34,11 @@ class Model_user extends CI_Model
                         'role_id' => $user['role_id']
                     ];
                     $this->session->set_userdata($data);
-                    // if ($user['role_id'] == 1) {
-                    redirect('admin');
-                    // } else {
-                    // redirect('admin');
-                    // }
+                    if ($user['role_id'] == 1) {
+                        redirect('admin');
+                    } else {
+                        redirect('user');
+                    }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password Anda Salah!</div>');
                     redirect('auth');
@@ -97,19 +97,19 @@ class Model_user extends CI_Model
     }
 
 
-    public function getSiswaBaruId($kode_pendaftaran)
+    public function getMemberId($id_member)
     {
-        return $this->db->get_where('tbl_siswa_baru', ['kode_pendaftaran' => $kode_pendaftaran])->row_array();
+        return $this->db->get_where('tbl_member', ['id_member' => $id_member])->row_array();
     }
 
-    public function addSiswaBaru($fixkode)
+    public function addMember($idmember)
     {
 
         $nama = $this->input->post('nama', TRUE);
         $email = $this->input->post('email', true);
 
         $data = [
-            'kode_pendaftaran'      => ($fixkode),
+            'id_member'      => ($idmember),
             'nama'                  => htmlspecialchars($nama),
             'tempat_lahir'          => htmlspecialchars($this->input->post('tempat_lahir', TRUE)),
             'tanggal_lahir'         => htmlspecialchars($this->input->post('tanggal_lahir', TRUE)),
@@ -138,12 +138,12 @@ class Model_user extends CI_Model
             'alasan'                => htmlspecialchars($this->input->post('alasan', TRUE)),
 
             // data orang tua siswa
-            'nama_ot'               => htmlspecialchars($this->input->post('nama_ot', TRUE)),
-            'alamat_ot'             => htmlspecialchars($this->input->post('alamat_ot', TRUE)),
-            'no_hp_ot'              => htmlspecialchars($this->input->post('no_hp_ot', TRUE)),
-            'pendidikan_ot'         => htmlspecialchars($this->input->post('pendidikan_ot', TRUE)),
-            'pekerjaan_ot'          => htmlspecialchars($this->input->post('pekerjaan_ot', TRUE)),
-            'penghasilan_ot'        => htmlspecialchars($this->input->post('penghasilan_ot', TRUE)),
+            'nama'               => htmlspecialchars($this->input->post('nama', TRUE)),
+            'alamat'             => htmlspecialchars($this->input->post('alamat', TRUE)),
+            'no_hp'              => htmlspecialchars($this->input->post('no_hp', TRUE)),
+            'pendidikan'         => htmlspecialchars($this->input->post('pendidikan', TRUE)),
+            'pekerjaan'          => htmlspecialchars($this->input->post('pekerjaan', TRUE)),
+            'penghasilan'        => htmlspecialchars($this->input->post('penghasilan', TRUE)),
 
             // 'name' => htmlspecialchars($this->input->post('name', true)),
             'email'                 => htmlspecialchars($email),
@@ -154,15 +154,15 @@ class Model_user extends CI_Model
             'validasi' => 'Belum',
             'date_created'          => time()
         ];
-        $this->db->insert('tbl_siswa_baru', $data);
+        $this->db->insert('tbl_member', $data);
     }
 
-    public function editSiswaBaru()
+    public function editMember()
     {
 
         $nama = $this->input->post('nama', TRUE);
         $email = $this->input->post('email', true);
-        // $fixkode = $this->input->post('kode_pendaftaran');
+        // $idmember = $this->input->post('id_member');
 
         $is_active = $this->input->post('is_active', TRUE);
         if ($is_active == 1) {
@@ -172,7 +172,7 @@ class Model_user extends CI_Model
         }
 
         $data = [
-            // 'kode_pendaftaran'      => ($fixkode),
+            // 'id_member'      => ($idmember),
             'nama'                  => htmlspecialchars($nama),
             'tempat_lahir'          => htmlspecialchars($this->input->post('tempat_lahir', TRUE)),
             'tanggal_lahir'         => htmlspecialchars($this->input->post('tanggal_lahir', TRUE)),
@@ -201,12 +201,12 @@ class Model_user extends CI_Model
             'alasan'                => htmlspecialchars($this->input->post('alasan', TRUE)),
 
             // data orang tua siswa
-            'nama_ot'               => htmlspecialchars($this->input->post('nama_ot', TRUE)),
-            'alamat_ot'             => htmlspecialchars($this->input->post('alamat_ot', TRUE)),
-            'no_hp_ot'              => htmlspecialchars($this->input->post('no_hp_ot', TRUE)),
-            'pendidikan_ot'         => htmlspecialchars($this->input->post('pendidikan_ot', TRUE)),
-            'pekerjaan_ot'          => htmlspecialchars($this->input->post('pekerjaan_ot', TRUE)),
-            'penghasilan_ot'        => htmlspecialchars($this->input->post('penghasilan_ot', TRUE)),
+            'nama'               => htmlspecialchars($this->input->post('nama', TRUE)),
+            'alamat'             => htmlspecialchars($this->input->post('alamat', TRUE)),
+            'no_hp'              => htmlspecialchars($this->input->post('no_hp', TRUE)),
+            'pendidikan'         => htmlspecialchars($this->input->post('pendidikan', TRUE)),
+            'pekerjaan'          => htmlspecialchars($this->input->post('pekerjaan', TRUE)),
+            'penghasilan'        => htmlspecialchars($this->input->post('penghasilan', TRUE)),
 
             // 'name' => htmlspecialchars($this->input->post('name', true)),
             'email'                 => htmlspecialchars($email),
@@ -228,13 +228,13 @@ class Model_user extends CI_Model
             $this->load->library('upload', $config);
 
             if ($this->upload->do_upload('image')) {
-                $old_image = $data['tbl_siswa_baru']['image'];
+                $old_image = $data['tbl_member']['image'];
                 if ($old_image != 'default.jpg') {
                     unlink(FCPATH . 'assets/img/profile/' . $old_image);
                 }
                 $new_image = $this->upload->data('file_name');
                 $this->db->set('image', $new_image);
-                // $this->Model_siswa_baru->editDataSiswaBaru($new_image);
+                // $this->Model_member->editDataMember($new_image);
             } else {
                 echo $this->upload->dispay_errors();
             }
@@ -243,12 +243,12 @@ class Model_user extends CI_Model
         // $this->db->set('name', $data);
 
         // $this->db->set('image', $new_image);
-        $this->db->where('kode_pendaftaran', $this->input->post('kode_pendaftaran'));
-        $this->db->update('tbl_siswa_baru', $data);
+        $this->db->where('id_member', $this->input->post('id_member'));
+        $this->db->update('tbl_member', $data);
     }
 
-    public function deleteSiswaBaru($kode_pendaftaran)
+    public function deleteMember($id_member)
     {
-        $this->db->delete('tbl_siswa_baru', ['kode_pendaftaran' => $kode_pendaftaran]);
+        $this->db->delete('tbl_member', ['id_member' => $id_member]);
     }
 }

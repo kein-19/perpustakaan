@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Siswa_baru extends CI_Controller
+class Member_baru extends CI_Controller
 {
 
     // public function __construct()
@@ -17,8 +17,8 @@ class Siswa_baru extends CI_Controller
     {
         parent::__construct();
         // sementara memakai if dulu 
-        if (!$this->session->userdata('kode_pendaftaran')) {
-            redirect('psb/login');
+        if (!$this->session->userdata('email')) {
+            redirect('member/login');
         }
 
         // is_logged_in();
@@ -26,44 +26,44 @@ class Siswa_baru extends CI_Controller
         //chekAksesModule();
         $this->load->library('form_validation');
         // $this->load->library('ssp');
-        $this->load->model('Model_siswa_baru');
+        $this->load->model('Model_member');
     }
 
 
     public function index()
     {
         $data['title'] = 'Home';
-        $data['tbl_siswa_baru'] = $this->Model_siswa_baru->getSiswaBaru();
+        $data['tbl_member'] = $this->Model_member->getMember();
 
         $this->load->view('templates/_partials/header', $data);
         $this->load->view('templates/_partials/sidebar', $data);
         $this->load->view('templates/_partials/topbar', $data);
-        $this->load->view('siswa_baru/index', $data);
+        $this->load->view('member/index', $data);
         $this->load->view('templates/_partials/footer');
     }
 
 
     public function profile()
     {
-        // $data['tbl_siswa_baru'] = $this->Model_siswa_baru->getSiswaBaru();
-        // $this->Model_siswa_baru->getAgama();
+        // $data['tbl_member'] = $this->Model_member->getMember();
+        // $this->Model_member->getAgama();
         // $this->db->get('tbl_agama')->row_array();
-        // $this->db->get_where('tbl_siswa_baru', ['kode_pendaftaran' => $this->session->userdata('kode_pendaftaran')])->row_array();
+        // $this->db->get_where('tbl_member', ['id_member' => $this->session->userdata('email')])->row_array();
         $data['title'] = 'My Profile';
-        $data['tbl_siswa_baru'] = $this->Model_siswa_baru->getSiswaBaru();
+        $data['tbl_member'] = $this->Model_member->getMember();
 
         $this->load->view('templates/_partials/header', $data);
         $this->load->view('templates/_partials/sidebar', $data);
         $this->load->view('templates/_partials/topbar', $data);
-        $this->load->view('siswa_baru/profile', $data);
+        $this->load->view('member/profile', $data);
         $this->load->view('templates/_partials/footer');
     }
 
     public function editProfile()
     {
         $data['title'] = 'Edit Profile';
-        $data['tbl_siswa_baru'] = $this->Model_siswa_baru->getSiswaBaru();
-        // $data['tbl_siswa_baru'] = $this->Model_siswa_baru->getAgama();
+        $data['tbl_member'] = $this->Model_member->getMember();
+        // $data['tbl_member'] = $this->Model_member->getAgama();
         // $data['nama_agama'] = $this->db->get('tbl_agama')->row_array();
 
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
@@ -73,7 +73,7 @@ class Siswa_baru extends CI_Controller
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
         $this->form_validation->set_rules('agama', 'Agama', 'required');
         $this->form_validation->set_rules('warganegara', 'Kewarganegaraan', 'required');
-        $this->form_validation->set_rules('statussiswa', 'Status Siswa', 'required');
+        $this->form_validation->set_rules('statussiswa', 'Status Member', 'required');
         $this->form_validation->set_rules('anak_ke', 'Anak ke', 'required|trim|numeric|max_length[3]');
         $this->form_validation->set_rules('dari__bersaudara', 'dari bersaudara', 'required|trim|numeric|max_length[3]');
         $this->form_validation->set_rules('jumlah_saudara', 'Jumlah Saudara', 'required|trim|numeric|max_length[3]');
@@ -88,7 +88,7 @@ class Siswa_baru extends CI_Controller
         $this->form_validation->set_rules('transport', 'Ke Sekolah dengan', 'required');
         $this->form_validation->set_rules('jurusan', 'Kompetensi Keahlian', 'required');
         $this->form_validation->set_rules('asal_sekolah', 'Asal Sekolah', 'required|trim');
-        $this->form_validation->set_rules('nisn', 'Nomor Induk Siswa Nasional (NISN)', 'required|trim|numeric|exact_length[10]');
+        $this->form_validation->set_rules('nisn', 'Nomor Induk Member Nasional (NISN)', 'required|trim|numeric|exact_length[10]');
         $this->form_validation->set_rules('no_sttb', 'Tanggal/Tahun/No.STTB', 'required|trim');
 
         // $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
@@ -101,19 +101,19 @@ class Siswa_baru extends CI_Controller
         // ]);
         // $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
-        // Data Orang Tua Siswa
-        $this->form_validation->set_rules('nama_ot', 'Nama Orang Tua/Wali', 'required|trim');
-        $this->form_validation->set_rules('alamat_ot', 'Alamat Orang Tua/Wali', 'required|trim');
-        $this->form_validation->set_rules('no_hp_ot', 'No. HP', 'required|trim|numeric|min_length[10]|max_length[13]');
-        $this->form_validation->set_rules('pendidikan_ot', 'Pendidikan Terakhir', 'required|trim');
-        $this->form_validation->set_rules('pekerjaan_ot', 'Pekerjaan', 'required|trim');
-        $this->form_validation->set_rules('penghasilan_ot', 'Penghasilan', 'required|trim|numeric');
+        // Data Orang Tua Member
+        $this->form_validation->set_rules('nama', 'Nama Orang Tua/Wali', 'required|trim');
+        $this->form_validation->set_rules('alamat', 'Alamat Orang Tua/Wali', 'required|trim');
+        $this->form_validation->set_rules('no_hp', 'No. HP', 'required|trim|numeric|min_length[10]|max_length[13]');
+        $this->form_validation->set_rules('pendidikan', 'Pendidikan Terakhir', 'required|trim');
+        $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
+        $this->form_validation->set_rules('penghasilan', 'Penghasilan', 'required|trim|numeric');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/_partials/header', $data);
             $this->load->view('templates/_partials/sidebar', $data);
             $this->load->view('templates/_partials/topbar', $data);
-            $this->load->view('siswa_baru/editprofile', $data);
+            $this->load->view('member/editprofile', $data);
             $this->load->view('templates/_partials/footer');
         } else {
             // $name = $this->input->post('name');
@@ -121,20 +121,20 @@ class Siswa_baru extends CI_Controller
 
             // $upload_image = $_FILES['image']['nama'];
 
-            $this->Model_siswa_baru->editDataSiswaBaru();
+            $this->Model_member->editDataMember();
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Profil Anda berhasil diupdate</div>');
-            redirect('siswa_baru/profile');
+            redirect('member/profile');
         }
     }
 
     public function logout()
     {
-        $this->session->unset_userdata('kode_pendaftaran');
+        $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda telah berhasil logout! Terima kasih</div>');
-        redirect('psb/login');
+        redirect('member/login');
     }
 
     // function data()
@@ -173,7 +173,7 @@ class Siswa_baru extends CI_Controller
     //     );
 
     //     $sql_details = array(
-    //         'tbl_siswa_baru' => $this->db->username,
+    //         'tbl_member' => $this->db->username,
     //         'pass' => $this->db->password,
     //         'db' => $this->db->database,
     //         'host' => $this->db->hostname

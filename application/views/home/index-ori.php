@@ -45,7 +45,7 @@
     <div class="row">
       <div class="col-lg-10 mx-auto text-light">
         <h2 class="mb-lg-3">Informasi Sekolah</h2>
-        <p style="text-indent: 60px;" class="mb-lg-5 text-justify">Pendaftaran online dilaksanakan pada bulan Mei 2020 sampai Juli 2020, untuk mempermudah calon siswa yang akan mendaftar ke SMK MERAH PUTIH. dengan mengisi biodata diri dan akan mendapatkan Nomor Formulir yang di serahkan ke sekolah dengan menyertakan berkas-berkas yang dibutuhkan. Dengan demikian calon siswa yang telah mengisi dan menyerahkan berkas dapat dinyatakan sebagai siswa baru SMK MERAH PUTIH Tahun Ajaran 2020 - 2021.</p>
+        <p style="text-indent: 60px;" class="mb-lg-5 text-justify">Pendaftaran online dilaksanakan pada bulan Mei 2020 sampai Juli 2020, untuk mempermudah calon siswa yang akan mendaftar ke SMK MERAH PUTIH. dengan mengisi biodata diri dan akan mendapatkan Id Member yang di serahkan ke sekolah dengan menyertakan berkas-berkas yang dibutuhkan. Dengan demikian calon siswa yang telah mengisi dan menyerahkan berkas dapat dinyatakan sebagai siswa baru SMK MERAH PUTIH Tahun Ajaran 2020 - 2021.</p>
 
         <h4 class="mb-lg-3">Petunjuk Pendaftaran</h4>
         <ol>
@@ -54,13 +54,13 @@
           <li class="lead font-weight-normal mt-3">Isi Formulir</li>
           <p class="font-weight-light mb-0">Klik PSB ONLINE</p>
           <p class="font-weight-light mb-0">Isi Formulir Pendaftaran untuk dapat menerima akses masuk ke tahap selanjutnya</p>
-          <li class="lead font-weight-normal mt-3">Login Siswa</li>
-          <p class="font-weight-light mb-0">Jika pengisian berhasil anda akan menerima nomor formulir / kode pendaftaran</p>
-          <p class="font-weight-light mb-0">Login menggunakan <strong>nomor formulir / kode pendaftaran</strong> dan isi password dengan <strong>tanggal lahir</strong> dibalik (<strong>tahun-bulan-tanggal</strong>)</p>
+          <li class="lead font-weight-normal mt-3">Login Member</li>
+          <p class="font-weight-light mb-0">Jika pengisian berhasil anda akan menerima Id Member / kode pendaftaran</p>
+          <p class="font-weight-light mb-0">Login menggunakan <strong>Id Member / kode pendaftaran</strong> dan isi password dengan <strong>tanggal lahir</strong> dibalik (<strong>tahun-bulan-tanggal</strong>)</p>
           <small>Contoh:
             <table>
               <tr>
-                <td>Nomor Formulir</td>
+                <td>Id Member</td>
                 <td>: <strong>20-21-PSB-05110001</strong></td>
               </tr>
               <tr>

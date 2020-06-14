@@ -12,7 +12,7 @@ class Admin extends CI_Controller
 
         $this->load->library('form_validation');
         $this->load->model('Model_user');
-        $this->load->model('Model_siswa_baru');
+        $this->load->model('Model_member');
     }
 
 
@@ -20,7 +20,7 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Dashboard';
         $data['tbl_user'] = $this->Model_user->getAdmin();
-        $data['tbl_siswa_baru'] = $this->Model_siswa_baru->getAllSiswaBaru();
+        $data['tbl_member'] = $this->Model_member->getAllMember();
 
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
@@ -38,7 +38,7 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
         $this->form_validation->set_rules('agama', 'Agama', 'required');
         $this->form_validation->set_rules('warganegara', 'Kewarganegaraan', 'required');
-        $this->form_validation->set_rules('statussiswa', 'Status Siswa', 'required');
+        $this->form_validation->set_rules('statussiswa', 'Status Member', 'required');
         $this->form_validation->set_rules('anak_ke', 'Anak ke', 'required|trim|numeric|max_length[3]');
         $this->form_validation->set_rules('dari__bersaudara', 'dari bersaudara', 'required|trim|numeric|max_length[3]');
         $this->form_validation->set_rules('jumlah_saudara', 'Jumlah Saudara', 'required|trim|numeric|max_length[3]');
@@ -53,25 +53,25 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('transport', 'Ke Sekolah dengan', 'required');
         $this->form_validation->set_rules('jurusan', 'Kompetensi Keahlian', 'required');
         $this->form_validation->set_rules('asal_sekolah', 'Asal Sekolah', 'required|trim');
-        $this->form_validation->set_rules('nisn', 'Nomor Induk Siswa Nasional (NISN)', 'required|trim|numeric|exact_length[10]');
+        $this->form_validation->set_rules('nisn', 'Nomor Induk Member Nasional (NISN)', 'required|trim|numeric|exact_length[10]');
         $this->form_validation->set_rules('no_sttb', 'Tanggal/Tahun/No.STTB', 'required|trim');
 
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tbl_siswa_baru.email]', [
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tbl_member.email]', [
             'is_unique' => 'Email sudah terdaftar!'
         ]);
 
-        // Data Orang Tua Siswa
-        $this->form_validation->set_rules('nama_ot', 'Nama Orang Tua/Wali', 'required|trim');
-        $this->form_validation->set_rules('alamat_ot', 'Alamat Orang Tua/Wali', 'required|trim');
-        $this->form_validation->set_rules('no_hp_ot', 'No. HP', 'required|trim|numeric|min_length[10]|max_length[13]');
-        $this->form_validation->set_rules('pendidikan_ot', 'Pendidikan Terakhir', 'required|trim');
-        $this->form_validation->set_rules('pekerjaan_ot', 'Pekerjaan', 'required|trim');
-        $this->form_validation->set_rules('penghasilan_ot', 'Penghasilan', 'required|trim|numeric');
+        // Data Orang Tua Member
+        $this->form_validation->set_rules('nama', 'Nama Orang Tua/Wali', 'required|trim');
+        $this->form_validation->set_rules('alamat', 'Alamat Orang Tua/Wali', 'required|trim');
+        $this->form_validation->set_rules('no_hp', 'No. HP', 'required|trim|numeric|min_length[10]|max_length[13]');
+        $this->form_validation->set_rules('pendidikan', 'Pendidikan Terakhir', 'required|trim');
+        $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
+        $this->form_validation->set_rules('penghasilan', 'Penghasilan', 'required|trim|numeric');
 
 
         if ($this->form_validation->run() == false) {
             $data['tbl_user'] = $this->Model_user->getAdmin();
-            $data['title'] = 'Tambah Data Siswa Baru';
+            $data['title'] = 'Tambah Data Member Baru';
 
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
@@ -79,10 +79,10 @@ class Admin extends CI_Controller
             $this->load->view('admin/add', $data);
             $this->load->view('templates/admin/footer');
         } else {
-            $this->db->select('RIGHT(tbl_siswa_baru.kode_pendaftaran,4) as kode', false);
-            $this->db->order_by('kode_pendaftaran', 'DESC');
+            $this->db->select('RIGHT(tbl_member.id_member,4) as kode', false);
+            $this->db->order_by('id_member', 'DESC');
             $this->db->limit(1);
-            $query = $this->db->get('tbl_siswa_baru'); // cek sudah ada atau belum kodenya
+            $query = $this->db->get('tbl_member'); // cek sudah ada atau belum kodenya
             if ($query->num_rows() <> 0) {
                 //jika kodenya sudah ada.      
                 $data = $query->row();
@@ -93,24 +93,24 @@ class Admin extends CI_Controller
             }
 
             // siapkan kode
-            $thn = substr(date('Y'), 2, 2) . "-" . substr(date('Y', strtotime('+1 years')), 2, 2);
+            $thn = substr(date('Y'), 2, 2) . substr(date('Y', strtotime('+1 years')), 2, 2);
             $bln = date('md');
             $kodemax = str_pad($kode, 4, "0", STR_PAD_LEFT);
-            $fixkode = $thn . "-PSB-" . $bln . $kodemax;
+            $idmember = $thn . $bln . $kodemax;
 
-            $this->Model_user->addSiswaBaru($fixkode);
+            $this->Model_user->addMember($idmember);
 
             $this->session->set_flashdata('flash', 'ditambahkan');
             redirect('admin');
         }
     }
 
-    public function detail($kode_pendaftaran)
+    public function detail($id_member)
     {
 
         $data['tbl_user'] = $this->Model_user->getAdmin();
-        $data['title'] = 'Detail Data Siswa Baru';
-        $data['tbl_siswa_baru'] = $this->Model_user->getSiswaBaruId($kode_pendaftaran);
+        $data['title'] = 'Detail Data Member Baru';
+        $data['tbl_member'] = $this->Model_user->getMemberId($id_member);
 
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
@@ -120,7 +120,7 @@ class Admin extends CI_Controller
     }
 
 
-    public function edit($kode_pendaftaran)
+    public function edit($id_member)
     {
 
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
@@ -130,7 +130,7 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
         $this->form_validation->set_rules('agama', 'Agama', 'required');
         $this->form_validation->set_rules('warganegara', 'Kewarganegaraan', 'required');
-        $this->form_validation->set_rules('statussiswa', 'Status Siswa', 'required');
+        $this->form_validation->set_rules('statussiswa', 'Status Member', 'required');
         $this->form_validation->set_rules('anak_ke', 'Anak ke', 'required|trim|numeric|max_length[3]');
         $this->form_validation->set_rules('dari__bersaudara', 'dari bersaudara', 'required|trim|numeric|max_length[3]');
         $this->form_validation->set_rules('jumlah_saudara', 'Jumlah Saudara', 'required|trim|numeric|max_length[3]');
@@ -145,23 +145,23 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('transport', 'Ke Sekolah dengan', 'required');
         $this->form_validation->set_rules('jurusan', 'Kompetensi Keahlian', 'required');
         $this->form_validation->set_rules('asal_sekolah', 'Asal Sekolah', 'required|trim');
-        $this->form_validation->set_rules('nisn', 'Nomor Induk Siswa Nasional (NISN)', 'required|trim|numeric|exact_length[10]');
+        $this->form_validation->set_rules('nisn', 'Nomor Induk Member Nasional (NISN)', 'required|trim|numeric|exact_length[10]');
         $this->form_validation->set_rules('no_sttb', 'Tanggal/Tahun/No.STTB', 'required|trim');
 
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
 
-        // Data Orang Tua Siswa
-        $this->form_validation->set_rules('nama_ot', 'Nama Orang Tua/Wali', 'required|trim');
-        $this->form_validation->set_rules('alamat_ot', 'Alamat Orang Tua/Wali', 'required|trim');
-        $this->form_validation->set_rules('no_hp_ot', 'No. HP', 'required|trim|numeric|min_length[10]|max_length[13]');
-        $this->form_validation->set_rules('pendidikan_ot', 'Pendidikan Terakhir', 'required|trim');
-        $this->form_validation->set_rules('pekerjaan_ot', 'Pekerjaan', 'required|trim');
-        $this->form_validation->set_rules('penghasilan_ot', 'Penghasilan', 'required|trim|numeric');
+        // Data Orang Tua Member
+        $this->form_validation->set_rules('nama', 'Nama Orang Tua/Wali', 'required|trim');
+        $this->form_validation->set_rules('alamat', 'Alamat Orang Tua/Wali', 'required|trim');
+        $this->form_validation->set_rules('no_hp', 'No. HP', 'required|trim|numeric|min_length[10]|max_length[13]');
+        $this->form_validation->set_rules('pendidikan', 'Pendidikan Terakhir', 'required|trim');
+        $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
+        $this->form_validation->set_rules('penghasilan', 'Penghasilan', 'required|trim|numeric');
 
         if ($this->form_validation->run() == false) {
             $data['tbl_user'] = $this->Model_user->getAdmin();
-            $data['title'] = 'Edit Data Siswa Baru';
-            $data['tbl_siswa_baru'] = $this->Model_user->getSiswaBaruId($kode_pendaftaran);
+            $data['title'] = 'Edit Data Member Baru';
+            $data['tbl_member'] = $this->Model_user->getMemberId($id_member);
 
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
@@ -169,15 +169,15 @@ class Admin extends CI_Controller
             $this->load->view('admin/edit', $data);
             $this->load->view('templates/admin/footer');
         } else {
-            $this->Model_user->editSiswaBaru();
+            $this->Model_user->editMember();
             $this->session->set_flashdata('flash', 'diupdate');
             redirect('admin');
         }
     }
 
-    public function delete($kode_pendaftaran)
+    public function delete($id_member)
     {
-        $this->Model_user->deleteSiswaBaru($kode_pendaftaran);
+        $this->Model_user->deleteMember($id_member);
         $this->session->set_flashdata('flash', 'dihapus');
         redirect('admin');
     }

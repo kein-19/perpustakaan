@@ -20,12 +20,12 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $tbl_siswa_baru['nama']; ?></span>
-                                <img class="img-profile rounded-circle" src="<?= base_url('assets/img/profile/') . $tbl_siswa_baru['image']; ?>">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $tbl_member['nama']; ?></span>
+                                <img class="img-profile rounded-circle" src="<?= base_url('assets/img/profile/') . $tbl_member['image']; ?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="<?= base_url('siswa_baru/profile'); ?>">
+                                <a class="dropdown-item" href="<?= base_url('member/profile'); ?>">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     My Profile
                                 </a>
