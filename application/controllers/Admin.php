@@ -28,7 +28,44 @@ class Admin extends CI_Controller
 
         $data['title'] = 'Dashboard';
         $data['tbl_admin'] = $this->Model_admin->getAdmin();
-        $data['tbl_member'] = $this->Model_member->getAllMember();
+
+        // load library
+        $this->load->library('pagination');
+
+        // ambil data keyword
+        if ($this->input->post('submit')) {
+            $data['keyword'] = $this->input->post('keyword');
+            $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+            // $data['keyword'] = null;
+            $data['keyword'] = $this->session->userdata('keyword');
+        }
+
+        // config
+        $this->db->like('id_member', $data['keyword']);
+        $this->db->or_like('nama', $data['keyword']);
+        $this->db->or_like('email', $data['keyword']);
+        $this->db->or_like('kelurahan', $data['keyword']);
+        $this->db->or_like('pendidikan', $data['keyword']);
+        $this->db->or_like('pekerjaan', $data['keyword']);
+        $this->db->from('tbl_member');
+        $config['total_rows'] = $this->db->count_all_results();
+        // $config['total_rows'] = $this->Model_siswa_baru->countAllSiswaBaru();
+        $data['total_rows'] = $config['total_rows'];
+        $config['per_page'] = 5;
+
+        $root = "http://" . $_SERVER['HTTP_HOST'] . '/';
+        $root .= str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']);
+        $root .= 'admin/index';
+        $config['base_url']    = "$root";
+        // initialize
+        $this->pagination->initialize($config);
+
+        $data['start'] = $this->uri->segment(3);
+
+        // $data['tbl_siswa_baru'] = $this->Model_siswa_baru->getSiswaBaruLimit($config['per_page'], $data['start'], $data['keyword']);
+
+        $data['tbl_member'] = $this->Model_member->getMemberLimit($config['per_page'], $data['start'], $data['keyword']);
 
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
@@ -264,41 +301,21 @@ class Admin extends CI_Controller
     public function add()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
-
         $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|trim');
         $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
         $this->form_validation->set_rules('agama', 'Agama', 'required');
-        $this->form_validation->set_rules('warganegara', 'Kewarganegaraan', 'required');
-        $this->form_validation->set_rules('statussiswa', 'Status Member', 'required');
-        $this->form_validation->set_rules('anak_ke', 'Anak ke', 'required|trim|numeric|max_length[3]');
-        $this->form_validation->set_rules('dari__bersaudara', 'dari bersaudara', 'required|trim|numeric|max_length[3]');
-        $this->form_validation->set_rules('jumlah_saudara', 'Jumlah Saudara', 'required|trim|numeric|max_length[3]');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
         $this->form_validation->set_rules('rt', 'RT', 'required|trim|numeric|max_length[3]');
         $this->form_validation->set_rules('rw', 'RW', 'required|trim|numeric|max_length[3]');
         $this->form_validation->set_rules('kelurahan', 'Kelurahan / Desa', 'required|trim');
         $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
         $this->form_validation->set_rules('no_hp', 'No. HP', 'required|trim|numeric|min_length[10]|max_length[13]');
-        $this->form_validation->set_rules('tinggalbersama', 'Tinggal Bersama dengan', 'required');
-        $this->form_validation->set_rules('jarak', 'Jarak Rumah ke Sekolah', 'required|trim|numeric');
-        $this->form_validation->set_rules('transport', 'Ke Sekolah dengan', 'required');
-        $this->form_validation->set_rules('jurusan', 'Kompetensi Keahlian', 'required');
-        $this->form_validation->set_rules('asal_sekolah', 'Asal Sekolah', 'required|trim');
-        $this->form_validation->set_rules('nisn', 'Nomor Induk Member Nasional (NISN)', 'required|trim|numeric|exact_length[10]');
-        $this->form_validation->set_rules('no_sttb', 'Tanggal/Tahun/No.STTB', 'required|trim');
-
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tbl_member.email]', [
             'is_unique' => 'Email sudah terdaftar!'
         ]);
-
-        // Data Orang Tua Member
-        $this->form_validation->set_rules('nama', 'Nama Orang Tua/Wali', 'required|trim');
-        $this->form_validation->set_rules('alamat', 'Alamat Orang Tua/Wali', 'required|trim');
-        $this->form_validation->set_rules('no_hp', 'No. HP', 'required|trim|numeric|min_length[10]|max_length[13]');
         $this->form_validation->set_rules('pendidikan', 'Pendidikan Terakhir', 'required|trim');
         $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
-        $this->form_validation->set_rules('penghasilan', 'Penghasilan', 'required|trim|numeric');
 
 
         if ($this->form_validation->run() == false) {
@@ -326,7 +343,7 @@ class Admin extends CI_Controller
 
             // siapkan kode
             $thn = substr(date('Y'), 2, 2) . substr(date('Y', strtotime('+1 years')), 2, 2);
-            $bln = date('md');
+            $bln = date('m');
             $kodemax = str_pad($kode, 4, "0", STR_PAD_LEFT);
             $idmember = $thn . $bln . $kodemax;
 
@@ -356,43 +373,23 @@ class Admin extends CI_Controller
     {
 
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
-
         $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|trim');
         $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
         $this->form_validation->set_rules('agama', 'Agama', 'required');
-        $this->form_validation->set_rules('warganegara', 'Kewarganegaraan', 'required');
-        $this->form_validation->set_rules('statussiswa', 'Status Member', 'required');
-        $this->form_validation->set_rules('anak_ke', 'Anak ke', 'required|trim|numeric|max_length[3]');
-        $this->form_validation->set_rules('dari__bersaudara', 'dari bersaudara', 'required|trim|numeric|max_length[3]');
-        $this->form_validation->set_rules('jumlah_saudara', 'Jumlah Saudara', 'required|trim|numeric|max_length[3]');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
         $this->form_validation->set_rules('rt', 'RT', 'required|trim|numeric|max_length[3]');
         $this->form_validation->set_rules('rw', 'RW', 'required|trim|numeric|max_length[3]');
         $this->form_validation->set_rules('kelurahan', 'Kelurahan / Desa', 'required|trim');
         $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
         $this->form_validation->set_rules('no_hp', 'No. HP', 'required|trim|numeric|min_length[10]|max_length[13]');
-        $this->form_validation->set_rules('tinggalbersama', 'Tinggal Bersama dengan', 'required');
-        $this->form_validation->set_rules('jarak', 'Jarak Rumah ke Sekolah', 'required|trim|numeric');
-        $this->form_validation->set_rules('transport', 'Ke Sekolah dengan', 'required');
-        $this->form_validation->set_rules('jurusan', 'Kompetensi Keahlian', 'required');
-        $this->form_validation->set_rules('asal_sekolah', 'Asal Sekolah', 'required|trim');
-        $this->form_validation->set_rules('nisn', 'Nomor Induk Member Nasional (NISN)', 'required|trim|numeric|exact_length[10]');
-        $this->form_validation->set_rules('no_sttb', 'Tanggal/Tahun/No.STTB', 'required|trim');
-
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
-
-        // Data Orang Tua Member
-        $this->form_validation->set_rules('nama', 'Nama Orang Tua/Wali', 'required|trim');
-        $this->form_validation->set_rules('alamat', 'Alamat Orang Tua/Wali', 'required|trim');
-        $this->form_validation->set_rules('no_hp', 'No. HP', 'required|trim|numeric|min_length[10]|max_length[13]');
         $this->form_validation->set_rules('pendidikan', 'Pendidikan Terakhir', 'required|trim');
         $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
-        $this->form_validation->set_rules('penghasilan', 'Penghasilan', 'required|trim|numeric');
 
         if ($this->form_validation->run() == false) {
             $data['tbl_admin'] = $this->Model_admin->getAdmin();
-            $data['title'] = 'Edit Data Member Baru';
+            $data['title'] = 'Edit Data Member';
             $data['tbl_member'] = $this->Model_admin->getMemberId($id_member);
 
             $this->load->view('templates/admin/header', $data);

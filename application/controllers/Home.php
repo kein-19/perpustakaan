@@ -11,8 +11,8 @@ class Home extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'PERPUSTAKAAN DESA CIWARU';
-        $data['navbar'] = 'PERPUSTAKAAN DESA CIWARU';
+        $data['title'] = 'PERPUSTAKAAN CIWARU';
+        $data['navbar'] = 'PERPUSTAKAAN CIWARU';
 
         // // load library
         // $this->load->library('pagination');

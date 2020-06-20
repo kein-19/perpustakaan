@@ -61,7 +61,7 @@
     <div class="row">
       <div class="col-lg-10 mx-auto text-dark">
         <h1 class="mb-lg-5 font-weight-bold">Informasi Perpustakaan</h1>
-        <h2 style="text-indent: 60px;" class="mb-lg-5 text-justify">Selamat datang di website perpustakaan desa Ciwaru, ini merupakan layanan yang diberikan kepada masyarakat untuk memperoleh pengetahuan dan upaya untuk meningkatkan minat baca masyarakat, tersedia berbagai macam media informasi seperti buku,majalah,jurnal,dll.</h2>
+        <h2 style="text-indent: 60px;" class="mb-lg-5 text-justify">Selamat datang di website Perpustakaan Ciwaru, ini merupakan layanan yang diberikan kepada masyarakat untuk memperoleh pengetahuan dan upaya untuk meningkatkan minat baca masyarakat, tersedia berbagai macam media informasi seperti buku,majalah,jurnal,dll.</h2>
 
         <center>
           <h3 class="mt-sm-4 mb-sm-4">Apakah Anda sudah daftar? Ayo segera daftar!<br>Jika sudah daftar silahkan untuk login</h3>

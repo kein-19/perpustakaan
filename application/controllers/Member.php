@@ -55,7 +55,7 @@ class Member extends CI_Controller
             $data['title'] = 'Pendaftaran Member Baru' . date('Y') . ' / ' . date('Y', strtotime('+1 years'));
 
             $data['judul'] = 'Pendaftaran Member Baru';
-            $data['navbar'] = 'PERPUSTAKAAN DESA CIWARU';
+            $data['navbar'] = 'PERPUSTAKAAN CIWARU';
             // $data['tbl_member'] = $this->Model_member->getMember();
             $this->load->view('templates/header', $data);
             $this->load->view('member/registration', $data);
@@ -76,7 +76,7 @@ class Member extends CI_Controller
 
             // siapkan kode
             $thn = substr(date('Y'), 2, 2) . substr(date('Y', strtotime('+1 years')), 2, 2);
-            $bln = date('md');
+            $bln = date('m');
             $kodemax = str_pad($kode, 4, "0", STR_PAD_LEFT);
             $idmember = $thn . $bln . $kodemax;
 
@@ -101,7 +101,7 @@ class Member extends CI_Controller
             $data['title'] = 'Login - Member';
 
             // $data['judul'] = 'Login - Member Baru';
-            $data['navbar'] = 'PERPUSTAKAAN DESA CIWARU';
+            $data['navbar'] = 'PERPUSTAKAAN CIWARU';
             $this->load->view('templates/header', $data);
             $this->load->view('member/login', $data);
             $this->load->view('templates/footer', $data);

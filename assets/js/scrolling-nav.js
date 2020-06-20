@@ -2,7 +2,7 @@
   "use strict"; // Start of use strict
 
   // Smooth scrolling using jQuery easing
-  $('a.js-scroll-trigger[href*="http://localhost:8080/merahputih/#"]:not([href="http://localhost:8080/merahputih/#"])').click(function () {
+  $('a.js-scroll-trigger[href*="http://localhost/perpustakaan/#"]:not([href="http://localhost/perpustakaan/#"])').click(function () {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
       var target = $(this.hash);
       target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');

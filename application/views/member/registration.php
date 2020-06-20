@@ -26,7 +26,7 @@
                         <?php
                         if ($this->session->flashdata('message')) :
                         ?>
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">Selamat! Terima kasih anda sudah mendaftar di Perpustakaan Desa Ciwaru.<br>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">Selamat! Terima kasih anda sudah mendaftar di Perpustakaan Ciwaru.<br>
                                 Silahkan login! dengan menggunakan Usename <strong>Email</strong> dan Password dengan menggunakan Id Member <strong><?= $this->session->flashdata('message'); ?></strong> !"
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>

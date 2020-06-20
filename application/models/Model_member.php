@@ -22,9 +22,10 @@ class Model_member extends CI_Model
         if ($keyword) {
             $this->db->like('id_member', $keyword);
             $this->db->or_like('nama', $keyword);
-            $this->db->or_like('asal_sekolah', $keyword);
-            $this->db->or_like('alamat', $keyword);
-            $this->db->or_like('validasi', $keyword);
+            $this->db->or_like('email', $keyword);
+            $this->db->or_like('kelurahan', $keyword);
+            $this->db->or_like('pendidikan', $keyword);
+            $this->db->or_like('pekerjaan', $keyword);
         }
         // elseif ( $keyword == '1' ) {
         //     $this->db->like('is_active', $keyword);

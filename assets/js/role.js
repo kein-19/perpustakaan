@@ -12,13 +12,13 @@ $(function () {
 
         $('#newRoleModalLabel').html('Edit Role');
         $('.modal-footer button[type=submit]').html('Edit');
-        $('.modal-body form').attr('action', 'http://localhost:8080/merahputih/admin/editrole');
+        $('.modal-body form').attr('action', 'http://localhost/perpustakaan/admin/editrole');
 
         const id = $(this).data('id');
         // console.log(id);
 
         $.ajax({
-            url: 'http://localhost:8080/merahputih/admin/geteditrole',
+            url: 'http://localhost/perpustakaan/admin/geteditrole',
             data: { id: id },
             method: 'post',
             dataType: 'json',

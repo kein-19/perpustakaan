@@ -1,7 +1,7 @@
 <?php
 
 // config
-$config['base_url'] = 'http://localhost/merahputih/home/index';
+// $config['base_url'] = 'http://localhost/merahputih/home/index';
 $config['num_links'] = 3;
 
 // styling

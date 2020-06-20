@@ -43,7 +43,7 @@
                             <td class="align-middle text-center">
                                 <h4>
                                     <a href="<?= base_url('menu/submenu/') . $sm['id']; ?>" class="badge badge-primary tampilSubMenu" data-toggle="modal" data-target="#newSubMenuModal" data-id="<?= $sm['id']; ?>" role="button" title="edit"><i class="fas fa-fw fa-edit"></i></a>
-                                    <a href="<?= base_url('menu/deletesubmenu/') . $sm['id']; ?>" class="badge badge-danger tombol-hapus" role="button" title="delete"><i class="fas fa-fw fa-trash"></i></a>
+                                    <a href="<?= base_url('menu/deletesubmenu/') . $sm['id']; ?>" class="badge badge-danger tombol-submenuhapus" role="button" title="delete"><i class="fas fa-fw fa-trash"></i></a>
                                 </h4>
                             </td>
                         </tr>
