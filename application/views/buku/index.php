@@ -15,7 +15,7 @@
 
                     <div class="row mt-3 mb-2">
                         <div class="col-md-4">
-                            <a href="<?= base_url('buku/add'); ?>" class="btn btn-primary">Tambah Data Buku Baru</a>
+                            <a href="<?= base_url('buku/add'); ?>" class="btn btn-primary">Tambah Data Buku</a>
                         </div>
 
                         <div class="col-md-2">
@@ -29,7 +29,7 @@
                                     <input type="text" class="form-control" placeholder="Search keyword.." name="keyword" autocomplete="off" autofocus>
                                     <div class="input-group-append">
                                         <input class="btn btn-primary fas fa-search" type="submit" name="submit">
-                                        <!-- <button class="btn btn-primary" type="submit" name="submit"><i class="fas fa-search"></i></button> -->
+                                        <!-- <button class="btn btn-circle btn-sm btn-primary" type="submit" name="submit"><i class="fas fa-search"></i></button> -->
                                     </div>
                                 </div>
 
@@ -83,10 +83,10 @@
                                             <?php endif; ?>
                                         </td> -->
                                     <td class="align-middle text-center">
-                                        <h4><a href="<?= base_url('buku/edit/') . $sb['id']; ?>" class="badge badge-primary" role="button" title="edit"><i class="fas fa-fw fa-edit"></i></a></h4>
-                                        <h4><a href="<?= base_url('buku/detail/') . $sb['id']; ?>" class="badge badge-secondary" role="button" title="detail"><i class="far fa-fw fa-id-card"></i></a></h4>
-                                        <!-- <a href="<?= base_url('printdoc/data/') . $sb['id']; ?>" class="badge badge-success" role="button" target="blank" title="print"><i class="fas fa-fw fa-print"></i></a> -->
-                                        <h4><a href="<?= base_url('buku/delete/') . $sb['id']; ?>" class="badge badge-danger tombol-hapus" role="button" title="delete"><i class="fas fa-fw fa-trash"></i></a></h4>
+                                        <h4><a href="<?= base_url('buku/detail/') . $sb['id']; ?>" class="btn btn-circle btn-sm btn-secondary" role="button" title="detail"><i class="far fa-fw fa-id-card"></i></a></h4>
+                                        <h4><a href="<?= base_url('buku/edit/') . $sb['id']; ?>" class="btn btn-circle btn-sm btn-primary" role="button" title="edit"><i class="fas fa-fw fa-edit"></i></a></h4>
+                                        <!-- <a href="<?= base_url('printdoc/data/') . $sb['id']; ?>" class="btn btn-circle btn-sm btn-success" role="button" target="blank" title="print"><i class="fas fa-fw fa-print"></i></a> -->
+                                        <h4><a href="<?= base_url('buku/delete/') . $sb['id']; ?>" class="btn btn-circle btn-sm btn-danger tombol-hapus" role="button" title="delete"><i class="fas fa-fw fa-trash"></i></a></h4>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

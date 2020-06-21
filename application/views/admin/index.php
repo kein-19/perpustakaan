@@ -28,7 +28,7 @@
 
                         <div class="row mt-3 mb-2">
                             <div class="col-md-4">
-                                <a href="<?= base_url('admin/add'); ?>" class="btn btn-primary">Tambah Data Member Baru</a>
+                                <a href="<?= base_url('admin/add'); ?>" class="btn btn-primary">Tambah Data Member</a>
                             </div>
 
                             <div class="col-md-2">

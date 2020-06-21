@@ -11,21 +11,20 @@
         <div class="card-body ml-md-4">
 
             <form class="user" method="post" action="">
-                <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Pribadi Member</h3>
 
                 <div class="form-group row">
-                    <label class="col-sm-5 col-form-label col-form-label-sm" for="nama">
-                        Nama Lengkap
+                    <label class="col-sm-5 col-form-label col-form-label-sm" for="judul">
+                        Judul
                     </label>
                     <div class="col-sm-7">
-                        <input type="text" name="nama" placeholder="Masukkan Nama Lengkap" id="nama" class="form-control form-control-sm" value="<?= set_value('nama'); ?>">
+                        <input type="text" name="judul" placeholder="Masukkan Nama Lengkap" id="judul" class="form-control form-control-sm" value="<?= set_value('judul'); ?>">
                     </div>
-                    <?= form_error('nama', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                    <?= form_error('judul', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="tempat_lahir">
-                        Tempat Tanggal Lahir
+                        Pengarang
                     </label>
                     <div class="col-sm-4">
                         <input type="text" name="tempat_lahir" placeholder="Tempat Lahir" id="tempat_lahir" class="form-control form-control-sm" value="<?= set_value('tempat_lahir'); ?>">
@@ -64,7 +63,7 @@
                     </label>
                     <div class="col-sm-5">
                         <?php
-                        echo cmb_dinamis('agama', 'tbl_agama', 'nama_agama', 'kd_agama');
+                        echo cmb_dinamis('agama', 'tbl_agama', 'judul', 'kd_agama');
                         ?>
                     </div>
                     <?= form_error('agama', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>

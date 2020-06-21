@@ -136,6 +136,18 @@
                                 </div>
                                 <?= form_error('email', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                             </div>
+
+                            <!-- Image -->
+                            <div class="col-sm-3">
+                                <div class="row">
+                                    <img src="<?= base_url('assets/img/profile/') . $tbl_member['image']; ?>" class="img-thumbnail mb-sm-3 p-sm-2">
+                                    <div class="custom-file col-form-label col-form-label-sm">
+                                        <input type="file" class="custom-file-input" id="image" name="image">
+                                        <label class="custom-file-label" for="image">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+
                             <hr>
 
                             <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Tempat Tinggal Member</h3>

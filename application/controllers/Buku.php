@@ -344,8 +344,8 @@ class Buku extends CI_Controller
 
         $data['tbl_admin'] = $this->Model_admin->getAdmin();
         // $data['menu'] = 'Admin';
-        $data['title'] = 'Detail Data Buku Baru';
-        $data['t_buku'] = $this->Model_admin->getBukuId($id_buku);
+        $data['title'] = 'Detail Data Buku';
+        $data['t_buku'] = $this->Model_buku->getBukuId($id_buku);
 
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
@@ -377,7 +377,7 @@ class Buku extends CI_Controller
             $data['tbl_admin'] = $this->Model_admin->getAdmin();
             // $data['menu'] = 'Admin';
             $data['title'] = 'Edit Data Buku';
-            $data['t_buku'] = $this->Model_admin->getBukuId($id_buku);
+            $data['t_buku'] = $this->Model_buku->getBukuId($id_buku);
 
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);

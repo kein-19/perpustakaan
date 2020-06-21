@@ -32,7 +32,7 @@
                                 <h4>
                                     <a href="<?= base_url('admin/roleaccess/') . $r['id']; ?>" class="badge badge-warning" title="access"><i class="fas fa-user-check"></i></a>
                                     <a href="<?= base_url('admin/role/') . $r['id']; ?>" class="badge badge-primary tampilRole" data-toggle="modal" data-target="#newRoleModal" data-id="<?= $r['id']; ?>" role="button" title="edit"><i class="fas fa-fw fa-edit"></i></a>
-                                    <a href="<?= base_url('admin/deleterole/') . $r['id']; ?>" class="badge badge-danger tombol-hapus" role="button" title="delete"><i class="fas fa-fw fa-trash"></i></a>
+                                    <a href="<?= base_url('admin/deleterole/') . $r['id']; ?>" class="badge badge-danger tombol-rolehapus" role="button" title="delete"><i class="fas fa-fw fa-trash"></i></a>
                                 </h4>
                                 <!-- <a href="" class="badge badge-success">edit</a>
                                 <a href="" class="badge badge-danger">delete</a> -->

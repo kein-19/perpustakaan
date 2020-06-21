@@ -14,6 +14,11 @@ class Model_buku extends CI_Model
         return $this->db->get_where('t_buku', ['email' => $this->session->userdata('email')])->row_array();
     }
 
+    public function getBukuId($id_buku)
+    {
+        return $this->db->get_where('t_buku', ['id' => $id_buku])->row_array();
+    }
+
     // fitur untuk pagination
     public function getBukuLimit($limit, $start, $keyword = null)
     // public function getBukuLimit($limit, $start)

@@ -80,22 +80,6 @@
                     }; ?>
             </div>
             <div class="row">
-                <p class="card-text col-sm-5">Kewarganegaraan</p>
-                <p class="card-text col-sm-7"><?= $tbl_member['warganegara']; ?></p>
-            </div>
-            <div class="row">
-                <p class="card-text col-sm-5">Status Member</p>
-                <p class="card-text col-sm-7"><?= $tbl_member['statussiswa']; ?></p>
-            </div>
-            <div class="row">
-                <p class="card-text col-sm-5">Anak ke</p>
-                <p class="card-text col-sm-7"><?= $tbl_member['anak_ke'] . " dari " . $tbl_member['dari__bersaudara'] . " bersaudara"; ?></p>
-            </div>
-            <div class="row">
-                <p class="card-text col-sm-5">Jumlah Saudara</p>
-                <p class="card-text col-sm-7"><?= $tbl_member['jumlah_saudara']; ?></p>
-            </div>
-            <div class="row">
                 <p class="card-text col-sm-5">E-mail</p>
                 <p class="card-text col-sm-7"><?= $tbl_member['email']; ?></p>
             </div>
@@ -122,62 +106,6 @@
                 <p class="card-text col-sm-7"><?= $tbl_member['no_hp']; ?></p>
             </div>
             <div class="row">
-                <p class="card-text col-sm-5">Tinggal Bersama dengan</p>
-                <p class="card-text col-sm-7"><?= $tbl_member['tinggalbersama']; ?></p>
-            </div>
-            <div class="row">
-                <p class="card-text col-sm-5">Jarak Rumah ke Sekolah</p>
-                <p class="card-text col-sm-7"><?= $tbl_member['jarak'] . " km"; ?></p>
-            </div>
-            <div class="row">
-                <p class="card-text col-sm-5">Ke Sekolah dengan</p>
-                <p class="card-text col-sm-7"><?= $tbl_member['transport']; ?></p>
-            </div>
-            <hr>
-
-            <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Pilihan Kompetensi Keahlian</h3>
-            <div class="row">
-                <p class="card-text col-sm-5">Kompetensi Keahlian</p>
-                <p class="card-text col-sm-7">
-                    <?php
-                    if ($tbl_member['jurusan'] == 'AP') {
-                        echo "Administrasi Perkantoran";
-                    } elseif ($tbl_member['jurusan'] == 'TKJ') {
-                        echo "Teknik Komputer dan Jaringan";
-                    }; ?></p>
-                <!-- <?= $tbl_member['jurusan']; ?></p> -->
-            </div>
-            <hr>
-
-            <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Pendidikan Member Sebelumnya</h3>
-            <div class="row">
-                <p class="card-text col-sm-5">SMP/MTs</p>
-                <p class="card-text col-sm-7"><?= $tbl_member['asal_sekolah']; ?></p>
-            </div>
-            <div class="row">
-                <p class="card-text col-sm-5">Nomor Induk Member Nasional (NISN)</p>
-                <p class="card-text col-sm-7"><?= $tbl_member['nisn']; ?></p>
-            </div>
-            <div class="row">
-                <p class="card-text col-sm-5">Tanggal/Tahun/No.STTB</p>
-                <p class="card-text col-sm-7"><?= $tbl_member['no_sttb']; ?></p>
-            </div>
-            <hr>
-
-            <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Data Orang Tua Member</h3>
-            <div class="row">
-                <p class="card-text col-sm-5">Nama Orang Tua/Wali</p>
-                <p class="card-text col-sm-7"><?= $tbl_member['nama']; ?></p>
-            </div>
-            <div class="row">
-                <p class="card-text col-sm-5">Alamat Orang Tua/Wali</p>
-                <p class="card-text col-sm-7"><?= $tbl_member['alamat']; ?></p>
-            </div>
-            <div class="row">
-                <p class="card-text col-sm-5">No. HP</p>
-                <p class="card-text col-sm-7"><?= $tbl_member['no_hp']; ?></p>
-            </div>
-            <div class="row">
                 <p class="card-text col-sm-5">Pendidikan Terakhir</p>
                 <p class="card-text col-sm-7"><?= $tbl_member['pendidikan']; ?></p>
             </div>
@@ -185,43 +113,19 @@
                 <p class="card-text col-sm-5">Pekerjaan</p>
                 <p class="card-text col-sm-7"><?= $tbl_member['pekerjaan']; ?></p>
             </div>
-            <div class="row">
-                <p class="card-text col-sm-5">Penghasilan</p>
-                <p class="card-text col-sm-7"><?= $tbl_member['penghasilan']; ?></p>
-            </div>
 
             <div class="text-sm-right mr-3 mb-5">
                 <p class="card-text"><small class="text-muted">Telah Mendaftar pada tanggal <?= date('d F Y', $tbl_member['date_created']); ?></small></p>
             </div>
             <hr>
 
-            <!-- Persyaratan -->
-
-            <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Persyaratan Yang Harus Dilengkapi</h3>
-            <ol>
-                <li>Fotokopi Surat Tanda kelulusan</li>
-                <li>Fotokopi NISN</li>
-                <li>Fotokopi Rapor Semester 6 Dilegalisir</li>
-                <li>Fotokopi KK</li>
-                <li>Fotokopi KTP Orang Tua/Wali</li>
-                <li>Materai 6000</li>
-            </ol>
-            <p>Biaya untuk menjadi siswa SMK MERAH PUTIH sebesar Rp. 3.436.000,- yang dapat di angsur sebanyak 3x. Perincian pembiayaan dapat di terdapat pada Brosur.
-            </p>
-            <p>Dengan menyerahkan persyaratan di atas maka calon siswa tersebut, dinyatakan sebagai siswa SMK MERAH PUTIH.</p>
-            <p align="right" class="mr-sm-3">Jakarta, <?= date('d F Y'); ?></p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p align="right" class="mr-sm-3"><?= $tbl_member['nama']; ?></p>
-
             <div class="form-group row justify-content-end mt-sm-5">
                 <div class="col-sm-3">
                     <a href="<?= base_url('admin/edit/') . $tbl_member['id_member']; ?>" class="print btn btn-primary btn-block" role="button">Edit</a>
                 </div>
-                <div class="col-sm-3">
+                <!-- <div class="col-sm-3">
                     <a href="<?= base_url('printdoc/data/') . $tbl_member['id_member']; ?>" class="print btn btn-success btn-block" role="button" target="blank">Print</a>
-                </div>
+                </div> -->
                 <div class="col-sm-3">
                     <a href="<?= base_url('admin/delete/') . $tbl_member['id_member']; ?>" class="print btn btn-danger btn-block tombol-hapus" role="button">Delete</a>
                 </div>

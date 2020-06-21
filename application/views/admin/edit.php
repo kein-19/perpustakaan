@@ -136,96 +136,110 @@
                                 </div>
                                 <?= form_error('email', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                             </div>
-                            <hr>
-
-                            <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Tempat Tinggal Member</h3>
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="alamat">
-                                    Alamat
-                                </label>
-                                <div class="col-sm-7">
-                                    <textarea name="alamat" id="alamat" class="form-control form-control-sm" placeholder="<?= $tbl_member['alamat']; ?>"></textarea>
-                                </div>
-                                <?= form_error('alamat', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="rt">
-                                    RT / RW
-                                </label>
-                                <div class="col-sm-3">
-                                    <input type="text" name="rt" placeholder="RT" id="rt" class="form-control form-control-sm" value="<?= $tbl_member['rt']; ?>">
-                                </div>
-                                <div class="col-sm-3">
-                                    <input type="text" name="rw" placeholder="RW" id="rw" class="form-control form-control-sm" value="<?= $tbl_member['rw']; ?>">
-                                </div>
-                                <?= form_error('rt', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-3">', '</small>'); ?>
-                                <?= form_error('rw', '<small class="text-danger pl-3 col-sm-3 align-items-sm-end">', '</small>'); ?>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="kelurahan">
-                                    Kelurahan / Desa
-                                </label>
-                                <div class="col-sm-7">
-                                    <input type="text" name="kelurahan" placeholder="Kelurahan / Desa" id="kelurahan" class="form-control form-control-sm" value="<?= $tbl_member['kelurahan']; ?>">
-                                </div>
-                                <?= form_error('kelurahan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="kecamatan">
-                                    Kecamatan
-                                </label>
-                                <div class="col-sm-7">
-                                    <input type="text" name="kecamatan" placeholder="Kecamatan" id="kecamatan" class="form-control form-control-sm" value="<?= $tbl_member['kecamatan']; ?>">
-                                </div>
-                                <?= form_error('kecamatan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="no_hp">
-                                    No. HP
-                                </label>
-                                <div class="col-sm-7">
-                                    <input type="text" name="no_hp" placeholder="Nomor HP" id="no_hp" class="form-control form-control-sm" value="<?= $tbl_member['no_hp']; ?>">
-                                </div>
-                                <?= form_error('no_hp', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="pendidikan">
-                                    Pendidikan Terakhir
-                                </label>
-                                <div class="col-sm-7">
-                                    <input type="text" name="pendidikan" placeholder="Pendidikan Terakhir" id="pendidikan" class="form-control form-control-sm" value="<?= $tbl_member['pendidikan']; ?>">
-                                </div>
-                                <?= form_error('pendidikan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="pekerjaan">
-                                    Pekerjaan
-                                </label>
-                                <div class="col-sm-7">
-                                    <input type="text" name="pekerjaan" placeholder="Pekerjaan" id="pekerjaan" class="form-control form-control-sm" value="<?= $tbl_member['pekerjaan']; ?>">
-                                </div>
-                                <?= form_error('pekerjaan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                            </div>
-
-                            <div class="form-group row justify-content-end">
-                                <div class="col-sm-2">
-                                    <button type="submit" name="edit" class="btn btn-primary btn-block">Simpan</button>
-                                </div>
-                            </div>
-
-
-                            </form>
-
 
                         </div>
+
+                        <!-- Image -->
+                        <div class="col-sm-3">
+                            <div class="row">
+                                <img src="<?= base_url('assets/img/profile/') . $tbl_member['image']; ?>" class="img-thumbnail mb-sm-3 p-sm-2">
+                                <div class="custom-file col-form-label col-form-label-sm">
+                                    <input type="file" class="custom-file-input" id="image" name="image">
+                                    <label class="custom-file-label" for="image">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <hr>
+
+                    <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Tempat Tinggal Member</h3>
+                    <div class="form-group row">
+                        <label class="col-sm-5 col-form-label col-form-label-sm" for="alamat">
+                            Alamat
+                        </label>
+                        <div class="col-sm-7">
+                            <textarea name="alamat" id="alamat" class="form-control form-control-sm" placeholder="<?= $tbl_member['alamat']; ?>"></textarea>
+                        </div>
+                        <?= form_error('alamat', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-5 col-form-label col-form-label-sm" for="rt">
+                            RT / RW
+                        </label>
+                        <div class="col-sm-3">
+                            <input type="text" name="rt" placeholder="RT" id="rt" class="form-control form-control-sm" value="<?= $tbl_member['rt']; ?>">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" name="rw" placeholder="RW" id="rw" class="form-control form-control-sm" value="<?= $tbl_member['rw']; ?>">
+                        </div>
+                        <?= form_error('rt', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-3">', '</small>'); ?>
+                        <?= form_error('rw', '<small class="text-danger pl-3 col-sm-3 align-items-sm-end">', '</small>'); ?>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-5 col-form-label col-form-label-sm" for="kelurahan">
+                            Kelurahan / Desa
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="text" name="kelurahan" placeholder="Kelurahan / Desa" id="kelurahan" class="form-control form-control-sm" value="<?= $tbl_member['kelurahan']; ?>">
+                        </div>
+                        <?= form_error('kelurahan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-5 col-form-label col-form-label-sm" for="kecamatan">
+                            Kecamatan
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="text" name="kecamatan" placeholder="Kecamatan" id="kecamatan" class="form-control form-control-sm" value="<?= $tbl_member['kecamatan']; ?>">
+                        </div>
+                        <?= form_error('kecamatan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-5 col-form-label col-form-label-sm" for="no_hp">
+                            No. HP
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="text" name="no_hp" placeholder="Nomor HP" id="no_hp" class="form-control form-control-sm" value="<?= $tbl_member['no_hp']; ?>">
+                        </div>
+                        <?= form_error('no_hp', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-5 col-form-label col-form-label-sm" for="pendidikan">
+                            Pendidikan Terakhir
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="text" name="pendidikan" placeholder="Pendidikan Terakhir" id="pendidikan" class="form-control form-control-sm" value="<?= $tbl_member['pendidikan']; ?>">
+                        </div>
+                        <?= form_error('pendidikan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-5 col-form-label col-form-label-sm" for="pekerjaan">
+                            Pekerjaan
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="text" name="pekerjaan" placeholder="Pekerjaan" id="pekerjaan" class="form-control form-control-sm" value="<?= $tbl_member['pekerjaan']; ?>">
+                        </div>
+                        <?= form_error('pekerjaan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                    </div>
+
+                    <div class="form-group row justify-content-end">
+                        <div class="col-sm-2">
+                            <button type="submit" name="edit" class="btn btn-primary btn-block">Simpan</button>
+                        </div>
+                    </div>
+
+
+                    </form>
+
+
                 </div>
-
-
             </div>
-            <!-- /.container-fluid -->
-
         </div>
-        <!-- End of Main Content -->
+
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
