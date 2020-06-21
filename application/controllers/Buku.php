@@ -26,6 +26,7 @@ class Buku extends CI_Controller
             redirect('buku/login');
         }
 
+        // $data['menu'] = 'Admin';
         $data['title'] = 'Dashboard';
         $data['tbl_admin'] = $this->Model_admin->getAdmin();
 
@@ -75,27 +76,6 @@ class Buku extends CI_Controller
         $this->load->view('templates/admin/footer');
     }
 
-    public function login()
-    {
-        if ($this->session->userdata('email')) {
-            redirect('admin');
-        }
-
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required');
-        if ($this->form_validation->run() == false) {
-
-            $data['title'] = 'Login - Sistem Informasi Perpustakaan';
-            $this->load->view('templates/auth_header', $data);
-            $this->load->view('buku/login');
-            $this->load->view('templates/auth_footer');
-        } else {
-            // validasinya success
-            // var_dump($data);
-            $this->Model_admin->checkLogin();
-        }
-    }
-
     public function logout()
     {
         $this->session->unset_userdata('email');
@@ -122,6 +102,7 @@ class Buku extends CI_Controller
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
         if ($this->form_validation->run() == false) {
+            // $data['menu'] = 'Admin';
             $data['title'] = 'Daftar Sebagai Admin';
             $this->load->view('templates/auth_header', $data);
             $this->load->view('buku/registration');
@@ -215,6 +196,7 @@ class Buku extends CI_Controller
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 
         if ($this->form_validation->run() == false) {
+            // $data['menu'] = 'Admin';
             $data['title'] = 'Forgot Password';
             $this->load->view('templates/auth_header', $data);
             $this->load->view('buku/forgot-password');
@@ -278,6 +260,7 @@ class Buku extends CI_Controller
         $this->form_validation->set_rules('password2', 'Repeat Password', 'trim|required|min_length[3]|matches[password1]');
 
         if ($this->form_validation->run() == false) {
+            // $data['menu'] = 'Admin';
             $data['title'] = 'Change Password';
             $this->load->view('templates/auth_header', $data);
             $this->load->view('buku/change-password');
@@ -321,6 +304,7 @@ class Buku extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['tbl_admin'] = $this->Model_admin->getAdmin();
+            // $data['menu'] = 'Admin';
             $data['title'] = 'Tambah Data Buku Baru';
 
             $this->load->view('templates/admin/header', $data);
@@ -359,6 +343,7 @@ class Buku extends CI_Controller
     {
 
         $data['tbl_admin'] = $this->Model_admin->getAdmin();
+        // $data['menu'] = 'Admin';
         $data['title'] = 'Detail Data Buku Baru';
         $data['t_buku'] = $this->Model_admin->getBukuId($id_buku);
 
@@ -390,6 +375,7 @@ class Buku extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['tbl_admin'] = $this->Model_admin->getAdmin();
+            // $data['menu'] = 'Admin';
             $data['title'] = 'Edit Data Buku';
             $data['t_buku'] = $this->Model_admin->getBukuId($id_buku);
 
@@ -414,6 +400,7 @@ class Buku extends CI_Controller
 
     public function role()
     {
+        // $data['menu'] = 'Admin';
         $data['title'] = 'Role';
         $data['tbl_admin'] = $this->db->get_where('tbl_admin', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -445,6 +432,7 @@ class Buku extends CI_Controller
 
     public function editrole()
     {
+        // $data['menu'] = 'Admin';
         $data['title'] = 'Role';
         $data['tbl_admin'] = $this->db->get_where('tbl_admin', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -482,13 +470,14 @@ class Buku extends CI_Controller
 
     public function roleAccess($role_id)
     {
+        // $data['menu'] = 'Admin';
         $data['title'] = 'Role Access';
         $data['tbl_admin'] = $this->db->get_where('tbl_admin', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['role'] = $this->db->get_where('t_user_role', ['id' => $role_id])->row_array();
 
         $this->db->where('id !=', 1);
-        $data['menu'] = $this->db->get('t_user_menu')->result_array();
+        // $data['menu'] = $this->db->get('t_user_menu')->result_array();
 
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
@@ -522,6 +511,7 @@ class Buku extends CI_Controller
 
     public function changePassword()
     {
+        // $data['menu'] = 'Admin';
         $data['title'] = 'Change Password';
         $data['tbl_admin'] = $this->Model_admin->getAdmin();
 

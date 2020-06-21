@@ -12,7 +12,6 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-
     <!-- QUERY MENU -->
     <?php
     $role_id = $this->session->userdata('role_id');
@@ -29,9 +28,9 @@
 
     <!-- LOOPING MENU -->
     <?php foreach ($menu as $m) : ?>
-        <div class="sidebar-heading">
+        <!-- <div class="sidebar-heading">
             <?= $m['menu']; ?>
-        </div>
+        </div> -->
 
         <!-- SIAPKAN SUB-MENU SESUAI MENU -->
         <?php
@@ -46,36 +45,40 @@
         $subMenu = $this->db->query($querySubMenu)->result_array();
         ?>
 
-        <?php foreach ($subMenu as $sm) : ?>
-            <?php if ($title == $sm['title']) : ?>
-                <li class="nav-item active">
-                <?php else : ?>
-                <li class="nav-item">
-                <?php endif; ?>
-                <a class="nav-link pb-0" href="<?= base_url($sm['url']); ?>">
-                    <i class="<?= $sm['icon']; ?>"></i>
-                    <span><?= $sm['title']; ?></span></a>
-                </li>
-            <?php endforeach; ?>
-
-            <hr class="sidebar-divider mt-3">
-
-        <?php endforeach; ?>
-
         <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('admin/logout'); ?>">
-                <i class="fas fa-fw fa-sign-out-alt"></i>
-                <span>Logout</span></a>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse<?= $m['menu']; ?>" aria-expanded="true" aria-controls="collapse<?= $m['menu']; ?>">
+                <span class="sidebar-heading text-white"><?= $m['menu']; ?></span>
+            </a>
+
+            <?php foreach ($subMenu as $sm) : ?>
+                <div id="collapse<?= $m['menu']; ?>" class="collapse" aria-labelledby="heading<?= $m['menu']; ?>" data-parent="#accordionSidebar">
+                    <div class="bg-white collapse-inner" style="margin: 0;">
+                        <a class="collapse-item" href="<?= base_url($sm['url']); ?>">
+                            <i class="<?= $sm['icon']; ?>"></i>
+                            <span><?= $sm['title']; ?></span></a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </li>
 
+        <hr class="sidebar-divider mt-3">
 
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
+    <?php endforeach; ?>
 
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/logout'); ?>">
+            <i class="fas fa-fw fa-sign-out-alt"></i>
+            <span>Logout</span></a>
+    </li>
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
 
 </ul>
 <!-- End  of Sidebar -->
