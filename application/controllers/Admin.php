@@ -50,7 +50,7 @@ class Admin extends CI_Controller
         $this->db->or_like('pekerjaan', $data['keyword']);
         $this->db->from('tbl_member');
         $config['total_rows'] = $this->db->count_all_results();
-        // $config['total_rows'] = $this->Model_siswa_baru->countAllSiswaBaru();
+        // $config['total_rows'] = $this->Model_siswa_baru->countAllSiswa();
         $data['total_rows'] = $config['total_rows'];
         $config['per_page'] = 5;
 
@@ -63,7 +63,7 @@ class Admin extends CI_Controller
 
         $data['start'] = $this->uri->segment(3);
 
-        // $data['tbl_siswa_baru'] = $this->Model_siswa_baru->getSiswaBaruLimit($config['per_page'], $data['start'], $data['keyword']);
+        // $data['tbl_siswa_baru'] = $this->Model_siswa_baru->getSiswaLimit($config['per_page'], $data['start'], $data['keyword']);
 
         $data['tbl_member'] = $this->Model_member->getMemberLimit($config['per_page'], $data['start'], $data['keyword']);
 
@@ -320,7 +320,7 @@ class Admin extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['tbl_admin'] = $this->Model_admin->getAdmin();
-            $data['title'] = 'Tambah Data Member Baru';
+            $data['title'] = 'Tambah Data Member ';
 
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
@@ -358,7 +358,7 @@ class Admin extends CI_Controller
     {
 
         $data['tbl_admin'] = $this->Model_admin->getAdmin();
-        $data['title'] = 'Detail Data Member Baru';
+        $data['title'] = 'Detail Data Member ';
         $data['tbl_member'] = $this->Model_admin->getMemberId($id_member);
 
         $this->load->view('templates/admin/header', $data);

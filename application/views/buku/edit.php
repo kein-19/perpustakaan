@@ -14,230 +14,233 @@
                 <div class="col-lg-12">
                     <?= form_open_multipart(''); ?>
 
-                    <h3 class="h5 text-gray-900 mt-sm-3 mb-sm-3">Keterangan Pribadi Member</h3>
-
                     <div class="row">
                         <div class="col-sm-9">
+                            <input type="hidden" name="id" id="id" value="<?= $t_buku['id']; ?>">
 
                             <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="is_active">
-                                    Status Member
+                                <label class="col-sm-5 col-form-label col-form-label-sm" for="kategori">
+                                    Kategori
                                 </label>
-                                <div class="col-sm-4">
+                                <div class="col-sm-5">
                                     <?php
-                                    $is_active = array(
+                                    $kategori = array(
                                         null => '- Silahkan Pilih -',
-                                        0 => 'Tidak Aktif',
-                                        1 => 'Aktif'
+                                        '1' => 'Orang Tua dan Anak',
+                                        '2' => 'Romance',
+                                        '3' => 'Pengembangan Diri',
+                                        '4' => 'Metropop',
+                                        '5' => 'Remaja',
+                                        '6' => 'Fiksi',
+                                        '7' => 'Fashion & Beauty',
+                                        '8' => 'Drama',
+                                        '9' => 'Sejarah Dunia'
                                     );
-                                    $pilih = $tbl_member['is_active'];
+                                    $pilih = $t_buku['id_kelas'];
                                     echo form_dropdown(
-                                        'is_active',
-                                        $is_active,
+                                        'kategori',
+                                        $kategori,
                                         $pilih,
                                         "class='form-control form-control-sm'"
                                     );
                                     ?>
                                 </div>
-                                <?php if ($tbl_member['is_active'] == 1) : ?>
-                                    <i class="col-form-label col-form-label-sm text-success fas fa-check"></i>
-                                <?php elseif ($tbl_member['is_active'] == 0) : ?>
-                                    <i class="col-form-label col-form-label-sm text-danger fas fa-exclamation"></i>
-                                <?php endif; ?>
+                                <?= form_error('kategori', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="id_member">
-                                    Id Member
-                                </label>
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control form-control-sm form-control form-control-sm" id="id_member" name="id_member" value="<?= $tbl_member['id_member']; ?>" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="nama">
-                                    Nama Lengkap
-                                </label>
-                                <div class="col-sm-7">
-                                    <input type="text" name="nama" placeholder="Masukkan Nama Lengkap" id="nama" class="form-control form-control-sm" value="<?= $tbl_member['nama']; ?>">
-                                </div>
-                                <?= form_error('nama', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="tempat_lahir">
-                                    Tempat Tanggal Lahir
-                                </label>
-                                <div class="col-sm-4">
-                                    <input type="text" name="tempat_lahir" placeholder="Tempat Lahir" id="tempat_lahir" class="form-control form-control-sm" value="<?= $tbl_member['tempat_lahir']; ?>">
-                                </div>
-                                <div class="col-sm-3">
-                                    <input type="date" name="tanggal_lahir" placeholder="Tanggal Lahir" id="tanggal_lahir" class="form-control form-control-sm" value="<?= $tbl_member['tanggal_lahir']; ?>">
-                                </div>
-                                <?= form_error('tempat_lahir', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-4">', '</small>'); ?>
-                                <?= form_error('tanggal_lahir', '<small class="text-danger pl-3 col-sm-3 align-items-sm-end">', '</small>'); ?>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="gender">
-                                    Jenis Kelamin
+                                <label class="col-sm-5 col-form-label col-form-label-sm" for="jenis">
+                                    Jenis
                                 </label>
                                 <div class="col-sm-5">
                                     <?php
-                                    $jenis_kelamin = array(
+                                    $jenis = array(
                                         null => '- Silahkan Pilih -',
-                                        'L' => 'Laki-laki',
-                                        'P' => 'Perempuan'
+                                        '1' => 'Buku',
+                                        '2' => 'Majalah',
+                                        '3' => 'Surat Kabar'
                                     );
-                                    $pilih = $tbl_member['jenis_kelamin'];
+                                    $pilih = $t_buku['id_jenis'];
                                     echo form_dropdown(
-                                        'jenis_kelamin',
-                                        $jenis_kelamin,
+                                        'jenis',
+                                        $jenis,
                                         $pilih,
                                         "class='form-control form-control-sm'"
                                     );
                                     ?>
                                 </div>
-                                <?= form_error('jenis_kelamin', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
+                                <?= form_error('jenis', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
                             </div>
+
                             <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="agama">
-                                    Agama
+                                <label class="col-sm-5 col-form-label col-form-label-sm" for="judul">
+                                    Judul
+                                </label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="judul" placeholder="Judul" id="judul" class="form-control form-control-sm" value="<?= $t_buku['judul']; ?>">
+                                </div>
+                                <?= form_error('judul', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-5 col-form-label col-form-label-sm" for="pengarang">
+                                    Pengarang
+                                </label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="pengarang" placeholder="Pengarang" id="pengarang" class="form-control form-control-sm" value="<?= $t_buku['pengarang']; ?>">
+                                </div>
+                                <?= form_error('pengarang', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-5 col-form-label col-form-label-sm" for="penerbit">
+                                    Penerbit
+                                </label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="penerbit" placeholder="Penerbit" id="penerbit" class="form-control form-control-sm" value="<?= $t_buku['penerbit']; ?>">
+                                </div>
+                                <?= form_error('penerbit', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-5 col-form-label col-form-label-sm" for="th_terbit">
+                                    Tahun Terbit
+                                </label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="th_terbit" placeholder="Tahun Terbit" id="th_terbit" class="form-control form-control-sm" value="<?= $t_buku['th_terbit']; ?>">
+                                </div>
+                                <?= form_error('th_terbit', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-5 col-form-label col-form-label-sm" for="isbn">
+                                    No. ISBN
+                                </label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="isbn" placeholder="No. ISBN" id="isbn" class="form-control form-control-sm" value="<?= $t_buku['isbn']; ?>">
+                                </div>
+                                <?= form_error('isbn', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-5 col-form-label col-form-label-sm" for="jml_hal">
+                                    Jumlah Halaman
+                                </label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="jml_hal" placeholder="Jumlah Halaman" id="jml_hal" class="form-control form-control-sm" value="<?= $t_buku['jml_hal']; ?>">
+                                </div>
+                                <?= form_error('jml_hal', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-5 col-form-label col-form-label-sm" for="harga">
+                                    Harga
+                                </label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="harga" placeholder="Harga" id="harga" class="form-control form-control-sm" value="<?= $t_buku['harga']; ?>">
+                                </div>
+                                <?= form_error('harga', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-5 col-form-label col-form-label-sm" for="asal_perolehan">
+                                    Asal Perolehan
+                                </label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="asal_perolehan" placeholder="Asal Perolehan" id="asal_perolehan" class="form-control form-control-sm" value="<?= $t_buku['asal_perolehan']; ?>">
+                                </div>
+                                <?= form_error('asal_perolehan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-5 col-form-label col-form-label-sm" for="id_lokasi">
+                                    Lokasi Buku
                                 </label>
                                 <div class="col-sm-5">
                                     <?php
-                                    $agama = array(
+                                    $id_lokasi = array(
                                         null => '- Silahkan Pilih -',
-                                        '01' => 'Islam',
-                                        '02' => 'Kristen Protestan',
-                                        '03' => 'Katholik',
-                                        '04' => 'Hindu',
-                                        '05' => 'Budha',
-                                        '06' => 'Konghucu',
-                                        '99' => 'Lain-lain'
+                                        '1' => '1A1',
+                                        '2' => '1A2'
                                     );
-                                    $pilih = $tbl_member['kd_agama'];
+                                    $pilih = $t_buku['id_lokasi'];
                                     echo form_dropdown(
-                                        'agama',
-                                        $agama,
+                                        'id_lokasi',
+                                        $id_lokasi,
                                         $pilih,
                                         "class='form-control form-control-sm'"
                                     );
                                     ?>
                                 </div>
-                                <?= form_error('agama', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
+                                <?= form_error('id_lokasi', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
                             </div>
 
-                            <div class="form-group row mb-lg-5">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="email">
-                                    E-mail
+                            <div class="form-group row">
+                                <label class="col-sm-5 col-form-label col-form-label-sm" for="stat">
+                                    Kondisi Buku
                                 </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control form-control-sm form-control form-control-sm" id="email" name="email" placeholder="E-mail" value="<?= $tbl_member['email']; ?>" readonly>
+                                    <?php
+                                    $stat = array(
+                                        null => '- Silahkan Pilih -',
+                                        'B' => 'Baik',
+                                        'RR' => 'Rusak Ringan',
+                                        'RB' => 'Rusak Berat',
+                                        'H' => 'Hilang'
+                                    );
+                                    $pilih = $t_buku['stat'];
+                                    echo form_dropdown(
+                                        'stat',
+                                        $stat,
+                                        $pilih,
+                                        "class='form-control form-control-sm'"
+                                    );
+                                    ?>
                                 </div>
-                                <?= form_error('email', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                                <?= form_error('stat', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
                             </div>
 
-                            <!-- Image -->
-                            <div class="col-sm-3">
-                                <div class="row">
-                                    <img src="<?= base_url('assets/img/profile/') . $tbl_member['image']; ?>" class="img-thumbnail mb-sm-3 p-sm-2">
-                                    <div class="custom-file col-form-label col-form-label-sm">
-                                        <input type="file" class="custom-file-input" id="image" name="image">
-                                        <label class="custom-file-label" for="image">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr>
-
-                            <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Tempat Tinggal Member</h3>
                             <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="alamat">
-                                    Alamat
+                                <label class="col-sm-5 col-form-label col-form-label-sm" for="deskripsi">
+                                    Deskripsi
                                 </label>
                                 <div class="col-sm-7">
-                                    <textarea name="alamat" id="alamat" class="form-control form-control-sm" placeholder="<?= $tbl_member['alamat']; ?>"></textarea>
+                                    <textarea name="deskripsi" placeholder="Deskripsi" id="deskripsi" class="form-control form-control-sm" placeholder="Deskripsi"><?= $t_buku['deskripsi']; ?></textarea>
                                 </div>
-                                <?= form_error('alamat', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                                <?= form_error('deskripsi', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="rt">
-                                    RT / RW
-                                </label>
-                                <div class="col-sm-3">
-                                    <input type="text" name="rt" placeholder="RT" id="rt" class="form-control form-control-sm" value="<?= $tbl_member['rt']; ?>">
-                                </div>
-                                <div class="col-sm-3">
-                                    <input type="text" name="rw" placeholder="RW" id="rw" class="form-control form-control-sm" value="<?= $tbl_member['rw']; ?>">
-                                </div>
-                                <?= form_error('rt', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-3">', '</small>'); ?>
-                                <?= form_error('rw', '<small class="text-danger pl-3 col-sm-3 align-items-sm-end">', '</small>'); ?>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="kelurahan">
-                                    Kelurahan / Desa
-                                </label>
-                                <div class="col-sm-7">
-                                    <input type="text" name="kelurahan" placeholder="Kelurahan / Desa" id="kelurahan" class="form-control form-control-sm" value="<?= $tbl_member['kelurahan']; ?>">
-                                </div>
-                                <?= form_error('kelurahan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="kecamatan">
-                                    Kecamatan
-                                </label>
-                                <div class="col-sm-7">
-                                    <input type="text" name="kecamatan" placeholder="Kecamatan" id="kecamatan" class="form-control form-control-sm" value="<?= $tbl_member['kecamatan']; ?>">
-                                </div>
-                                <?= form_error('kecamatan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="no_hp">
-                                    No. HP
-                                </label>
-                                <div class="col-sm-7">
-                                    <input type="text" name="no_hp" placeholder="Nomor HP" id="no_hp" class="form-control form-control-sm" value="<?= $tbl_member['no_hp']; ?>">
-                                </div>
-                                <?= form_error('no_hp', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="pendidikan">
-                                    Pendidikan Terakhir
-                                </label>
-                                <div class="col-sm-7">
-                                    <input type="text" name="pendidikan" placeholder="Pendidikan Terakhir" id="pendidikan" class="form-control form-control-sm" value="<?= $tbl_member['pendidikan']; ?>">
-                                </div>
-                                <?= form_error('pendidikan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-5 col-form-label col-form-label-sm" for="pekerjaan">
-                                    Pekerjaan
-                                </label>
-                                <div class="col-sm-7">
-                                    <input type="text" name="pekerjaan" placeholder="Pekerjaan" id="pekerjaan" class="form-control form-control-sm" value="<?= $tbl_member['pekerjaan']; ?>">
-                                </div>
-                                <?= form_error('pekerjaan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                            </div>
-
-                            <div class="form-group row justify-content-end">
-                                <div class="col-sm-2">
-                                    <button type="submit" name="edit" class="btn btn-primary btn-block">Simpan</button>
-                                </div>
-                            </div>
-
-
-                            </form>
-
 
                         </div>
+
+                        <!-- Image -->
+                        <div class="col-sm-3">
+                            <div class="row">
+                                <img src="<?= base_url('assets/img/noimage.png'); ?>" class="img-thumbnail mb-sm-3 p-sm-2">
+                                <div class="custom-file col-form-label col-form-label-sm">
+                                    <input type="file" class="custom-file-input" id="image" name="image">
+                                    <label class="custom-file-label" for="image">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="form-group row justify-content-end">
+                        <div class="col-sm-2">
+                            <button type="submit" name="edit" class="btn btn-primary btn-block">Simpan</button>
+                        </div>
+                    </div>
+
+
+                    </form>
+
+
                 </div>
-
-
             </div>
-            <!-- /.container-fluid -->
-
         </div>
-        <!-- End of Main Content -->
+
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->

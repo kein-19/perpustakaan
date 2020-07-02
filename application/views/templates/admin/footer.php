@@ -54,6 +54,7 @@
             <script src="<?= base_url(); ?>assets/js/password.js"></script>
             <script src="<?= base_url(); ?>assets/js/submenu.js"></script>
             <script src="<?= base_url(); ?>assets/js/menu.js"></script>
+            <script src="<?= base_url(); ?>assets/js/buku.js"></script>
             <script src="<?= base_url(); ?>assets/js/role.js"></script>
 
             <script>

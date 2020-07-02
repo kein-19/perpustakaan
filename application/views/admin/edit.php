@@ -158,7 +158,7 @@
                             Alamat
                         </label>
                         <div class="col-sm-7">
-                            <textarea name="alamat" id="alamat" class="form-control form-control-sm" placeholder="<?= $tbl_member['alamat']; ?>"></textarea>
+                            <textarea name="alamat" id="alamat" class="form-control form-control-sm"><?= $tbl_member['alamat']; ?></textarea>
                         </div>
                         <?= form_error('alamat', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                     </div>
@@ -224,7 +224,7 @@
                     </div>
 
                     <div class="form-group row justify-content-end">
-                        <div class="col-sm-2">
+                        <div class="col-md-2">
                             <button type="submit" name="edit" class="btn btn-primary btn-block">Simpan</button>
                         </div>
                     </div>

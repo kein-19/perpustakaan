@@ -94,10 +94,10 @@
                                             <?php endif; ?>
                                         </td> -->
                                         <td class="align-middle text-center">
-                                            <h4><a href="<?= base_url('admin/detail/') . $sb['id_member']; ?>" class="badge badge-secondary" role="button" title="detail"><i class="far fa-fw fa-id-card"></i></a>
-                                                <a href="<?= base_url('admin/edit/') . $sb['id_member']; ?>" class="badge badge-primary" role="button" title="edit"><i class="fas fa-fw fa-edit"></i></a>
-                                                <!-- <a href="<?= base_url('printdoc/data/') . $sb['id_member']; ?>" class="badge badge-success" role="button" target="blank" title="print"><i class="fas fa-fw fa-print"></i></a> -->
-                                                <a href="<?= base_url('admin/delete/') . $sb['id_member']; ?>" class="badge badge-danger tombol-hapus" role="button" title="delete"><i class="fas fa-fw fa-trash"></i></a></h4>
+                                            <h4><a href="<?= base_url('admin/detail/') . $sb['id_member']; ?>" class="btn btn-circle btn-secondary" role="button" title="detail"><i class="far fa-fw fa-id-card"></i></a>
+                                                <a href="<?= base_url('admin/edit/') . $sb['id_member']; ?>" class="btn btn-circle btn-primary" role="button" title="edit"><i class="fas fa-fw fa-edit"></i></a>
+                                                <!-- <a href="<?= base_url('printdoc/data/') . $sb['id_member']; ?>" class="btn btn-circle btn-success" role="button" target="blank" title="print"><i class="fas fa-fw fa-print"></i></a> -->
+                                                <a href="<?= base_url('admin/delete/') . $sb['id_member']; ?>" class="btn btn-circle btn-danger tombol-hapus" role="button" title="delete"><i class="fas fa-fw fa-trash"></i></a></h4>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

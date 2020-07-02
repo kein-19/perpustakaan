@@ -11,7 +11,13 @@
 
                 <div class="col-sm-12 mx-auto">
 
-                    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
+                    <?php if (validation_errors()) : ?>
+                        <div class="buku" data-buku="<?= validation_errors(); ?>"></div>
+                    <?php endif; ?>
+
+                    <div class="buku" data-buku="<?= $this->session->flashdata('flash'); ?>"></div>
+
+                    <!-- <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div> -->
 
                     <div class="row mt-3 mb-2">
                         <div class="col-md-4">
@@ -29,7 +35,7 @@
                                     <input type="text" class="form-control" placeholder="Search keyword.." name="keyword" autocomplete="off" autofocus>
                                     <div class="input-group-append">
                                         <input class="btn btn-primary fas fa-search" type="submit" name="submit">
-                                        <!-- <button class="btn btn-circle btn-sm btn-primary" type="submit" name="submit"><i class="fas fa-search"></i></button> -->
+                                        <!-- <button class="btn btn-circle btn-primary" type="submit" name="submit"><i class="fas fa-search"></i></button> -->
                                     </div>
                                 </div>
 
@@ -83,10 +89,10 @@
                                             <?php endif; ?>
                                         </td> -->
                                     <td class="align-middle text-center">
-                                        <h4><a href="<?= base_url('buku/detail/') . $sb['id']; ?>" class="btn btn-circle btn-sm btn-secondary" role="button" title="detail"><i class="far fa-fw fa-id-card"></i></a></h4>
-                                        <h4><a href="<?= base_url('buku/edit/') . $sb['id']; ?>" class="btn btn-circle btn-sm btn-primary" role="button" title="edit"><i class="fas fa-fw fa-edit"></i></a></h4>
-                                        <!-- <a href="<?= base_url('printdoc/data/') . $sb['id']; ?>" class="btn btn-circle btn-sm btn-success" role="button" target="blank" title="print"><i class="fas fa-fw fa-print"></i></a> -->
-                                        <h4><a href="<?= base_url('buku/delete/') . $sb['id']; ?>" class="btn btn-circle btn-sm btn-danger tombol-hapus" role="button" title="delete"><i class="fas fa-fw fa-trash"></i></a></h4>
+                                        <h4><a href="<?= base_url('buku/detail/') . $sb['id']; ?>" class="btn btn-circle btn-secondary" role="button" title="detail"><i class="far fa-fw fa-id-card"></i></a></h4>
+                                        <h4><a href="<?= base_url('buku/edit/') . $sb['id']; ?>" class="btn btn-circle btn-primary" role="button" title="edit"><i class="fas fa-fw fa-edit"></i></a></h4>
+                                        <!-- <a href="<?= base_url('printdoc/data/') . $sb['id']; ?>" class="btn btn-circle btn-success" role="button" target="blank" title="print"><i class="fas fa-fw fa-print"></i></a> -->
+                                        <h4><a href="<?= base_url('buku/delete/') . $sb['id']; ?>" class="btn btn-circle btn-danger tombol-bukuhapus" role="button" title="delete"><i class="fas fa-fw fa-trash"></i></a></h4>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

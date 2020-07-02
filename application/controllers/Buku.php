@@ -23,7 +23,7 @@ class Buku extends CI_Controller
         // is_logged_in();
 
         if (!$this->session->userdata('email')) {
-            redirect('buku/login');
+            redirect('home');
         }
 
         // $data['menu'] = 'Admin';
@@ -284,28 +284,25 @@ class Buku extends CI_Controller
 
     public function add()
     {
-        $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
-        $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|trim');
-        $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
-        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
-        $this->form_validation->set_rules('agama', 'Agama', 'required');
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
-        $this->form_validation->set_rules('rt', 'RT', 'required|trim|numeric|max_length[3]');
-        $this->form_validation->set_rules('rw', 'RW', 'required|trim|numeric|max_length[3]');
-        $this->form_validation->set_rules('kelurahan', 'Kelurahan / Desa', 'required|trim');
-        $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
-        $this->form_validation->set_rules('no_hp', 'No. HP', 'required|trim|numeric|min_length[10]|max_length[13]');
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[t_buku.email]', [
-            'is_unique' => 'Email sudah terdaftar!'
-        ]);
-        $this->form_validation->set_rules('pendidikan', 'Pendidikan Terakhir', 'required|trim');
-        $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
+        $this->form_validation->set_rules('kategori', 'Kategori', 'required');
+        $this->form_validation->set_rules('jenis', 'Jenis', 'required');
+        $this->form_validation->set_rules('judul', 'Judul', 'required|trim');
+        $this->form_validation->set_rules('pengarang', 'Pengarang', 'required|trim');
+        $this->form_validation->set_rules('penerbit', 'Penerbit', 'required|trim');
+        $this->form_validation->set_rules('th_terbit', 'Tahun Terbit', 'required|trim|numeric|exact_length[4]');
+        $this->form_validation->set_rules('isbn', 'No. ISBN', 'required|trim|numeric|exact_length[13]');
+        $this->form_validation->set_rules('harga', 'Harga', 'required|trim|numeric');
+        $this->form_validation->set_rules('jml_hal', 'Jumlah Halaman', 'required|trim|numeric');
+        $this->form_validation->set_rules('asal_perolehan', 'Asal Perolehan', 'required|trim');
+        $this->form_validation->set_rules('id_lokasi', 'Lokasi Buku', 'required');
+        $this->form_validation->set_rules('stat', 'Kondisi Buku', 'required');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
 
 
         if ($this->form_validation->run() == false) {
             $data['tbl_admin'] = $this->Model_admin->getAdmin();
             // $data['menu'] = 'Admin';
-            $data['title'] = 'Tambah Data Buku Baru';
+            $data['title'] = 'Tambah Data Buku';
 
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
@@ -313,29 +310,30 @@ class Buku extends CI_Controller
             $this->load->view('buku/add', $data);
             $this->load->view('templates/admin/footer');
         } else {
-            $this->db->select('RIGHT(t_buku.id_buku,4) as kode', false);
-            $this->db->order_by('id_buku', 'DESC');
-            $this->db->limit(1);
-            $query = $this->db->get('t_buku'); // cek sudah ada atau belum kodenya
-            if ($query->num_rows() <> 0) {
-                //jika kodenya sudah ada.      
-                $data = $query->row();
-                $kode = intval($data->kode) + 1;
-            } else {
-                //jika kodenya belum ada      
-                $kode = 1;
-            }
+            // $this->db->select('RIGHT(t_buku.id_buku,4) as kode', false);
+            // $this->db->order_by('id_buku', 'DESC');
+            // $this->db->limit(1);
+            // $query = $this->db->get('t_buku'); // cek sudah ada atau belum kodenya
+            // if ($query->num_rows() <> 0) {
+            //     //jika kodenya sudah ada.      
+            //     $data = $query->row();
+            //     $kode = intval($data->kode) + 1;
+            // } else {
+            //     //jika kodenya belum ada      
+            //     $kode = 1;
+            // }
 
-            // siapkan kode
-            $thn = substr(date('Y'), 2, 2) . substr(date('Y', strtotime('+1 years')), 2, 2);
-            $bln = date('m');
-            $kodemax = str_pad($kode, 4, "0", STR_PAD_LEFT);
-            $idbuku = $thn . $bln . $kodemax;
+            // // siapkan kode
+            // $thn = substr(date('Y'), 2, 2) . substr(date('Y', strtotime('+1 years')), 2, 2);
+            // $bln = date('m');
+            // $kodemax = str_pad($kode, 4, "0", STR_PAD_LEFT);
+            // $idbuku = $thn . $bln . $kodemax;
 
-            $this->Model_admin->addBuku($idbuku);
+            // $this->Model_admin->addBuku($idbuku);
+            $this->Model_buku->addBuku();
 
             $this->session->set_flashdata('flash', 'ditambahkan');
-            redirect('admin');
+            redirect('buku');
         }
     }
 
@@ -357,21 +355,19 @@ class Buku extends CI_Controller
 
     public function edit($id_buku)
     {
-
-        $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
-        $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|trim');
-        $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
-        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
-        $this->form_validation->set_rules('agama', 'Agama', 'required');
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
-        $this->form_validation->set_rules('rt', 'RT', 'required|trim|numeric|max_length[3]');
-        $this->form_validation->set_rules('rw', 'RW', 'required|trim|numeric|max_length[3]');
-        $this->form_validation->set_rules('kelurahan', 'Kelurahan / Desa', 'required|trim');
-        $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required|trim');
-        $this->form_validation->set_rules('no_hp', 'No. HP', 'required|trim|numeric|min_length[10]|max_length[13]');
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
-        $this->form_validation->set_rules('pendidikan', 'Pendidikan Terakhir', 'required|trim');
-        $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
+        $this->form_validation->set_rules('kategori', 'Kategori', 'required');
+        $this->form_validation->set_rules('jenis', 'Jenis', 'required');
+        $this->form_validation->set_rules('judul', 'Judul', 'required|trim');
+        $this->form_validation->set_rules('pengarang', 'Pengarang', 'required|trim');
+        $this->form_validation->set_rules('penerbit', 'Penerbit', 'required|trim');
+        $this->form_validation->set_rules('th_terbit', 'Tahun Terbit', 'required|trim|numeric|exact_length[4]');
+        $this->form_validation->set_rules('isbn', 'No. ISBN', 'required|trim|numeric|exact_length[13]');
+        $this->form_validation->set_rules('harga', 'Harga', 'required|trim|numeric');
+        $this->form_validation->set_rules('jml_hal', 'Jumlah Halaman', 'required|trim|numeric');
+        $this->form_validation->set_rules('asal_perolehan', 'Asal Perolehan', 'required|trim');
+        $this->form_validation->set_rules('id_lokasi', 'Lokasi Buku', 'required');
+        $this->form_validation->set_rules('stat', 'Kondisi Buku', 'required');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $data['tbl_admin'] = $this->Model_admin->getAdmin();
@@ -385,17 +381,17 @@ class Buku extends CI_Controller
             $this->load->view('buku/edit', $data);
             $this->load->view('templates/admin/footer');
         } else {
-            $this->Model_admin->editBuku();
-            $this->session->set_flashdata('flash', 'diupdate');
-            redirect('admin');
+            $this->Model_buku->editBuku($id_buku);
+            $this->session->set_flashdata('flash', 'diubah');
+            redirect('buku');
         }
     }
 
     public function delete($id_buku)
     {
-        $this->Model_admin->deleteBuku($id_buku);
+        $this->Model_buku->deleteBuku($id_buku);
         $this->session->set_flashdata('flash', 'dihapus');
-        redirect('admin');
+        redirect('buku');
     }
 
     public function role()

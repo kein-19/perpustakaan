@@ -37,8 +37,8 @@
                             <td class="align-middle"><?= $m['menu']; ?></td>
                             <td class="align-middle text-center">
                                 <h4>
-                                    <a href="<?= base_url('menu/') . $m['id']; ?>" class="badge badge-primary tampilMenu" data-toggle="modal" data-target="#newMenuModal" data-id="<?= $m['id']; ?>" role="button" title="edit"><i class="fas fa-fw fa-edit"></i></a>
-                                    <a href="<?= base_url('menu/delete/') . $m['id']; ?>" class="badge badge-danger tombol-menuhapus" role="button" title="delete"><i class="fas fa-fw fa-trash"></i></a>
+                                    <a href="<?= base_url('menu/') . $m['id']; ?>" class="btn btn-circle btn-primary tampilMenu" data-toggle="modal" data-target="#newMenuModal" data-id="<?= $m['id']; ?>" role="button" title="edit"><i class="fas fa-fw fa-edit"></i></a>
+                                    <a href="<?= base_url('menu/delete/') . $m['id']; ?>" class="btn btn-circle btn-danger tombol-menuhapus" role="button" title="delete"><i class="fas fa-fw fa-trash"></i></a>
                                 </h4>
                             </td>
                         </tr>

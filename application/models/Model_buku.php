@@ -46,67 +46,72 @@ class Model_buku extends CI_Model
     }
 
 
-    public function tambahDataBuku($idbuku)
+    public function addBuku()
     {
 
-        $nama = $this->input->post('nama', TRUE);
-        $email = $this->input->post('email', true);
-
         $data = [
-            'id_buku'             => ($idbuku),
-            'nama'                  => htmlspecialchars($nama),
-            'tempat_lahir'          => htmlspecialchars($this->input->post('tempat_lahir', TRUE)),
-            'tanggal_lahir'         => htmlspecialchars($this->input->post('tanggal_lahir', TRUE)),
-            'jenis_kelamin'         => $this->input->post('jenis_kelamin', TRUE),
-            'kd_agama'              => $this->input->post('agama', TRUE),
-            'alamat'                => htmlspecialchars($this->input->post('alamat', TRUE)),
-            'rt'                    => htmlspecialchars($this->input->post('rt', TRUE)),
-            'rw'                    => htmlspecialchars($this->input->post('rw', TRUE)),
-            'kelurahan'             => htmlspecialchars($this->input->post('kelurahan', TRUE)),
-            'kecamatan'             => htmlspecialchars($this->input->post('kecamatan', TRUE)),
-            'no_hp'                 => htmlspecialchars($this->input->post('no_hp', TRUE)),
-            'pendidikan'            => htmlspecialchars($this->input->post('pendidikan', TRUE)),
-            'pekerjaan'             => htmlspecialchars($this->input->post('pekerjaan', TRUE)),
+            'id_kelas'          => $this->input->post('kategori', TRUE),
+            'id_jenis'          => $this->input->post('jenis', TRUE),
+            'judul'             => htmlspecialchars($this->input->post('judul', TRUE)),
+            'pengarang'         => htmlspecialchars($this->input->post('pengarang', TRUE)),
+            'penerbit'          => htmlspecialchars($this->input->post('penerbit', TRUE)),
+            'th_terbit'         => htmlspecialchars($this->input->post('th_terbit', TRUE)),
+            'isbn'              => htmlspecialchars($this->input->post('isbn', TRUE)),
+            'harga'             => htmlspecialchars($this->input->post('harga', TRUE)),
+            'jml_hal'           => htmlspecialchars($this->input->post('jml_hal', TRUE)),
+            'asal_perolehan'    => htmlspecialchars($this->input->post('asal_perolehan', TRUE)),
+            'id_lokasi'         => $this->input->post('id_lokasi', TRUE),
+            'stat'              => htmlspecialchars($this->input->post('stat', TRUE)),
+            'deskripsi'         => htmlspecialchars($this->input->post('deskripsi', TRUE))
 
-            // 'name' => htmlspecialchars($this->input->post('name', true)),
-            'email' => htmlspecialchars($email),
-            'image' => 'default.png',
-            'password' => password_hash($idbuku, PASSWORD_DEFAULT),
-            'role_id' => 2,
-            'is_active' => 1,
-            'date_created' => time()
+            // $data = [
+            //     'id_member'             => ($idmember),
+            //     'nama'                  => htmlspecialchars($nama),
+            //     'tempat_lahir'          => htmlspecialchars($this->input->post('tempat_lahir', TRUE)),
+            //     'tanggal_lahir'         => htmlspecialchars($this->input->post('tanggal_lahir', TRUE)),
+            //     'jenis_kelamin'         => $this->input->post('jenis_kelamin', TRUE),
+            //     'kd_agama'              => $this->input->post('agama', TRUE),
+            //     'alamat'                => htmlspecialchars($this->input->post('alamat', TRUE)),
+            //     'rt'                    => htmlspecialchars($this->input->post('rt', TRUE)),
+            //     'rw'                    => htmlspecialchars($this->input->post('rw', TRUE)),
+            //     'kelurahan'             => htmlspecialchars($this->input->post('kelurahan', TRUE)),
+            //     'kecamatan'             => htmlspecialchars($this->input->post('kecamatan', TRUE)),
+            //     'no_hp'                 => htmlspecialchars($this->input->post('no_hp', TRUE)),
+            //     'pendidikan'            => htmlspecialchars($this->input->post('pendidikan', TRUE)),
+            //     'pekerjaan'             => htmlspecialchars($this->input->post('pekerjaan', TRUE)),
+
+            //     // 'name' => htmlspecialchars($this->input->post('name', true)),
+            //     'email' => htmlspecialchars($email),
+            //     'image' => 'default.png',
+            //     'password' => password_hash($idmember, PASSWORD_DEFAULT),
+            //     'role_id' => 2,
+            //     'is_active' => 1,
+            //     'date_created' => time()
         ];
-        $this->db->insert('t_buku', $data);
+        $this->db->insert(
+            't_buku',
+            $data
+        );
     }
 
-    public function editDataBuku()
+    public function editBuku()
     {
 
-        $nama = $this->input->post('nama', TRUE);
-        $email = $this->input->post('email', true);
-        $idbuku = $this->input->post('id_buku', true);
-
         $data = [
-            'id_buku'             => ($idbuku),
-            'nama'                  => htmlspecialchars($nama),
-            'tempat_lahir'          => htmlspecialchars($this->input->post('tempat_lahir', TRUE)),
-            'tanggal_lahir'         => htmlspecialchars($this->input->post('tanggal_lahir', TRUE)),
-            'jenis_kelamin'         => $this->input->post('jenis_kelamin', TRUE),
-            'kd_agama'              => $this->input->post('agama', TRUE),
-            'alamat'                => htmlspecialchars($this->input->post('alamat', TRUE)),
-            'rt'                    => htmlspecialchars($this->input->post('rt', TRUE)),
-            'rw'                    => htmlspecialchars($this->input->post('rw', TRUE)),
-            'kelurahan'             => htmlspecialchars($this->input->post('kelurahan', TRUE)),
-            'kecamatan'             => htmlspecialchars($this->input->post('kecamatan', TRUE)),
-            'no_hp'                 => htmlspecialchars($this->input->post('no_hp', TRUE)),
-            'pendidikan'            => htmlspecialchars($this->input->post('pendidikan', TRUE)),
-            'pekerjaan'             => htmlspecialchars($this->input->post('pekerjaan', TRUE)),
+            'id_kelas'          => $this->input->post('kategori', TRUE),
+            'id_jenis'          => $this->input->post('jenis', TRUE),
+            'judul'             => htmlspecialchars($this->input->post('judul', TRUE)),
+            'pengarang'         => htmlspecialchars($this->input->post('pengarang', TRUE)),
+            'penerbit'          => htmlspecialchars($this->input->post('penerbit', TRUE)),
+            'th_terbit'         => htmlspecialchars($this->input->post('th_terbit', TRUE)),
+            'isbn'              => htmlspecialchars($this->input->post('isbn', TRUE)),
+            'harga'             => htmlspecialchars($this->input->post('harga', TRUE)),
+            'jml_hal'           => htmlspecialchars($this->input->post('jml_hal', TRUE)),
+            'asal_perolehan'    => htmlspecialchars($this->input->post('asal_perolehan', TRUE)),
+            'id_lokasi'         => $this->input->post('id_lokasi', TRUE),
+            'stat'              => htmlspecialchars($this->input->post('stat', TRUE)),
+            'deskripsi'         => htmlspecialchars($this->input->post('deskripsi', TRUE))
 
-            // 'name' => htmlspecialchars($this->input->post('name', true)),
-            'email' => htmlspecialchars($email),
-            // 'password' => password_hash($this->input->post('id_buku', true), PASSWORD_DEFAULT),
-            'password' => password_hash($idbuku, PASSWORD_DEFAULT),
-            'role_id' => 2,
         ];
 
         // cek jika ada gambar yang akan diupload
@@ -125,8 +130,11 @@ class Model_buku extends CI_Model
                     unlink(FCPATH . 'assets/img/profile/' . $old_image);
                 }
                 $new_image = $this->upload->data('file_name');
-                $this->db->set('image', $new_image);
-                // $this->Model_buku->editDataBuku($new_image);
+                $this->db->set(
+                    'image',
+                    $new_image
+                );
+                // $this->Model_member->editDataBuku($new_image);
             } else {
                 echo $this->upload->dispay_errors();
             }
@@ -135,8 +143,18 @@ class Model_buku extends CI_Model
         // $this->db->set('name', $data);
 
         // $this->db->set('image', $new_image);
-        // $this->db->where('email', $email);
-        $this->db->where('id_buku', $idbuku);
-        $this->db->update('t_buku', $data);
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update(
+            't_buku',
+            $data
+        );
+    }
+
+    public function deleteBuku($id_buku)
+    {
+        $this->db->delete(
+            't_buku',
+            ['id' => $id_buku]
+        );
     }
 }

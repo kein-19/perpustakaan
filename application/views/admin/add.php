@@ -87,7 +87,7 @@
                         Alamat
                     </label>
                     <div class="col-sm-7">
-                        <textarea name="alamat" id="alamat" class="form-control form-control-sm" value="<?= set_value('alamat'); ?>"></textarea>
+                        <textarea name="alamat" placeholder="Alamat" id="alamat" class="form-control form-control-sm" value="<?= set_value('alamat'); ?>"></textarea>
                     </div>
                     <?= form_error('alamat', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                 </div>
@@ -153,7 +153,7 @@
                 </div>
 
                 <div class="form-group row justify-content-end mt-sm-5">
-                    <div class="col-sm-3">
+                    <div class="col-md-2">
                         <button type="submit" name="tambah" class="btn btn-primary btn-block" role="button">Tambah</button>
                     </div>
                 </div>
